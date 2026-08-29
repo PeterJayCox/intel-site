@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confirmation Bias · Intel Wiki</title>
+<meta name="description" content="Open-source intelligence analysis tradecraft — a living reference wiki.">
+<link rel="canonical" href="https://intel.peterjaycox.com/">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=20260829">
+</head>
+<body>
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Intel Wiki</span>
+      <small>open-source</small>
+    </a>
+    <div class="nav-links"><a class="" href="index.html">Home</a><a class="" href="index.html#concepts">Concepts</a><a class="" href="index.html#entities">Entities</a></div>
+    <div class="theme-toggle" role="button" aria-label="Toggle light/dark theme" tabindex="0" onclick="toggleTheme()">🌙</div>
+  </div>
+</nav>
+<main class="container">
+
+<div class="crumb"><a href="index.html">Wiki</a><span class="sep">/</span>Concepts</div>
+<div class="page-head">
+  <div class="head-top"><span class="type-pill">Concept</span><span class="pill conf conf-high">High confidence</span></div>
+  <h1>Confirmation Bias</h1>
+  <div class="tags-row"><span class="pill tag">analysis</span><span class="pill tag">bias</span></div>
+  <div class="stamp">Open Source</div>
+</div>
+<article class="wiki-body"><p>The tendency to <strong>search for, interpret, favour, and recall information in ways that confirm one's pre-existing beliefs</strong>, while giving disproportionately less weight to disconfirming evidence.</p>
+<h2>In intelligence analysis</h2>
+<ul>
+<li>Reporting that supports the working hypothesis is credited readily; contradicting reporting is discounted as unreliable or noisy.</li>
+<li>A leading hypothesis becomes self-reinforcing: each confirmatory item raises confidence without any genuine test against alternatives.</li>
+<li>Pairs with selective perception — information that conflicts with the model may never be registered at all.</li>
+</ul>
+<h2>Countermeasure</h2>
+<ul>
+<li><strong>Analysis of Competing Hypotheses (ACH)</strong> — list all plausible hypotheses and test <em>all</em> evidence against <em>each</em>, seeking evidence that distinguishes them rather than evidence that merely supports the favourite.</li>
+<li>Devil's Advocacy and red-teaming as explicit adversarial checks.</li>
+</ul>
+<h2>Related</h2>
+<ul>
+<li><a href="cognitive-bias.html">Cognitive Bias</a> — the taxonomy this bias sits within</li>
+<li><a href="structured-analytic-techniques.html">Structured Analytic Techniques</a> — ACH and related counters</li>
+<li><a href="groupthink.html">Groupthink</a> — shared confirmation of a group view</li>
+</ul></article>
+<a class="nav-back" href="index.html">&larr; Back to Wiki index</a>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>Intelligence Analysis Wiki</span>
+    <span class="foot-dim">open-source tradecraft &middot; classification-gated build</span>
+  </div>
+</footer>
+<script>
+function toggleTheme(){var h=document.documentElement;var b=document.querySelector('.theme-toggle');var t=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',t);if(b)b.textContent=t==='dark'?'☀️':'🌙';try{localStorage.setItem('intel-theme',t)}catch(e){}}
+(function(){try{var s=localStorage.getItem('intel-theme');if(s)document.documentElement.setAttribute('data-theme',s);var b=document.querySelector('.theme-toggle');if(b)b.textContent=(s||'dark')==='dark'?'☀️':'🌙'}catch(e){}})();
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cognitive Bias · Intel Wiki</title>
+<meta name="description" content="Open-source intelligence analysis tradecraft — a living reference wiki.">
+<link rel="canonical" href="https://intel.peterjaycox.com/">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=20260829">
+</head>
+<body>
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Intel Wiki</span>
+      <small>open-source</small>
+    </a>
+    <div class="nav-links"><a class="" href="index.html">Home</a><a class="" href="index.html#concepts">Concepts</a><a class="" href="index.html#entities">Entities</a></div>
+    <div class="theme-toggle" role="button" aria-label="Toggle light/dark theme" tabindex="0" onclick="toggleTheme()">🌙</div>
+  </div>
+</nav>
+<main class="container">
+
+<div class="crumb"><a href="index.html">Wiki</a><span class="sep">/</span>Concepts</div>
+<div class="page-head">
+  <div class="head-top"><span class="type-pill">Concept</span><span class="pill conf conf-high">High confidence</span></div>
+  <h1>Cognitive Bias</h1>
+  <div class="tags-row"><span class="pill tag">analysis</span><span class="pill tag">frameworks</span><span class="pill tag">bias</span></div>
+  <div class="stamp">Open Source</div>
+</div>
+<article class="wiki-body"><p>A <strong>cognitive bias</strong> is a <em>systematic</em> — as opposed to random — error in judgement, driven by the mental shortcuts (heuristics) the brain uses to process information efficiently. In intelligence analysis the stakes are high: the same mechanisms that let an analyst make fast sense of a noisy stream also produce predictable, non-random mistakes.</p>
+<p>Analysts do not passively <em>receive</em> information; they actively <em>construct</em> meaning through pre-existing mental models. Bias is therefore not occasional error but a <strong>built-in property of the perceptual process</strong>, largely unconscious and largely unaffected by how much information is in hand.</p>
+<h2>Why it matters</h2>
+<ul>
+<li>Bias survives more data — additional information is filtered through the same model that produced the error.</li>
+<li>It is largely invisible to the analyst in the moment.</li>
+<li>It is the explicit rationale for <a href="structured-analytic-techniques.html">Structured Analytic Techniques</a> — every SAT is a structured counter to one or more biases (ACH against <a href="confirmation-bias.html">Confirmation Bias</a>; Key Assumptions Check against unchallenged assumptions; Devil's Advocacy against <a href="groupthink.html">Groupthink</a>).</li>
+<li>Confidence calibration (<a href="estimative-language.html">Estimative Language</a>) and source grading (<a href="admiralty-rating.html">Admiralty Rating</a>) are also, in part, bias-mitigation instruments.</li>
+</ul>
+<h2>Taxonomy</h2>
+<h3>Perception &amp; mindset</h3>
+<ul>
+<li><a href="confirmation-bias.html">Confirmation Bias</a> — seeking and weighting evidence that confirms an existing view; discounting disconfirming evidence.</li>
+<li>Mindset / belief perseverance — difficulty adopting a new frame once one is set.</li>
+<li><a href="mirror-imaging.html">Mirror Imaging</a> — assuming the other actor shares your values, rationality, and constraints.</li>
+<li>Selective perception — noticing what fits prior expectations and filtering the rest.</li>
+</ul>
+<h3>Evidence evaluation</h3>
+<ul>
+<li><a href="vividness-bias.html">Vividness Bias</a> — over-weighting concrete, emotionally striking material over abstract statistical information.</li>
+<li><a href="anchoring-bias.html">Anchoring Bias</a> — over-reliance on an initial figure or judgement; insufficient adjustment.</li>
+<li><a href="availability-heuristic.html">Availability Heuristic</a> — estimating likelihood by ease of recall rather than base rates.</li>
+<li>Representativeness heuristic — judging probability by stereotypical similarity, ignoring base rates.</li>
+<li>Absence-of-evidence fallacy — treating "no evidence found" as "evidence of absence".</li>
+</ul>
+<h3>Estimation &amp; confidence</h3>
+<ul>
+<li><a href="overconfidence-bias.html">Overconfidence Bias</a> — systematically over-estimating the accuracy of one's own judgements.</li>
+<li><a href="hindsight-bias.html">Hindsight Bias</a> — retroactively judging an event as more predictable than it was.</li>
+<li>Base-rate neglect — ignoring prior probabilities in favour of vivid specifics.</li>
+<li>Insensitivity to sample size — drawing strong conclusions from small samples.</li>
+</ul>
+<h3>Social &amp; group</h3>
+<ul>
+<li><a href="groupthink.html">Groupthink</a> — consensus pressure degrading rigorous appraisal (Janis 1972).</li>
+<li>Conformity / bandwagon — agreeing with the majority view regardless of one's own analysis.</li>
+<li>Fundamental attribution error — attributing others' actions to disposition, ignoring situational causes.</li>
+<li>Loss aversion (prospect theory) — losses loom larger than equivalent gains, skewing risk judgement.</li>
+</ul>
+<h3>Decision &amp; commitment</h3>
+<ul>
+<li>Sunk-cost fallacy / escalation of commitment — persisting with a failing line because of prior investment.</li>
+<li>Framing effect — choices reversed by how options are framed (gain vs loss).</li>
+<li>Status quo bias — preferring the current state.</li>
+<li>Recency bias — over-weighting the most recent reporting.</li>
+</ul>
+<h2>Countermeasures</h2>
+<ul>
+<li><a href="structured-analytic-techniques.html">Structured Analytic Techniques</a> — ACH, Key Assumptions Check, Devil's Advocacy, red-teaming.</li>
+<li>Explicit, calibrated <a href="estimative-language.html">Estimative Language</a>.</li>
+<li><a href="admiralty-rating.html">Admiralty Rating</a> for source-level grading.</li>
+<li>Deliberate group process to counter <a href="groupthink.html">Groupthink</a>.</li>
+</ul>
+<h2>Related</h2>
+<ul>
+<li><a href="structured-analytic-techniques.html">Structured Analytic Techniques</a> — the primary mitigation toolkit</li>
+<li><a href="estimative-language.html">Estimative Language</a> — calibrated expression of confidence</li>
+<li><a href="admiralty-rating.html">Admiralty Rating</a> — source-level trust grading</li>
+<li><a href="the-intelligence-cycle.html">The Intelligence Cycle</a> — bias operates chiefly in the evaluation/analysis stage</li>
+</ul></article>
+<a class="nav-back" href="index.html">&larr; Back to Wiki index</a>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>Intelligence Analysis Wiki</span>
+    <span class="foot-dim">open-source tradecraft &middot; classification-gated build</span>
+  </div>
+</footer>
+<script>
+function toggleTheme(){var h=document.documentElement;var b=document.querySelector('.theme-toggle');var t=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',t);if(b)b.textContent=t==='dark'?'☀️':'🌙';try{localStorage.setItem('intel-theme',t)}catch(e){}}
+(function(){try{var s=localStorage.getItem('intel-theme');if(s)document.documentElement.setAttribute('data-theme',s);var b=document.querySelector('.theme-toggle');if(b)b.textContent=(s||'dark')==='dark'?'☀️':'🌙'}catch(e){}})();
+</script>
+</body>
+</html>
