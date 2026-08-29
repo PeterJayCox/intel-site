@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Structured Analytic Techniques · Intel Wiki</title>
+<meta name="description" content="Open-source intelligence analysis tradecraft — a living reference wiki.">
+<link rel="canonical" href="https://intel.peterjaycox.com/">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=20260829">
+</head>
+<body>
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Intel Wiki</span>
+      <small>open-source</small>
+    </a>
+    <div class="nav-links"><a class="" href="index.html">Home</a><a class="" href="index.html#concepts">Concepts</a><a class="" href="index.html#entities">Entities</a></div>
+    <div class="theme-toggle" role="button" aria-label="Toggle light/dark theme" tabindex="0" onclick="toggleTheme()">🌙</div>
+  </div>
+</nav>
+<main class="container">
+
+<div class="crumb"><a href="index.html">Wiki</a><span class="sep">/</span>Concepts</div>
+<div class="page-head">
+  <div class="head-top"><span class="type-pill">Concept</span><span class="pill conf conf-high">High confidence</span></div>
+  <h1>Structured Analytic Techniques</h1>
+  <div class="tags-row"><span class="pill tag">analysis</span><span class="pill tag">frameworks</span></div>
+  <div class="stamp">Open Source</div>
+</div>
+<article class="wiki-body"><p>SATs are formal methods for countering cognitive bias and testing hypotheses — the modern complement to (and critique of) older methods like the <a href="admiralty-rating.html">Admiralty Rating</a> system. Post-9/11 tradecraft stresses them; the CIA's <em>Tradecraft Primer</em> is the reference text.</p>
+<h2>Common SATs</h2>
+<ul>
+<li><strong>Key Assumptions Check</strong> — surface and question the assumptions underpinning a judgment.</li>
+<li><strong>Analysis of Competing Hypotheses (ACH)</strong> — list competing hypotheses and test ALL evidence against EACH, rather than defending the best guess.</li>
+<li><strong>Argument Maps / Mind Maps / Matrix</strong> — externalise reasoning structure.</li>
+<li><strong>Chronologies / Timelines</strong> — order events to spot patterns.</li>
+<li><strong>Starbursting, Cluster Brainstorming, Inconsistency Finder</strong> — generate and cross-check ideas.</li>
+</ul>
+<h2>Table of technique utility (from AIPIO 25, Kathy Pherson)</h2>
+<p>Different SATs help at different stages (identify data needed / analyse / publish visually). For example: Key Assumptions Check scores high on data identification and analysis, low on visual publication; Link Charts and Argument Maps score high across all three. Dedicated software tools now embed many of these SATs.</p>
+<h2>Why SATs but not replacement</h2>
+<ul>
+<li>The <a href="admiralty-rating.html">Admiralty Rating</a> system has no built-in mechanism for generating alternative hypotheses or highlighting bias — SATs fill this gap.</li>
+<li>Tradecraft valuation is as important as ever — an LLM can't reason from first principles; the analyst's application of SATs to both human sources and AI outputs is the modern skill.</li>
+<li>Blended model: use official grading as shorthand, but run assumption checks, red teaming and ACH on top to mitigate its limits.</li>
+</ul>
+<h2>Related</h2>
+<ul>
+<li><a href="admiralty-rating.html">Admiralty Rating</a> — the older system SATs are designed to complement</li>
+<li><a href="the-intelligence-cycle.html">The Intelligence Cycle</a> — SATs strengthen the analysis stage</li>
+<li><a href="estimative-language.html">Estimative Language</a> — articulate SAT conclusions with calibrated confidence</li>
+</ul>
+<h2>Open questions</h2>
+<ul>
+<li>Which SATs best scale to cyber and OSINT data streams? (Noted as open in source.)</li>
+</ul></article>
+<a class="nav-back" href="index.html">&larr; Back to Wiki index</a>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>Intelligence Analysis Wiki</span>
+    <span class="foot-dim">open-source tradecraft &middot; classification-gated build</span>
+  </div>
+</footer>
+<script>
+function toggleTheme(){var h=document.documentElement;var b=document.querySelector('.theme-toggle');var t=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',t);if(b)b.textContent=t==='dark'?'☀️':'🌙';try{localStorage.setItem('intel-theme',t)}catch(e){}}
+(function(){try{var s=localStorage.getItem('intel-theme');if(s)document.documentElement.setAttribute('data-theme',s);var b=document.querySelector('.theme-toggle');if(b)b.textContent=(s||'dark')==='dark'?'☀️':'🌙'}catch(e){}})();
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Theme 2 — Terminal / Signals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #050806;
+    --bg2: #0a120b;
+    --surface: #0c140d;
+    --border: #1c2a1e;
+    --green: #33ff66;
+    --green-dim: #1f9e3f;
+    --green-faint: #0f3a1a;
+    --text: #b8f0c0;
+    --muted: #5f8f68;
+    --amber: #ffb020;
+    --red: #ff5c5c;
+  }
+  body {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  /* CRT scanlines */
+  body::after {
+    content: "";
+    position: fixed; inset: 0; pointer-events: none; z-index: 999;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.22) 0 1px, transparent 1px 3px);
+    mix-blend-mode: multiply;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px 60px; }
+  nav {
+    border-bottom: 1px solid var(--border);
+    background: rgba(5,8,6,0.9);
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(6px);
+  }
+  .nav-inner { max-width: 960px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; gap: 20px; }
+  .brand { color: var(--green); font-weight: 700; letter-spacing: 1px; }
+  .brand .prompt { color: var(--green-dim); }
+  .nav-links { margin-left: auto; display: flex; gap: 18px; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; }
+  .nav-links a:hover { color: var(--green); }
+  .nav-links a.active { color: var(--green); }
+  .nav-links a.active::before { content: "▸ "; }
+  .hero {
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    padding: 44px 28px 36px;
+    margin: 28px 0;
+    position: relative;
+  }
+  .hero .corner { position: absolute; color: var(--green-dim); font-size: 0.8rem; }
+  .hero .tl { top: 8px; left: 10px; } .hero .tr { top: 8px; right: 10px; }
+  .hero .bl { bottom: 8px; left: 10px; } .hero .br { bottom: 8px; right: 10px; }
+  .kicker { color: var(--green-dim); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+  .kicker::before { content: "> "; color: var(--green); }
+  h1 { font-size: 2.4rem; font-weight: 700; color: var(--green); letter-spacing: 0.5px; margin-bottom: 12px; }
+  h1 .cursor { display: inline-block; width: 0.6em; height: 1.1em; background: var(--green); vertical-align: -0.15em; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .tagline { color: var(--muted); max-width: 620px; margin-bottom: 22px; font-size: 0.95rem; }
+  .stats { display: flex; gap: 10px; flex-wrap: wrap; }
+  .stat { border: 1px solid var(--border); background: var(--surface); padding: 8px 16px; font-size: 0.85rem; }
+  .stat b { color: var(--green); font-size: 1.2rem; margin-right: 6px; }
+  .stat span { color: var(--muted); }
+  .section { margin: 30px 0; }
+  .sec-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; color: var(--green); }
+  .sec-head::before { content: "##"; color: var(--green-dim); }
+  .sec-head h2 { font-size: 1.1rem; font-weight: 600; letter-spacing: 1px; }
+  .sec-head .count { margin-left: auto; color: var(--muted); font-size: 0.8rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 14px; }
+  .card {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 18px;
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .card:hover { border-color: var(--green); background: var(--green-faint); }
+  .card h3 { color: var(--green); font-size: 1.05rem; margin-bottom: 8px; }
+  .card h3::before { content: "▸ "; color: var(--green-dim); }
+  .card .summary { color: var(--muted); font-size: 0.85rem; margin-bottom: 12px; }
+  .card .meta { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag { border: 1px solid var(--border); color: var(--muted); font-size: 0.7rem; padding: 2px 8px; }
+  .tag.conf { color: var(--green); border-color: var(--green-faint); }
+  footer { border-top: 1px solid var(--border); margin-top: 40px; padding: 20px 0; color: var(--muted); font-size: 0.8rem; display: flex; justify-content: space-between; }
+  .status { color: var(--green); }
+  .status::before { content: "● "; animation: blink 2s steps(1) infinite; }
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <span class="brand">intel<span class="prompt">@</span>wiki<span class="prompt">:~$</span></span>
+  <div class="nav-links">
+    <a class="active" href="#">home</a><a href="#">concepts</a><a href="#">entities</a>
+  </div>
+</div></nav>
+<div class="wrap">
+  <div class="hero">
+    <span class="corner tl">┌─</span><span class="corner tr">─┐</span>
+    <span class="corner bl">└─</span><span class="corner br">─┘</span>
+    <div class="kicker">open-source intelligence tradecraft</div>
+    <h1>Intelligence Analysis Wiki<span class="cursor"></span></h1>
+    <p class="tagline">A living reference for intelligence analysis — tradecraft, analytic frameworks, estimative language and the collection-to-dissemination cycle.</p>
+    <div class="stats">
+      <div class="stat"><b>7</b><span>pages</span></div>
+      <div class="stat"><b>5</b><span>concepts</span></div>
+      <div class="stat"><b>2</b><span>entities</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-head"><h2>Concepts</h2><span class="count">5</span></div>
+    <div class="grid">
+      <a class="card" href="#"><h3>The Intelligence Cycle</h3>
+        <div class="summary">The foundational model of the intelligence process — a structured loop for converting raw information into decisions.</div>
+        <div class="meta"><span class="tag conf">high confidence</span><span class="tag">cycle</span><span class="tag">analysis</span></div></a>
+      <a class="card" href="#"><h3>Admiralty Rating</h3>
+        <div class="summary">The NATO 6×6 system grading source reliability (A–F) against information credibility (1–6).</div>
+        <div class="meta"><span class="tag conf">high confidence</span><span class="tag">admiralty</span><span class="tag">analysis</span></div></a>
+      <a class="card" href="#"><h3>Structured Analytic Techniques</h3>
+        <div class="summary">Formal methods for countering cognitive bias and testing hypotheses — the modern complement to Admiralty.</div>
+        <div class="meta"><span class="tag conf">high confidence</span><span class="tag">analysis</span><span class="tag">frameworks</span></div></a>
+    </div>
+  </div>
+
+  <footer><span>Intelligence Analysis Wiki</span><span class="status">link established</span></footer>
+</div>
+</body>
+</html>

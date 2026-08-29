@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admiralty Rating · Intel Wiki</title>
+<meta name="description" content="Open-source intelligence analysis tradecraft — a living reference wiki.">
+<link rel="canonical" href="https://intel.peterjaycox.com/">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=20260829">
+</head>
+<body>
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Intel Wiki</span>
+      <small>open-source</small>
+    </a>
+    <div class="nav-links"><a class="" href="index.html">Home</a><a class="" href="index.html#concepts">Concepts</a><a class="" href="index.html#entities">Entities</a></div>
+    <div class="theme-toggle" role="button" aria-label="Toggle light/dark theme" tabindex="0" onclick="toggleTheme()">🌙</div>
+  </div>
+</nav>
+<main class="container">
+
+<div class="crumb"><a href="index.html">Wiki</a><span class="sep">/</span>Concepts</div>
+<div class="page-head">
+  <div class="head-top"><span class="type-pill">Concept</span><span class="pill conf conf-high">High confidence</span></div>
+  <h1>Admiralty Rating</h1>
+  <div class="tags-row"><span class="pill tag">admiralty</span><span class="pill tag">analysis</span><span class="pill tag">dissemination</span></div>
+  <div class="stamp">Open Source</div>
+</div>
+<article class="wiki-body"><p>The Admiralty (NATO 6×6) system for grading intelligence reports — a two-character code separating <strong>source reliability</strong> (A–F) from <strong>information credibility</strong> (1–6). Devised by Director of Naval Intelligence John Godfrey in 1939 to cope with wartime reporting volume, formalised in NATO doctrine (AJP-2.1 / STANAG 2511).</p>
+<h2>The two axes (assessed independently)</h2>
+<ul>
+<li><strong>Source reliability (A–F):</strong> based on the source's history of accuracy. A = completely reliable … F = cannot be judged.</li>
+<li><strong>Information credibility (1–6):</strong> based on corroboration and logic. 1 = confirmed by independent sources … 6 = no basis to judge / contradictory.</li>
+</ul>
+<p>Example: <strong>A1</strong> = completely reliable source, confirmed information. <strong>E5</strong> = unreliable source, improbable content. The two dimensions are deliberately kept separate — an unreliable source can report confirmed truth (E1), and a reliable source can report doubtful information (B5).</p>
+<h2>Why it matters</h2>
+<ul>
+<li>Gives decision-makers at-a-glance trust cues — commanders instantly know which pieces to weight.</li>
+<li>Enforces a discipline of always asking "how do I know this?" and explicitly noting uncertainty.</li>
+<li>The 6×6 grid is coarse, static and doesn't capture motive/partial access; analysts tend to overweight credibility over reliability, a known cognitive bias.</li>
+</ul>
+<h2>Relation to the wiki's schema</h2>
+<p>The wiki's own <code>confidence</code> and <code>contested</code> frontmatter fields extend the Admiralty habit — explicit grading and contradiction-noting on every page — into the knowledge layer.</p>
+<h2>Related</h2>
+<ul>
+<li><a href="the-intelligence-cycle.html">The Intelligence Cycle</a> — grading happens during the processing/evaluation stage</li>
+<li><a href="structured-analytic-techniques.html">Structured Analytic Techniques</a> — modern complement that addresses Admiralty's limits (bias, alternatives)</li>
+<li><a href="estimative-language.html">Estimative Language</a> — complementary confidence vocabularies</li>
+</ul>
+<h2>Historical cases (source detail)</h2>
+<p>Zimmermann Telegram (1917), Battle of the Atlantic (1943), Falklands (1982) are worked examples in the raw source.</p></article>
+<a class="nav-back" href="index.html">&larr; Back to Wiki index</a>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>Intelligence Analysis Wiki</span>
+    <span class="foot-dim">open-source tradecraft &middot; classification-gated build</span>
+  </div>
+</footer>
+<script>
+function toggleTheme(){var h=document.documentElement;var b=document.querySelector('.theme-toggle');var t=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',t);if(b)b.textContent=t==='dark'?'☀️':'🌙';try{localStorage.setItem('intel-theme',t)}catch(e){}}
+(function(){try{var s=localStorage.getItem('intel-theme');if(s)document.documentElement.setAttribute('data-theme',s);var b=document.querySelector('.theme-toggle');if(b)b.textContent=(s||'dark')==='dark'?'☀️':'🌙'}catch(e){}})();
+</script>
+</body>
+</html>

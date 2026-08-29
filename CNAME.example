@@ -1,0 +1,4 @@
+# Copy this to "CNAME" (no extension) when publishing to GitHub Pages:
+#   echo "intel.peterjaycox.com" > CNAME
+# The build copies CNAME → docs/CNAME automatically.
+intel.peterjaycox.com

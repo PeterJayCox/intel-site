@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Theme 4 — Cold War / Declassified</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --paper: #e8e0c8;
+    --paper2: #ded4b8;
+    --ink: #2b2a20;
+    --ink-soft: #4a4738;
+    --muted: #7a745c;
+    --line: #b8ad8c;
+    --olive: #5a5a3a;
+    --red: #a33a2a;
+    --stamp-red: #b3261e;
+    --type: 'Special Elite', 'Courier New', monospace;
+    --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  }
+  body {
+    font-family: var(--type);
+    background: var(--paper);
+    background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 4px 4px;
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px 60px; }
+  nav { border-bottom: 2px solid var(--ink); background: var(--paper); position: sticky; top: 0; z-index: 10; }
+  .nav-inner { max-width: 900px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 20px; }
+  .brand { font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; }
+  .nav-links { margin-left: auto; display: flex; gap: 20px; }
+  .nav-links a { color: var(--ink-soft); text-decoration: none; font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; }
+  .nav-links a:hover { color: var(--red); }
+  .nav-links a.active { color: var(--red); }
+  .hero {
+    border: 2px solid var(--ink);
+    background: var(--paper2);
+    padding: 40px 32px 34px;
+    margin: 30px 0;
+    position: relative;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.12);
+  }
+  .stamp {
+    position: absolute; top: 16px; right: 18px;
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 3px; font-weight: 500;
+    color: var(--stamp-red); border: 3px double var(--stamp-red); border-radius: 3px;
+    padding: 5px 10px; text-transform: uppercase; transform: rotate(-6deg); opacity: 0.8;
+  }
+  .kicker { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--olive); margin-bottom: 14px; }
+  h1 { font-size: 2.5rem; letter-spacing: 1px; margin-bottom: 12px; }
+  .tagline { color: var(--ink-soft); max-width: 600px; margin-bottom: 22px; font-size: 1rem; }
+  .redact { background: var(--ink); color: var(--ink); padding: 0 4px; }
+  .stats { display: flex; gap: 24px; flex-wrap: wrap; }
+  .stat { font-family: var(--mono); border: 1px solid var(--line); background: var(--paper); padding: 8px 14px; }
+  .stat b { font-size: 1.4rem; color: var(--olive); margin-right: 6px; }
+  .stat span { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .section { margin: 34px 0; }
+  .sec-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+  .sec-head h2 { font-size: 1.4rem; letter-spacing: 1px; }
+  .sec-head .count { margin-left: auto; font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .card {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: 20px;
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .card:hover { box-shadow: 4px 4px 0 rgba(0,0,0,0.12); transform: translate(-2px,-2px); }
+  .card h3 { font-size: 1.15rem; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .card .summary { color: var(--ink-soft); font-size: 0.9rem; margin-bottom: 14px; }
+  .card .meta { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.5px; padding: 2px 8px; border: 1px solid var(--line); color: var(--muted); text-transform: uppercase; }
+  .tag.conf { color: var(--olive); border-color: var(--olive); }
+  footer { border-top: 2px solid var(--ink); margin-top: 40px; padding: 20px 0; display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <span class="brand">INTEL WIKI</span>
+  <div class="nav-links">
+    <a class="active" href="#">Home</a><a href="#">Concepts</a><a href="#">Entities</a>
+  </div>
+</div></nav>
+<div class="wrap">
+  <div class="hero">
+    <div class="stamp">Declassified</div>
+    <div class="kicker">// open-source intelligence tradecraft</div>
+    <h1>Intelligence Analysis Wiki</h1>
+    <p class="tagline">A living reference for intelligence analysis — tradecraft, analytic frameworks, estimative language and the collection-to-dissemination cycle.</p>
+    <div class="stats">
+      <div class="stat"><b>7</b><span>pages</span></div>
+      <div class="stat"><b>5</b><span>concepts</span></div>
+      <div class="stat"><b>2</b><span>entities</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-head"><h2>Concepts</h2><span class="count">5</span></div>
+    <div class="grid">
+      <a class="card" href="#"><h3>The Intelligence Cycle</h3>
+        <div class="summary">The foundational model of the intelligence process — a structured loop for converting raw information into decisions.</div>
+        <div class="meta"><span class="tag conf">high confidence</span><span class="tag">cycle</span><span class="tag">analysis</span></div></a>
+      <a class="card" href="#"><h3>Admiralty Rating</h3>
+        <div class="summary">The NATO 6×6 system grading source reliability (A–F) against information credibility (1–6).</div>
+        <div class="meta"><span class="tag conf">high confidence</span><span class="tag">admiralty</span><span class="tag">analysis</span></div></a>
+      <a class="card" href="#"><h3>Structured Analytic Techniques</h3>
+        <div class="summary">Formal methods for countering cognitive bias and testing hypotheses — the modern complement to Admiralty.</div>
+        <div class="meta"><span class="tag conf">high confidence</span><span class="tag">analysis</span><span class="tag">frameworks</span></div></a>
+    </div>
+  </div>
+
+  <footer><span>Intelligence Analysis Wiki</span><span>open-source tradecraft</span></footer>
+</div>
+</body>
+</html>
