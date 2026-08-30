@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Electronic Surveillance Law Reform · Intel Wiki</title>
+<meta name="description" content="Open-source intelligence analysis tradecraft — a living reference wiki.">
+<link rel="canonical" href="https://intel.peterjaycox.com/">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=20260830">
+</head>
+<body>
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Intel Wiki</span>
+      <small>open-source</small>
+    </a>
+    <div class="nav-links"><a class="" href="index.html">Home</a><a class="" href="index.html#concepts">Concepts</a><a class="" href="index.html#entities">Entities</a></div>
+    <div class="theme-toggle" role="button" aria-label="Toggle light/dark theme" tabindex="0" onclick="toggleTheme()">🌙</div>
+  </div>
+</nav>
+<main class="container">
+
+<div class="crumb"><a href="index.html">Wiki</a><span class="sep">/</span>Concepts</div>
+<div class="page-head">
+  <div class="head-top"><span class="type-pill">Concept</span><span class="pill conf conf-high">High confidence</span></div>
+  <h1>Electronic Surveillance Law Reform</h1>
+  <div class="tags-row"><span class="pill tag">law</span><span class="pill tag">collection</span><span class="pill tag">jurisdiction</span></div>
+  <div class="stamp">Open Source</div>
+</div>
+<article class="wiki-body"><p>The most important legal renovation on Australia's books — and it has not happened.</p>
+<h2>The diagnosis</h2>
+<p>The 2019–20 Richardson Review found the framework fragmented and outdated: the <em>Telecommunications (Interception and Access) Act 1979</em>, the <em>Surveillance Devices Act 2004</em>, computer-access and related powers in the ASIO Act, plus the <em>Telecommunications Act</em> assistance provisions. Technology — encryption, cloud, over-the-top apps, data held offshore, ubiquitous location — has outrun a statute written around telephone taps. Richardson recommended a single <strong>Electronic Surveillance Act</strong>, with cleaner thresholds, better definition of agencies' roles, and oversight built in rather than bolted on.</p>
+<h2>The delay</h2>
+<p>The Morrison government accepted the recommendation in principle; a discussion paper on reform of the electronic surveillance framework followed. Drafting a replacement for forty years of interlocking law is genuinely hard — and every clause is a fight among agencies (who fear losing tools), the Attorney-General's Department, privacy and journalism advocates, and the telco/tech industry. Years later, comprehensive legislation still has not landed; piecemeal amendments continue instead. Delay itself has become a political fact: agencies operate on creaking authorities; civil society assumes the eventual bill will expand powers under the banner of "simplification".</p>
+<h2>The unresolved fights any bill must settle</h2>
+<ul>
+<li><strong>Encryption and industry assistance.</strong> The 2018 Assistance and Access Act (TOLA) remains internationally notorious: technical assistance notices, technical capability notices, and the contested "no systemic weakness" formula. Companies argue they cannot weaken encryption for Australia without weakening it everywhere; agencies argue they are going dark. Use of the powers is largely opaque; INSLM and PJCIS have both had it on their books (<a href="intelligence-oversight.html">Intelligence Oversight</a>).</li>
+<li><strong>Metadata retention.</strong> The 2015 mandatory two-year telecommunications data retention scheme was sold as a terrorism and serious-crime tool. Access has been broader than the original public pitch, and journalist-information-warrant settings were only tightened after the 2019 AFP raids on Annika Smethurst and the ABC.</li>
+<li><strong>Who may authorise what.</strong> Warrants vs internal authorisation, the role of AAT/judicial members, overnight/emergency powers, and the treatment of Australians offshore (ASD/ASIS ministerial authorisations) determine how much the new Act resembles a surveillance statute or a restraint statute (<a href="national-intelligence-community.html">National Intelligence Community</a>).</li>
+<li><strong>Press freedom and client legal privilege.</strong> Post-2019 reforms (including a public-interest advocate in some warrant processes) are widely viewed by media organisations as insufficient; any new Act that does not reopen this will be attacked, and any Act that does will be attacked from the other side.</li>
+</ul>
+<p>Treat claims about the current drafting instructions as speculative unless they come from a government paper. The public story is still: Richardson was right that the law is a mess, and the mess remains.</p>
+<h2>Related</h2>
+<ul>
+<li><a href="intelligence-oversight.html">Intelligence Oversight</a> — INSLM, PJCIS and the oversight to be built in rather than bolted on</li>
+<li><a href="national-intelligence-community.html">National Intelligence Community</a> — the agencies whose powers the Act would define</li>
+<li><a href="asd-project-redspice.html">ASD Project Redspice</a> — ASD's collection mandate sits in the same legal frame</li>
+</ul></article>
+<a class="nav-back" href="index.html">&larr; Back to Wiki index</a>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>Intelligence Analysis Wiki</span>
+    <span class="foot-dim">open-source tradecraft &middot; classification-gated build</span>
+  </div>
+</footer>
+<script>
+function toggleTheme(){var h=document.documentElement;var b=document.querySelector('.theme-toggle');var t=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',t);if(b)b.textContent=t==='dark'?'☀️':'🌙';try{localStorage.setItem('intel-theme',t)}catch(e){}}
+(function(){try{var s=localStorage.getItem('intel-theme');if(s)document.documentElement.setAttribute('data-theme',s);var b=document.querySelector('.theme-toggle');if(b)b.textContent=(s||'dark')==='dark'?'☀️':'🌙'}catch(e){}})();
+</script>
+</body>
+</html>

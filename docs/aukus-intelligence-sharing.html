@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AUKUS Intelligence Sharing · Intel Wiki</title>
+<meta name="description" content="Open-source intelligence analysis tradecraft — a living reference wiki.">
+<link rel="canonical" href="https://intel.peterjaycox.com/">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=20260830">
+</head>
+<body>
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Intel Wiki</span>
+      <small>open-source</small>
+    </a>
+    <div class="nav-links"><a class="" href="index.html">Home</a><a class="" href="index.html#concepts">Concepts</a><a class="" href="index.html#entities">Entities</a></div>
+    <div class="theme-toggle" role="button" aria-label="Toggle light/dark theme" tabindex="0" onclick="toggleTheme()">🌙</div>
+  </div>
+</nav>
+<main class="container">
+
+<div class="crumb"><a href="index.html">Wiki</a><span class="sep">/</span>Entities</div>
+<div class="page-head">
+  <div class="head-top"><span class="type-pill">Entitie</span><span class="pill conf conf-high">High confidence</span></div>
+  <h1>AUKUS Intelligence Sharing</h1>
+  <div class="tags-row"><span class="pill tag">alliance</span><span class="pill tag">jurisdiction</span><span class="pill tag">collection</span></div>
+  <div class="stamp">Open Source</div>
+</div>
+<article class="wiki-body"><p>AUKUS is not only a submarine and advanced-capabilities pact — for the intelligence community it is a classification, workforce and counter-espionage shock. Its two pillars create a tighter inner ring inside <a href="five-eyes.html">Five Eyes</a>, multiply the high-side boundary across industry and universities, and collide with <a href="asd-project-redspice.html">REDSPICE</a> growth over the same cleared workforce.</p>
+<h2>What has to be protected</h2>
+<ul>
+<li><strong>Pillar I</strong> requires Australia to receive US and UK naval nuclear propulsion information — among the most tightly held material in either country. That drove amendments to the US Atomic Energy Act framework (modelled on the 1958 US–UK Mutual Defence Agreement) and a hard look at whether Australian personnel security, facility accreditation, and need-to-know culture could meet that standard.</li>
+<li><strong>Pillar II</strong> — undersea, quantum, AI, hypersonics, electronic warfare, cyber, innovation — multiplies the problem: a much wider set of companies, universities and officials now sit inside a high-side boundary.</li>
+</ul>
+<h2>Export controls as an intelligence-adjacent bottleneck</h2>
+<p>For years ITAR and related controls slowed AUKUS work more than any spy service did. In 2024 the three countries began implementing licence-free (or licence-exempt) treatment for a large volume of defence and dual-use transfers, and Australia passed the <em>Defence Trade Controls Amendment Act</em>. Implementation is messy: deemed exports, university research, re-export to non-AUKUS subcontractors, and residual exclusions (nuclear, some missile technology) still generate friction. Intelligence agencies sit on both sides — they want the technology to move, and they are among those judging whether a given partner or firm is safe to receive it.</p>
+<h2>Espionage threat to the enterprise</h2>
+<p>ASIO has been explicit that AUKUS is a collection target — not only classic HUMINT against Defence and the <a href="national-intelligence-community.html">National Intelligence Community</a>, but targeting of primes, SMEs in the supply chain, critical-minerals projects, and campus research groups. Mike Burgess has used the public Annual Threat Assessment to say more Australians are being approached than agencies can individually brief — hence the shift to sector-wide security advice. FIRB, university foreign-interference guidelines, and visa screening are now part of the same defensive system as ASIO investigations.</p>
+<h2>Five Eyes geometry</h2>
+<p>AUKUS creates a tighter inner ring among three of the five. New Zealand (nuclear policy, China settings, no AUKUS) and Canada (not in AUKUS, its own foreign-interference turmoil) are not being ejected from UKUSA, but a two-speed dynamic is real. Japan is the most capable partner outside the five, and the relationship has deepened quickly (information-security agreements, 2+2, Reciprocal Access); formal "Six Eyes" expansion remains unlikely (see <a href="intelligence-relationships-contested-region.html">Intelligence Relationships in a Contested Region</a>). Intelligence diplomats spend a lot of time managing hurt feelings and parallel channels so AUKUS does not accidentally degrade the wider alliance web.</p>
+<h2>The clearance bottleneck</h2>
+<p>Positive Vetting capacity, already tight, is now being asked to support a nuclear-submarine enterprise, <a href="asd-project-redspice.html">REDSPICE</a> growth, and industry. Throughput, reciprocity of clearances with the US and UK, and the loss of cleared people to contractors are practical constraints on everything below.</p>
+<h2>Related</h2>
+<ul>
+<li><a href="five-eyes.html">Five Eyes</a> — the alliance AUKUS sits inside and strains</li>
+<li><a href="national-intelligence-community.html">National Intelligence Community</a> — the enterprise the pact strains</li>
+<li><a href="asd-project-redspice.html">ASD Project Redspice</a> — competing for the same cleared workforce</li>
+<li><a href="intelligence-relationships-contested-region.html">Intelligence Relationships in a Contested Region</a> — Japan as the closest partner outside FVEY</li>
+</ul></article>
+<a class="nav-back" href="index.html">&larr; Back to Wiki index</a>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>Intelligence Analysis Wiki</span>
+    <span class="foot-dim">open-source tradecraft &middot; classification-gated build</span>
+  </div>
+</footer>
+<script>
+function toggleTheme(){var h=document.documentElement;var b=document.querySelector('.theme-toggle');var t=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',t);if(b)b.textContent=t==='dark'?'☀️':'🌙';try{localStorage.setItem('intel-theme',t)}catch(e){}}
+(function(){try{var s=localStorage.getItem('intel-theme');if(s)document.documentElement.setAttribute('data-theme',s);var b=document.querySelector('.theme-toggle');if(b)b.textContent=(s||'dark')==='dark'?'☀️':'🌙'}catch(e){}})();
+</script>
+</body>
+</html>

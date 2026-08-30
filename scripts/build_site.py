@@ -13,6 +13,7 @@ import os
 import re
 import sys
 import html
+import json
 import shutil
 import datetime
 
@@ -50,6 +51,14 @@ TYPE_LABELS = {
     "query": "Queries",
 }
 TYPE_ORDER = ["concept", "entity", "case", "comparison", "query"]
+
+TYPE_SINGULAR = {
+    "concept": "Concept",
+    "entity": "Entity",
+    "case": "Case",
+    "comparison": "Comparison",
+    "query": "Query",
+}
 
 SKIP_FILENAMES = {"index.md", "schema.md", "log.md"}
 
@@ -337,6 +346,135 @@ def card_html(p):
 </a>"""
 
 
+# ---------------- search widget (index page only) ----------------
+def search_widget_html(pages):
+    """Client-side search: inline JSON index + zero-dependency JS."""
+    search_pages = [{
+        "slug": p.slug,
+        "title": p.title,
+        "type": TYPE_SINGULAR.get(p.rtype, "Concept"),
+        "tags": p.tags[:5],
+        "summary": p.summary[:180],
+    } for p in pages]
+    index = json.dumps(search_pages, ensure_ascii=False)
+    # keep the inline JSON from ever terminating the script tag early
+    index = index.replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+    return f"""
+<div class="search-widget" id="wiki-search">
+  <div class="search-label" aria-hidden="true">// search the wiki</div>
+  <div class="search-control">
+    <span class="search-glyph" aria-hidden="true">&#8965;</span>
+    <input id="search-input" type="search" placeholder="Search concepts, entities, tags&#8230;" autocomplete="off" spellcheck="false"
+           role="combobox" aria-expanded="false" aria-controls="search-results" aria-label="Search the wiki">
+    <button class="search-clear" id="search-clear" type="button" aria-label="Clear search" hidden>&#10005;</button>
+    <span class="search-keys">press <kbd>/</kbd></span>
+  </div>
+  <div class="search-results" id="search-results" role="listbox" hidden></div>
+</div>
+<script type="application/json" id="search-data">{index}</script>
+{SEARCH_JS}"""
+
+
+SEARCH_JS = r"""<script>
+(function(){
+  var box=document.getElementById('wiki-search');
+  if(!box)return;
+  var input=document.getElementById('search-input');
+  var list=document.getElementById('search-results');
+  var clearBtn=document.getElementById('search-clear');
+  var data;
+  try{data=JSON.parse(document.getElementById('search-data').textContent);}catch(e){data=[];}
+  var items=[],active=-1,open=false;
+  function norm(s){return String(s||'').toLowerCase();}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  /* NB: innerHTML below is safe — every dynamic value passes through esc()
+     and the index is a single source (vault pages, classification-gated);
+     the inline JSON additionally has <,>,& escaped as \uXXXX. */
+  data.forEach(function(p){p._hay=norm([p.title,p.summary,p.tags.join(' '),p.slug].join(' ~ '));});
+
+  function run(q){
+    var toks=q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    if(!toks.length){render([],null);return;}
+    var out=[];
+    data.forEach(function(p){
+      for(var i=0;i<toks.length;i++){if(p._hay.indexOf(toks[i])===-1)return;}
+      var s=0,t;
+      for(var j=0;j<toks.length;j++){
+        t=toks[j];
+        if(norm(p.title).indexOf(t)!==-1)s+=10;
+        if(norm(p.tags.join(' ')).indexOf(t)!==-1)s+=4;
+        if(norm(p.slug).indexOf(t)!==-1)s+=2;
+        if(norm(p.summary).indexOf(t)!==-1)s+=1;
+      }
+      out.push({p:p,s:s});
+    });
+    out.sort(function(a,b){return b.s-a.s||norm(a.p.title).localeCompare(norm(b.p.title));});
+    render(out.map(function(o){return o.p;}),toks);
+  }
+
+  function render(res,toks){
+    items=res;
+    list.innerHTML='';
+    if(!toks||!res.length){
+      if(toks){list.innerHTML='<div class="search-empty">No pages match \u201c'+esc(input.value.trim())+'\u201d</div>';show();}
+      else{closePanel();}
+      return;
+    }
+    active=-1;
+    var html='<div class="search-note">'+res.length+' page'+(res.length===1?'':'s')+' \u00b7 \u201c'+esc(input.value.trim())+'\u201d</div>';
+    res.forEach(function(p,i){
+      html+='<button type="button" class="search-row" role="option" id="sr-'+i+'" data-i="'+i+'">'
+        +'<h4>'+esc(p.title)+'<span class="type-pill">'+esc(p.type)+'</span></h4>'
+        +(p.summary?'<p class="snippet">'+esc(p.summary)+'</p>':'')
+        +(p.tags.length?'<div class="tags">'+p.tags.map(function(t){return '<span class="pill tag">'+esc(t)+'</span>';}).join('')+'</div>':'')
+        +'</button>';
+    });
+    list.innerHTML=html;
+    show();
+    Array.prototype.forEach.call(list.querySelectorAll('.search-row'),function(btn){
+      btn.addEventListener('click',function(){var i=parseInt(btn.getAttribute('data-i'),10);if(!isNaN(i)&&items[i])location.href=items[i].slug+'.html';});
+      btn.addEventListener('mousemove',function(){setActive(parseInt(btn.getAttribute('data-i'),10));});
+    });
+  }
+
+  function show(){open=true;list.hidden=false;input.setAttribute('aria-expanded','true');}
+  function closePanel(){open=false;active=-1;list.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');}
+  function setActive(i){
+    active=i;
+    var rows=list.querySelectorAll('.search-row');
+    Array.prototype.forEach.call(rows,function(r,idx){r.classList.toggle('active',idx===i);});
+    if(rows[i]){rows[i].scrollIntoView({block:'nearest'});input.setAttribute('aria-activedescendant',rows[i].id);}
+  }
+  function clearSearch(){input.value='';render([],null);syncClear();}
+
+  function syncClear(){clearBtn.hidden=!input.value;}
+
+  input.addEventListener('input',function(){run(input.value);syncClear();});
+  input.addEventListener('focus',function(){if(input.value.trim())run(input.value);});
+  input.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){clearSearch();e.preventDefault();}
+    else if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+      if(!open||!items.length)return;
+      e.preventDefault();
+      var d=e.key==='ArrowDown'?1:-1;
+      setActive((active+d+items.length)%items.length);
+    }
+    else if(e.key==='Enter'){
+      if(active>=0&&items[active]){location.href=items[active].slug+'.html';e.preventDefault();}
+    }
+  });
+  clearBtn.addEventListener('click',clearSearch);
+  clearBtn.addEventListener('mousedown',function(e){e.preventDefault();});
+  list.addEventListener('mousedown',function(e){e.preventDefault();});
+  document.addEventListener('click',function(e){if(!box.contains(e.target))closePanel();});
+  document.addEventListener('keydown',function(e){
+    var t=e.target||{};
+    if(e.key==='/'&&!/^(input|textarea|select)$/i.test(t.tagName||'')){e.preventDefault();input.focus();input.select();}
+  });
+})();
+</script>"""
+
+
 def build_index(pages, skipped):
     by_type = {t: [p for p in pages if p.rtype == t] for t in TYPE_ORDER}
     total = len(pages)
@@ -377,6 +515,7 @@ def build_index(pages, skipped):
   <div class="stats">{stat_html}</div>
   <p style="margin-top:22px"><span class="gate-note">{gate_note}</span></p>
 </div>
+{search_widget_html(pages)}
 {''.join(sections)}
 """
     html_out = head("Home", active="index") + inner + FOOT

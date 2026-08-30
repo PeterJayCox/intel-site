@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=20260829">
+<link rel="stylesheet" href="assets/site.css?v=20260830">
 </head>
 <body>
 <nav class="topnav">
@@ -30,13 +30,128 @@
   <div class="kicker">// open-source intelligence tradecraft</div>
   <h1>Intelligence Analysis Wiki</h1>
   <p class="tagline">A living reference for intelligence analysis — tradecraft, analytic frameworks, estimative language and the collection-to-dissemination cycle.</p>
-  <div class="stats"><div class="stat"><b>16</b><span>pages</span></div><div class="stat"><b>14</b><span>concepts</span></div><div class="stat"><b>2</b><span>entities</span></div></div>
+  <div class="stats"><div class="stat"><b>24</b><span>pages</span></div><div class="stat"><b>18</b><span>concepts</span></div><div class="stat"><b>5</b><span>entities</span></div></div>
   <p style="margin-top:22px"><span class="gate-note">publishes open-source tradecraft only · classification-gated</span></p>
 </div>
-<section class="section" id="concepts"><div class="sec-head"><span class="bar"></span><h2>Concepts</h2><span class="count">14</span></div><div class="grid"><a class="card" href="admiralty-rating.html">
+
+<div class="search-widget" id="wiki-search">
+  <div class="search-label" aria-hidden="true">// search the wiki</div>
+  <div class="search-control">
+    <span class="search-glyph" aria-hidden="true">&#8965;</span>
+    <input id="search-input" type="search" placeholder="Search concepts, entities, tags&#8230;" autocomplete="off" spellcheck="false"
+           role="combobox" aria-expanded="false" aria-controls="search-results" aria-label="Search the wiki">
+    <button class="search-clear" id="search-clear" type="button" aria-label="Clear search" hidden>&#10005;</button>
+    <span class="search-keys">press <kbd>/</kbd></span>
+  </div>
+  <div class="search-results" id="search-results" role="listbox" hidden></div>
+</div>
+<script type="application/json" id="search-data">[{"slug": "admiralty-rating", "title": "Admiralty Rating", "type": "Concept", "tags": ["admiralty", "analysis", "dissemination"], "summary": "The Admiralty (NATO 6×6) system for grading intelligence reports — a two-character code separating source reliability (A–F) from information credibility (1–6). Devised by Director "}, {"slug": "ai-in-intelligence-analysis", "title": "AI in Intelligence Analysis", "type": "Concept", "tags": ["analysis", "ai", "osint"], "summary": "Two supply shocks are hitting a small analytic workforce at once — open source becoming first-class collection, and AI that is already operational in some missions and arriving fas"}, {"slug": "aipio", "title": "AIPIO", "type": "Entity", "tags": ["course", "collection", "frameworks"], "summary": "The Australian Institute of Professional Intelligence Officers — the professional body for the intelligence profession in Australia. The wiki's course material derives from the AIP"}, {"slug": "anchoring-bias", "title": "Anchoring Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Over-reliance on the first piece of information offered (the anchor) when forming subsequent estimates, with insufficient adjustment away from it — even when the anchor is arbitrar"}, {"slug": "asd-project-redspice", "title": "ASD Project Redspice", "type": "Entity", "tags": ["cyber-intel", "collection", "jurisdiction"], "summary": "REDSPICE (Resilience, Effects, Defence, Space, Intelligence, Cyber, Enablers) is ASD's transformation programme, announced March 2022: roughly $9.9 billion over a decade, aimed at "}, {"slug": "aukus-intelligence-sharing", "title": "AUKUS Intelligence Sharing", "type": "Entity", "tags": ["alliance", "jurisdiction", "collection"], "summary": "AUKUS is not only a submarine and advanced-capabilities pact — for the intelligence community it is a classification, workforce and counter-espionage shock. Its two pillars create "}, {"slug": "availability-heuristic", "title": "Availability Heuristic", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Judging the probability or frequency of an event by how easily instances come to mind. Vivid, recent, or dramatic events are recalled readily and are therefore over-weighted relati"}, {"slug": "bottom-line-up-front", "title": "Bottom Line Up Front", "type": "Concept", "tags": ["writing", "dissemination"], "summary": "The BLUF principle — lead any intelligence product with its single most important judgment or implication, before background or detail. This is the structural core of analytic writ"}, {"slug": "cognitive-bias", "title": "Cognitive Bias", "type": "Concept", "tags": ["analysis", "frameworks", "bias"], "summary": "A cognitive bias is a systematic — as opposed to random — error in judgement, driven by the mental shortcuts (heuristics) the brain uses to process information efficiently. In inte"}, {"slug": "confirmation-bias", "title": "Confirmation Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "The tendency to search for, interpret, favour, and recall information in ways that confirm one's pre-existing beliefs, while giving disproportionately less weight to disconfirming "}, {"slug": "electronic-surveillance-law-reform", "title": "Electronic Surveillance Law Reform", "type": "Concept", "tags": ["law", "collection", "jurisdiction"], "summary": "The most important legal renovation on Australia's books — and it has not happened."}, {"slug": "estimative-language", "title": "Estimative Language", "type": "Concept", "tags": ["dissemination", "writing", "analysis"], "summary": "A standardised vocabulary for expressing likelihood and confidence in analytical products, so judgements are calibrated and consistently understood (Sherman Kent tradition, adapted"}, {"slug": "five-eyes", "title": "Five Eyes", "type": "Entity", "tags": ["collection", "alliance", "jurisdiction"], "summary": "The Five Eyes (FVEY) — Australia, Canada, New Zealand, the UK and the US — is the intelligence-sharing alliance at the heart of Australia's National Intelligence Community. Austral"}, {"slug": "groupthink", "title": "Groupthink", "type": "Concept", "tags": ["analysis", "bias"], "summary": "(Janis 1972) A mode of thinking in cohesive groups in which the drive for unanimity overrides a realistic appraisal of alternative courses of action. It is the social analogue of i"}, {"slug": "hindsight-bias", "title": "Hindsight Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "After an outcome is known, the tendency to over-estimate how foreseeable it was beforehand — the \"I knew it all along\" effect, also called creeping determinism. Memory of one's pri"}, {"slug": "intelligence-oversight", "title": "Intelligence Oversight", "type": "Concept", "tags": ["oversight", "jurisdiction"], "summary": "How Australia holds its National Intelligence Community accountable. The architecture is widely regarded as a strong model internationally — anchored by the Inspector-General of In"}, {"slug": "intelligence-relationships-contested-region", "title": "Intelligence Relationships in a Contested Region", "type": "Concept", "tags": ["jurisdiction", "alliance", "collection"], "summary": "For Australia, collection and liaison policy are now foreign policy. The National Intelligence Community runs an alliance system built on Five Eyes while managing a web of partners"}, {"slug": "mirror-imaging", "title": "Mirror Imaging", "type": "Concept", "tags": ["analysis", "bias"], "summary": "(Heuer) Assuming that the other actor shares the analyst's own rationality, values, and constraints — projecting one's own frame of reference onto the subject. A classic source of "}, {"slug": "national-intelligence-community", "title": "National Intelligence Community", "type": "Entity", "tags": ["jurisdiction", "summary", "analysis", "collection"], "summary": "The National Intelligence Community (NIC) is Australia's ten-agency intelligence enterprise — small but well-developed, distinctive for its strong separation of assessment from col"}, {"slug": "overconfidence-bias", "title": "Overconfidence Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "The tendency to systematically over-estimate the accuracy or calibration of one's own judgements and knowledge. It is the gap between how confident an analyst feels and how often t"}, {"slug": "structured-analytic-techniques", "title": "Structured Analytic Techniques", "type": "Concept", "tags": ["analysis", "frameworks"], "summary": "SATs are formal methods for countering cognitive bias and testing hypotheses — the modern complement to (and critique of) older methods like the Admiralty Rating system. Post-9/11 "}, {"slug": "the-intelligence-cycle", "title": "The Intelligence Cycle", "type": "Concept", "tags": ["cycle", "analysis", "collection", "dissemination"], "summary": "The foundational model of the intelligence process: a structured loop for converting raw information into decisions. The classic doctrine formulation is Direction – Collection – Pr"}, {"slug": "timor-leste-bugging-affair", "title": "Timor-Leste Bugging Affair", "type": "Case", "tags": ["case", "humint", "jurisdiction", "oversight"], "summary": "ASIS's 2004 operation against Timorese cabinet deliberations during maritime boundary negotiations — and the subsequent prosecutions of whistleblower \"Witness K\" and lawyer Bernard"}, {"slug": "vividness-bias", "title": "Vividness Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "(Heuer's \"vividness criterion\"; Nisbett \u0026 Ross 1980) The tendency to over-weight concrete, emotionally striking, or graphic information over abstract but more diagnostic statistica"}]</script>
+<script>
+(function(){
+  var box=document.getElementById('wiki-search');
+  if(!box)return;
+  var input=document.getElementById('search-input');
+  var list=document.getElementById('search-results');
+  var clearBtn=document.getElementById('search-clear');
+  var data;
+  try{data=JSON.parse(document.getElementById('search-data').textContent);}catch(e){data=[];}
+  var items=[],active=-1,open=false;
+  function norm(s){return String(s||'').toLowerCase();}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  /* NB: innerHTML below is safe — every dynamic value passes through esc()
+     and the index is a single source (vault pages, classification-gated);
+     the inline JSON additionally has <,>,& escaped as \uXXXX. */
+  data.forEach(function(p){p._hay=norm([p.title,p.summary,p.tags.join(' '),p.slug].join(' ~ '));});
+
+  function run(q){
+    var toks=q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    if(!toks.length){render([],null);return;}
+    var out=[];
+    data.forEach(function(p){
+      for(var i=0;i<toks.length;i++){if(p._hay.indexOf(toks[i])===-1)return;}
+      var s=0,t;
+      for(var j=0;j<toks.length;j++){
+        t=toks[j];
+        if(norm(p.title).indexOf(t)!==-1)s+=10;
+        if(norm(p.tags.join(' ')).indexOf(t)!==-1)s+=4;
+        if(norm(p.slug).indexOf(t)!==-1)s+=2;
+        if(norm(p.summary).indexOf(t)!==-1)s+=1;
+      }
+      out.push({p:p,s:s});
+    });
+    out.sort(function(a,b){return b.s-a.s||norm(a.p.title).localeCompare(norm(b.p.title));});
+    render(out.map(function(o){return o.p;}),toks);
+  }
+
+  function render(res,toks){
+    items=res;
+    list.innerHTML='';
+    if(!toks||!res.length){
+      if(toks){list.innerHTML='<div class="search-empty">No pages match \u201c'+esc(input.value.trim())+'\u201d</div>';show();}
+      else{closePanel();}
+      return;
+    }
+    active=-1;
+    var html='<div class="search-note">'+res.length+' page'+(res.length===1?'':'s')+' \u00b7 \u201c'+esc(input.value.trim())+'\u201d</div>';
+    res.forEach(function(p,i){
+      html+='<button type="button" class="search-row" role="option" id="sr-'+i+'" data-i="'+i+'">'
+        +'<h4>'+esc(p.title)+'<span class="type-pill">'+esc(p.type)+'</span></h4>'
+        +(p.summary?'<p class="snippet">'+esc(p.summary)+'</p>':'')
+        +(p.tags.length?'<div class="tags">'+p.tags.map(function(t){return '<span class="pill tag">'+esc(t)+'</span>';}).join('')+'</div>':'')
+        +'</button>';
+    });
+    list.innerHTML=html;
+    show();
+    Array.prototype.forEach.call(list.querySelectorAll('.search-row'),function(btn){
+      btn.addEventListener('click',function(){var i=parseInt(btn.getAttribute('data-i'),10);if(!isNaN(i)&&items[i])location.href=items[i].slug+'.html';});
+      btn.addEventListener('mousemove',function(){setActive(parseInt(btn.getAttribute('data-i'),10));});
+    });
+  }
+
+  function show(){open=true;list.hidden=false;input.setAttribute('aria-expanded','true');}
+  function closePanel(){open=false;active=-1;list.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');}
+  function setActive(i){
+    active=i;
+    var rows=list.querySelectorAll('.search-row');
+    Array.prototype.forEach.call(rows,function(r,idx){r.classList.toggle('active',idx===i);});
+    if(rows[i]){rows[i].scrollIntoView({block:'nearest'});input.setAttribute('aria-activedescendant',rows[i].id);}
+  }
+  function clearSearch(){input.value='';render([],null);syncClear();}
+
+  function syncClear(){clearBtn.hidden=!input.value;}
+
+  input.addEventListener('input',function(){run(input.value);syncClear();});
+  input.addEventListener('focus',function(){if(input.value.trim())run(input.value);});
+  input.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){clearSearch();e.preventDefault();}
+    else if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+      if(!open||!items.length)return;
+      e.preventDefault();
+      var d=e.key==='ArrowDown'?1:-1;
+      setActive((active+d+items.length)%items.length);
+    }
+    else if(e.key==='Enter'){
+      if(active>=0&&items[active]){location.href=items[active].slug+'.html';e.preventDefault();}
+    }
+  });
+  clearBtn.addEventListener('click',clearSearch);
+  clearBtn.addEventListener('mousedown',function(e){e.preventDefault();});
+  list.addEventListener('mousedown',function(e){e.preventDefault();});
+  document.addEventListener('click',function(e){if(!box.contains(e.target))closePanel();});
+  document.addEventListener('keydown',function(e){
+    var t=e.target||{};
+    if(e.key==='/'&&!/^(input|textarea|select)$/i.test(t.tagName||'')){e.preventDefault();input.focus();input.select();}
+  });
+})();
+</script>
+<section class="section" id="concepts"><div class="sec-head"><span class="bar"></span><h2>Concepts</h2><span class="count">18</span></div><div class="grid"><a class="card" href="admiralty-rating.html">
   <h3>Admiralty Rating</h3>
   <div class="summary">The Admiralty (NATO 6×6) system for grading intelligence reports — a two-character code separating source reliability (A–F) from information credibility (1–6). Devised by Director of Naval Intelligence John Godfrey in 19</div>
   <div class="meta"><span class="type-pill">Concept</span><span class="pill conf conf-high">High confidence</span><span class="pill tag">admiralty</span><span class="pill tag">analysis</span><span class="pill tag">dissemination</span></div>
+</a><a class="card" href="ai-in-intelligence-analysis.html">
+  <h3>AI in Intelligence Analysis</h3>
+  <div class="summary">Two supply shocks are hitting a small analytic workforce at once — open source becoming first-class collection, and AI that is already operational in some missions and arriving fast in others. For a small community like </div>
+  <div class="meta"><span class="type-pill">Concept</span><span class="pill conf conf-high">High confidence</span><span class="pill tag">analysis</span><span class="pill tag">ai</span><span class="pill tag">osint</span></div>
 </a><a class="card" href="anchoring-bias.html">
   <h3>Anchoring Bias</h3>
   <div class="summary">Over-reliance on the first piece of information offered (the anchor) when forming subsequent estimates, with insufficient adjustment away from it — even when the anchor is arbitrary or irrelevant.</div>
@@ -57,6 +172,10 @@
   <h3>Confirmation Bias</h3>
   <div class="summary">The tendency to search for, interpret, favour, and recall information in ways that confirm one&#x27;s pre-existing beliefs, while giving disproportionately less weight to disconfirming evidence.</div>
   <div class="meta"><span class="type-pill">Concept</span><span class="pill conf conf-high">High confidence</span><span class="pill tag">analysis</span><span class="pill tag">bias</span></div>
+</a><a class="card" href="electronic-surveillance-law-reform.html">
+  <h3>Electronic Surveillance Law Reform</h3>
+  <div class="summary">The most important legal renovation on Australia&#x27;s books — and it has not happened.</div>
+  <div class="meta"><span class="type-pill">Concept</span><span class="pill conf conf-high">High confidence</span><span class="pill tag">law</span><span class="pill tag">collection</span><span class="pill tag">jurisdiction</span></div>
 </a><a class="card" href="estimative-language.html">
   <h3>Estimative Language</h3>
   <div class="summary">A standardised vocabulary for expressing likelihood and confidence in analytical products, so judgements are calibrated and consistently understood (Sherman Kent tradition, adapted for cyber).</div>
@@ -69,6 +188,14 @@
   <h3>Hindsight Bias</h3>
   <div class="summary">After an outcome is known, the tendency to over-estimate how foreseeable it was beforehand — the &quot;I knew it all along&quot; effect, also called creeping determinism. Memory of one&#x27;s prior judgements is rewritten to fit the re</div>
   <div class="meta"><span class="type-pill">Concept</span><span class="pill conf conf-high">High confidence</span><span class="pill tag">analysis</span><span class="pill tag">bias</span></div>
+</a><a class="card" href="intelligence-oversight.html">
+  <h3>Intelligence Oversight</h3>
+  <div class="summary">How Australia holds its National Intelligence Community accountable. The architecture is widely regarded as a strong model internationally — anchored by the Inspector-General of Intelligence and Security with royal commi</div>
+  <div class="meta"><span class="type-pill">Concept</span><span class="pill conf conf-high">High confidence</span><span class="pill tag">oversight</span><span class="pill tag">jurisdiction</span></div>
+</a><a class="card" href="intelligence-relationships-contested-region.html">
+  <h3>Intelligence Relationships in a Contested Region</h3>
+  <div class="summary">For Australia, collection and liaison policy are now foreign policy. The National Intelligence Community runs an alliance system built on Five Eyes while managing a web of partners outside it, against a region increasing</div>
+  <div class="meta"><span class="type-pill">Concept</span><span class="pill conf conf-high">High confidence</span><span class="pill tag">jurisdiction</span><span class="pill tag">alliance</span><span class="pill tag">collection</span></div>
 </a><a class="card" href="mirror-imaging.html">
   <h3>Mirror Imaging</h3>
   <div class="summary">(Heuer) Assuming that the other actor shares the analyst&#x27;s own rationality, values, and constraints — projecting one&#x27;s own frame of reference onto the subject. A classic source of strategic surprise.</div>
@@ -89,15 +216,31 @@
   <h3>Vividness Bias</h3>
   <div class="summary">(Heuer&#x27;s &quot;vividness criterion&quot;; Nisbett &amp; Ross 1980) The tendency to over-weight concrete, emotionally striking, or graphic information over abstract but more diagnostic statistical (base-rate) information.</div>
   <div class="meta"><span class="type-pill">Concept</span><span class="pill conf conf-high">High confidence</span><span class="pill tag">analysis</span><span class="pill tag">bias</span></div>
-</a></div></section><section class="section" id="entities"><div class="sec-head"><span class="bar"></span><h2>Entities</h2><span class="count">2</span></div><div class="grid"><a class="card" href="aipio.html">
+</a></div></section><section class="section" id="entities"><div class="sec-head"><span class="bar"></span><h2>Entities</h2><span class="count">5</span></div><div class="grid"><a class="card" href="aipio.html">
   <h3>AIPIO</h3>
   <div class="summary">The Australian Institute of Professional Intelligence Officers — the professional body for the intelligence profession in Australia. The wiki&#x27;s course material derives from the AIPIO 25 conference (theme: Thriving Intell</div>
-  <div class="meta"><span class="type-pill">Entitie</span><span class="pill conf conf-high">High confidence</span><span class="pill tag">course</span><span class="pill tag">collection</span><span class="pill tag">framework</span></div>
+  <div class="meta"><span class="type-pill">Entitie</span><span class="pill conf conf-high">High confidence</span><span class="pill tag">course</span><span class="pill tag">collection</span><span class="pill tag">frameworks</span></div>
 </a><a class="card" href="asd-project-redspice.html">
   <h3>ASD Project Redspice</h3>
-  <div class="summary">Status: limited information — low confidence. This page is a placeholder pending further research.</div>
-  <div class="meta"><span class="type-pill">Entitie</span><span class="pill conf conf-low">Low confidence</span><span class="pill tag">jurisdiction</span><span class="pill tag">threat-actor</span><span class="pill tag">cyber-intel</span></div>
-</a></div></section><section class="section" id="cases"><div class="sec-head"><span class="bar"></span><h2>Cases</h2><span class="count">0</span></div><div class="empty">No pages yet — add a case page to the wiki and rebuild.</div></section><section class="section" id="comparisons"><div class="sec-head"><span class="bar"></span><h2>Comparisons</h2><span class="count">0</span></div><div class="empty">No pages yet — add a comparison page to the wiki and rebuild.</div></section><section class="section" id="queries"><div class="sec-head"><span class="bar"></span><h2>Queries</h2><span class="count">0</span></div><div class="empty">No pages yet — add a query page to the wiki and rebuild.</div></section>
+  <div class="summary">REDSPICE (Resilience, Effects, Defence, Space, Intelligence, Cyber, Enablers) is ASD&#x27;s transformation programme, announced March 2022: roughly $9.9 billion over a decade, aimed at about doubling ASD&#x27;s workforce and lifti</div>
+  <div class="meta"><span class="type-pill">Entitie</span><span class="pill conf conf-high">High confidence</span><span class="pill tag">cyber-intel</span><span class="pill tag">collection</span><span class="pill tag">jurisdiction</span></div>
+</a><a class="card" href="aukus-intelligence-sharing.html">
+  <h3>AUKUS Intelligence Sharing</h3>
+  <div class="summary">AUKUS is not only a submarine and advanced-capabilities pact — for the intelligence community it is a classification, workforce and counter-espionage shock. Its two pillars create a tighter inner ring inside Five Eyes, m</div>
+  <div class="meta"><span class="type-pill">Entitie</span><span class="pill conf conf-high">High confidence</span><span class="pill tag">alliance</span><span class="pill tag">jurisdiction</span><span class="pill tag">collection</span></div>
+</a><a class="card" href="five-eyes.html">
+  <h3>Five Eyes</h3>
+  <div class="summary">The Five Eyes (FVEY) — Australia, Canada, New Zealand, the UK and the US — is the intelligence-sharing alliance at the heart of Australia&#x27;s National Intelligence Community. Australia&#x27;s contribution to the UKUSA arrangeme</div>
+  <div class="meta"><span class="type-pill">Entitie</span><span class="pill conf conf-high">High confidence</span><span class="pill tag">collection</span><span class="pill tag">alliance</span><span class="pill tag">jurisdiction</span></div>
+</a><a class="card" href="national-intelligence-community.html">
+  <h3>National Intelligence Community</h3>
+  <div class="summary">The National Intelligence Community (NIC) is Australia&#x27;s ten-agency intelligence enterprise — small but well-developed, distinctive for its strong separation of assessment from collection and policy, its dependence on Fi</div>
+  <div class="meta"><span class="type-pill">Entitie</span><span class="pill conf conf-high">High confidence</span><span class="pill tag">jurisdiction</span><span class="pill tag">summary</span><span class="pill tag">analysis</span></div>
+</a></div></section><section class="section" id="cases"><div class="sec-head"><span class="bar"></span><h2>Cases</h2><span class="count">1</span></div><div class="grid"><a class="card" href="timor-leste-bugging-affair.html">
+  <h3>Timor-Leste Bugging Affair</h3>
+  <div class="summary">ASIS&#x27;s 2004 operation against Timorese cabinet deliberations during maritime boundary negotiations — and the subsequent prosecutions of whistleblower &quot;Witness K&quot; and lawyer Bernard Collaery. It remains the sharpest Austr</div>
+  <div class="meta"><span class="type-pill">Case</span><span class="pill conf conf-high">High confidence</span><span class="pill tag">case</span><span class="pill tag">humint</span><span class="pill tag">jurisdiction</span></div>
+</a></div></section><section class="section" id="comparisons"><div class="sec-head"><span class="bar"></span><h2>Comparisons</h2><span class="count">0</span></div><div class="empty">No pages yet — add a comparison page to the wiki and rebuild.</div></section><section class="section" id="queries"><div class="sec-head"><span class="bar"></span><h2>Queries</h2><span class="count">0</span></div><div class="empty">No pages yet — add a query page to the wiki and rebuild.</div></section>
 </main>
 <footer class="footer">
   <div class="footer-inner">
