@@ -166,7 +166,7 @@ def summary_from(body):
 
 
 # ---------------- chrome ----------------
-def head(title, active="", root=""):
+def head(title, active="", root="", search_markup=""):
     v = TODAY.strftime("%Y%m%d")
     nav = [
         ("index.html", "Home", "index"),
@@ -200,6 +200,7 @@ def head(title, active="", root=""):
       <small>open-source</small>
     </a>
     <div class="nav-links">{links}</div>
+    {search_markup}
     <div class="theme-toggle" role="button" aria-label="Toggle light/dark theme" tabindex="0" onclick="toggleTheme()">🌙</div>
   </div>
 </nav>
@@ -327,7 +328,11 @@ def build_page(p, pages, slug_map):
 <a class="nav-back" href="index.html">&larr; Back to Wiki index</a>
 """
 
-    html_out = head(p.title, active=p.rtype if p.rtype in ("concept", "entity") else "index")
+    html_out = head(
+        p.title,
+        active=p.rtype if p.rtype in ("concept", "entity") else "index",
+        search_markup=search_widget_html(pages, compact=True),
+    )
     html_out += inner + FOOT
     out_path = os.path.join(DOCS, p.slug + ".html")
     with open(out_path, "w", encoding="utf-8") as f:
@@ -347,8 +352,9 @@ def card_html(p):
 
 
 # ---------------- search widget (index page only) ----------------
-def search_widget_html(pages):
-    """Client-side search: inline JSON index + zero-dependency JS."""
+def search_widget_html(pages, compact=False):
+    """Client-side search: inline JSON index + zero-dependency JS.
+    compact=True renders the slim top-nav variant used on article pages."""
     search_pages = [{
         "slug": p.slug,
         "title": p.title,
@@ -359,15 +365,17 @@ def search_widget_html(pages):
     index = json.dumps(search_pages, ensure_ascii=False)
     # keep the inline JSON from ever terminating the script tag early
     index = index.replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+    label = "" if compact else "\n  <div class=\"search-label\" aria-hidden=\"true\">// search the wiki</div>"
+    keys = "" if compact else "\n    <span class=\"search-keys\">press <kbd>/</kbd></span>"
+    placeholder = "Search the wiki\u2026" if compact else "Search concepts, entities, tags\u2026"
+    cls = "search-widget compact" if compact else "search-widget"
     return f"""
-<div class="search-widget" id="wiki-search">
-  <div class="search-label" aria-hidden="true">// search the wiki</div>
+<div class="{cls}" id="wiki-search">{label}
   <div class="search-control">
     <span class="search-glyph" aria-hidden="true">&#8965;</span>
-    <input id="search-input" type="search" placeholder="Search concepts, entities, tags&#8230;" autocomplete="off" spellcheck="false"
+    <input id="search-input" type="search" placeholder="{placeholder}" autocomplete="off" spellcheck="false"
            role="combobox" aria-expanded="false" aria-controls="search-results" aria-label="Search the wiki">
-    <button class="search-clear" id="search-clear" type="button" aria-label="Clear search" hidden>&#10005;</button>
-    <span class="search-keys">press <kbd>/</kbd></span>
+    <button class="search-clear" id="search-clear" type="button" aria-label="Clear search" hidden>&#10005;</button>{keys}
   </div>
   <div class="search-results" id="search-results" role="listbox" hidden></div>
 </div>
