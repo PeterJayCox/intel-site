@@ -167,6 +167,49 @@ def summary_from(body):
     return ""
 
 
+# ---------------- appearance (three states; default = auto/follows the OS) ----
+# Mirrors the Cyber Digest site's behaviour: click cycles auto -> light -> dark
+# -> auto (a pinned choice lives in localStorage under `intel-theme2`); the
+# legacy `intel-theme` key written by the old two-state toggle is discarded on
+# sight so an old pin can't silently override the system appearance.
+# Kept as plain (non-f) strings so their braces are never parsed by head().
+THEME_HEAD = """<script>
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('intel-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('intel-theme2');}else{localStorage.setItem('intel-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \\u2014 follows your system ('+sys()+'). Click to cycle auto \\u2192 light \\u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('intel-theme');}catch(e){}
+window.__intelSysTheme=sys;
+window.__intelTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+</script>"""
+THEME_TOGGLE = ('<div class="theme-toggle" role="button" tabindex="0"'
+    ' aria-label="Appearance" title="Appearance"'
+    ' onclick="window.__intelTheme.cycle(event)"'
+    " onkeydown=\"if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__intelTheme.cycle(event)}\">"
+    '<span class="tt-auto" aria-hidden="true">\U0001f317</span>'
+    '<span class="tt-light" aria-hidden="true">\u2600\ufe0f</span>'
+    '<span class="tt-dark" aria-hidden="true">\U0001f319</span></div>')
+
+
 # ---------------- chrome ----------------
 def head(title, active="", root="", search_markup="", canonical_path="index.html"):
     v = TODAY.strftime("%Y%m%d")
@@ -186,6 +229,7 @@ def head(title, active="", root="", search_markup="", canonical_path="index.html
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{THEME_HEAD}
 <title>{html.escape(title)} · {SITE_NAME}</title>
 <meta name="description" content="Open-source intelligence analysis tradecraft — a living reference wiki.">
 <link rel="canonical" href="{canon}">
@@ -205,7 +249,7 @@ def head(title, active="", root="", search_markup="", canonical_path="index.html
     </a>
     <div class="nav-links">{links}</div>
     {search_markup}
-    <div class="theme-toggle" role="button" aria-label="Toggle light/dark theme" tabindex="0" onclick="toggleTheme()">🌙</div>
+    {THEME_TOGGLE}
   </div>
 </nav>
 <main class="container">
@@ -219,10 +263,6 @@ FOOT = """</main>
     <span class="foot-dim">open-source tradecraft &middot; classification-gated build</span>
   </div>
 </footer>
-<script>
-function toggleTheme(){var h=document.documentElement;var b=document.querySelector('.theme-toggle');var t=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',t);if(b)b.textContent=t==='dark'?'☀️':'🌙';try{localStorage.setItem('intel-theme',t)}catch(e){}}
-(function(){try{var s=localStorage.getItem('intel-theme');if(s)document.documentElement.setAttribute('data-theme',s);var b=document.querySelector('.theme-toggle');if(b)b.textContent=(s||'dark')==='dark'?'☀️':'🌙'}catch(e){}})();
-</script>
 </body>
 </html>"""
 
