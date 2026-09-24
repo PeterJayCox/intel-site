@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Five Eyes · Intel Wiki</title>
+<title>Base-Rate Neglect · Intel Wiki</title>
 <meta name="description" content="Open-source intelligence analysis tradecraft — a living reference wiki.">
-<link rel="canonical" href="https://intel.peterjaycox.com/five-eyes.html">
+<link rel="canonical" href="https://intel.peterjaycox.com/base-rate-neglect.html">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -135,27 +135,32 @@
 </nav>
 <main class="container">
 
-<div class="crumb"><a href="index.html">Wiki</a><span class="sep">/</span>Entities</div>
+<div class="crumb"><a href="index.html">Wiki</a><span class="sep">/</span>Concepts</div>
 <div class="page-head">
-  <div class="head-top"><span class="type-pill">Entitie</span><span class="pill conf conf-high">High confidence</span></div>
-  <h1>Five Eyes</h1>
-  <div class="tags-row"><span class="pill tag">collection</span><span class="pill tag">alliance</span><span class="pill tag">jurisdiction</span></div>
+  <div class="head-top"><span class="type-pill">Concept</span><span class="pill conf conf-high">High confidence</span></div>
+  <h1>Base-Rate Neglect</h1>
+  <div class="tags-row"><span class="pill tag">analysis</span><span class="pill tag">bias</span></div>
   <div class="stamp">Open Source</div>
 </div>
-<article class="wiki-body"><p>The <strong>Five Eyes (FVEY)</strong> — Australia, Canada, New Zealand, the UK and the US — is the intelligence-sharing alliance at the heart of Australia's <a href="national-intelligence-community.html">National Intelligence Community</a>. Australia's contribution to the UKUSA arrangements is substantial relative to its size, historically anchored in geography.</p>
-<h2>Australian facilities</h2>
+<article class="wiki-body"><p>Ignoring the <strong>prior probability</strong> of an event in favour of vivid, specific, case-level detail. The analyst reasons about the individual case as if it existed outside any population — "this person is behaving suspiciously, therefore this is an attack" — without asking how often that behaviour occurs in the general population.</p>
+<h2>In intelligence analysis</h2>
 <ul>
-<li><strong>Joint Defence Facility Pine Gap</strong> (near Alice Springs) — joint US–Australia satellite intelligence ground station</li>
-<li><strong>Kojarena (WA)</strong> — signals intelligence facility</li>
-<li><strong>Shoal Bay (NT)</strong> — signals intelligence facility</li>
-<li>Facilities elsewhere</li>
+<li>A triggering event is assessed from its own detail only; the <strong>denominator</strong> (how many such events occur for benign reasons) is never estimated, so a weak indicator is treated as a strong one.</li>
+<li>It compounds <a href="vividness-bias.html">Vividness Bias</a>: the memorable case is both over-weighted and stripped of its base rate.</li>
+<li>Rare capabilities (catastrophic terrorism, novel malware capable of destroying physical plant, state-level attribution) are systematically over-estimated because their base rate is nearly invisible, while the consequences dominate attention.</li>
+<li>It drives alert fatigue and false-positive volume in detection work: indicators are selected for sensitivity without a base-rate check on how much benign traffic they match.</li>
 </ul>
-<h2>The dependence trade-off</h2>
-<p>Access to enormous partner product in exchange for hosting facilities and accepting some dependence has been a recurring topic in Australian strategic debate since Des Ball's work in the 1980s. The relationship shapes the NIC's coverage choices: the community's small size forces heavy reliance on these partnerships (<a href="national-intelligence-community.html">National Intelligence Community</a>).</p>
+<h2>Countermeasure</h2>
+<ul>
+<li>For every indicator, state the <strong>benign explanation rate</strong> alongside the malicious one, even approximately.</li>
+<li>Use explicit likelihood language (<a href="estimative-language.html">Estimative Language</a>) that separates confidence in the indicator from confidence in the inference drawn from it.</li>
+</ul>
 <h2>Related</h2>
 <ul>
-<li><a href="national-intelligence-community.html">National Intelligence Community</a> — the enterprise the alliance underpins</li>
-<li><a href="asd-project-redspice.html">ASD Project Redspice</a> — ASD is Australia's SIGINT leg of the arrangement</li>
+<li><a href="cognitive-bias.html">Cognitive Bias</a> — the taxonomy this bias sits within</li>
+<li><a href="vividness-bias.html">Vividness Bias</a> — the concrete case crowds out the prior</li>
+<li><a href="representativeness-heuristic.html">Representativeness Heuristic</a> — the mechanism that produces base-rate neglect</li>
+<li><a href="insensitivity-to-sample-size.html">Insensitivity to Sample Size</a> — the same failure applied to the evidence itself</li>
 </ul></article>
 <a class="nav-back" href="index.html">&larr; Back to Wiki index</a>
 </main>
