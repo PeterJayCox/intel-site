@@ -49,8 +49,9 @@ TYPE_LABELS = {
     "case": "Cases",
     "comparison": "Comparisons",
     "query": "Queries",
+    "workshop": "Workshops",
 }
-TYPE_ORDER = ["concept", "entity", "case", "comparison", "query"]
+TYPE_ORDER = ["concept", "entity", "case", "comparison", "query", "workshop"]
 
 TYPE_SINGULAR = {
     "concept": "Concept",
@@ -58,6 +59,7 @@ TYPE_SINGULAR = {
     "case": "Case",
     "comparison": "Comparison",
     "query": "Query",
+    "workshop": "Workshop",
 }
 
 SKIP_FILENAMES = {"index.md", "schema.md", "log.md"}
@@ -166,12 +168,14 @@ def summary_from(body):
 
 
 # ---------------- chrome ----------------
-def head(title, active="", root="", search_markup=""):
+def head(title, active="", root="", search_markup="", canonical_path="index.html"):
     v = TODAY.strftime("%Y%m%d")
+    canon = f"{SITE_BASE}/" if title == "Home" else f"{SITE_BASE}/{canonical_path}"
     nav = [
         ("index.html", "Home", "index"),
         ("index.html#concepts", "Concepts", "concepts"),
         ("index.html#entities", "Entities", "entities"),
+        ("index.html#workshops", "Workshops", "workshops"),
     ]
     links = "".join(
         f'<a class="{"active" if active == a else ""}" href="{root}{h}">{lbl}</a>'
@@ -184,7 +188,7 @@ def head(title, active="", root="", search_markup=""):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)} · {SITE_NAME}</title>
 <meta name="description" content="Open-source intelligence analysis tradecraft — a living reference wiki.">
-<link rel="canonical" href="{SITE_BASE}/{root}{'index.html' if title == 'Home' else ''}">
+<link rel="canonical" href="{canon}">
 <link rel="icon" type="image/svg+xml" href="{root}assets/img/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -330,8 +334,9 @@ def build_page(p, pages, slug_map):
 
     html_out = head(
         p.title,
-        active=p.rtype if p.rtype in ("concept", "entity") else "index",
+        active=p.rtype if p.rtype in ("concept", "entity", "workshop") else "index",
         search_markup=search_widget_html(pages, compact=True),
+        canonical_path=p.slug + ".html",
     )
     html_out += inner + FOOT
     out_path = os.path.join(DOCS, p.slug + ".html")

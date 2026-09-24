@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workshop 01 — The Train Preacher · Intel Wiki</title>
+<meta name="description" content="Open-source intelligence analysis tradecraft — a living reference wiki.">
+<link rel="canonical" href="https://intel.peterjaycox.com/critical-thinking-workshop-01-train-preacher.html">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=20260924">
+</head>
+<body>
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Intel Wiki</span>
+      <small>open-source</small>
+    </a>
+    <div class="nav-links"><a class="" href="index.html">Home</a><a class="" href="index.html#concepts">Concepts</a><a class="" href="index.html#entities">Entities</a><a class="" href="index.html#workshops">Workshops</a></div>
+    
+<div class="search-widget compact" id="wiki-search">
+  <div class="search-control">
+    <span class="search-glyph" aria-hidden="true">&#8965;</span>
+    <input id="search-input" type="search" placeholder="Search the wiki…" autocomplete="off" spellcheck="false"
+           role="combobox" aria-expanded="false" aria-controls="search-results" aria-label="Search the wiki">
+    <button class="search-clear" id="search-clear" type="button" aria-label="Clear search" hidden>&#10005;</button>
+  </div>
+  <div class="search-results" id="search-results" role="listbox" hidden></div>
+</div>
+<script type="application/json" id="search-data">[{"slug": "admiralty-rating", "title": "Admiralty Rating", "type": "Concept", "tags": ["admiralty", "analysis", "dissemination"], "summary": "The Admiralty (NATO 6×6) system for grading intelligence reports — a two-character code separating source reliability (A–F) from information credibility (1–6). Devised by Director "}, {"slug": "ai-in-intelligence-analysis", "title": "AI in Intelligence Analysis", "type": "Concept", "tags": ["analysis", "ai", "osint"], "summary": "Two supply shocks are hitting a small analytic workforce at once — open source becoming first-class collection, and AI that is already operational in some missions and arriving fas"}, {"slug": "aipio", "title": "AIPIO", "type": "Entity", "tags": ["course", "collection", "frameworks"], "summary": "The Australian Institute of Professional Intelligence Officers — the professional body for the intelligence profession in Australia. The wiki's course material derives from the AIP"}, {"slug": "anchoring-bias", "title": "Anchoring Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Over-reliance on the first piece of information offered (the anchor) when forming subsequent estimates, with insufficient adjustment away from it — even when the anchor is arbitrar"}, {"slug": "asd-project-redspice", "title": "ASD Project Redspice", "type": "Entity", "tags": ["cyber-intel", "collection", "jurisdiction"], "summary": "REDSPICE (Resilience, Effects, Defence, Space, Intelligence, Cyber, Enablers) is ASD's transformation programme, announced March 2022: roughly $9.9 billion over a decade, aimed at "}, {"slug": "aukus-intelligence-sharing", "title": "AUKUS Intelligence Sharing", "type": "Entity", "tags": ["alliance", "jurisdiction", "collection"], "summary": "AUKUS is not only a submarine and advanced-capabilities pact — for the intelligence community it is a classification, workforce and counter-espionage shock. Its two pillars create "}, {"slug": "availability-heuristic", "title": "Availability Heuristic", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Judging the probability or frequency of an event by how easily instances come to mind. Vivid, recent, or dramatic events are recalled readily and are therefore over-weighted relati"}, {"slug": "bottom-line-up-front", "title": "Bottom Line Up Front", "type": "Concept", "tags": ["writing", "dissemination"], "summary": "The BLUF principle — lead any intelligence product with its single most important judgment or implication, before background or detail. This is the structural core of analytic writ"}, {"slug": "cognitive-bias", "title": "Cognitive Bias", "type": "Concept", "tags": ["analysis", "frameworks", "bias"], "summary": "A cognitive bias is a systematic — as opposed to random — error in judgement, driven by the mental shortcuts (heuristics) the brain uses to process information efficiently. In inte"}, {"slug": "confirmation-bias", "title": "Confirmation Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "The tendency to search for, interpret, favour, and recall information in ways that confirm one's pre-existing beliefs, while giving disproportionately less weight to disconfirming "}, {"slug": "electronic-surveillance-law-reform", "title": "Electronic Surveillance Law Reform", "type": "Concept", "tags": ["law", "collection", "jurisdiction"], "summary": "The most important legal renovation on Australia's books — and it has not happened."}, {"slug": "estimative-language", "title": "Estimative Language", "type": "Concept", "tags": ["dissemination", "writing", "analysis"], "summary": "A standardised vocabulary for expressing likelihood and confidence in analytical products, so judgements are calibrated and consistently understood (Sherman Kent tradition, adapted"}, {"slug": "five-eyes", "title": "Five Eyes", "type": "Entity", "tags": ["collection", "alliance", "jurisdiction"], "summary": "The Five Eyes (FVEY) — Australia, Canada, New Zealand, the UK and the US — is the intelligence-sharing alliance at the heart of Australia's National Intelligence Community. Austral"}, {"slug": "groupthink", "title": "Groupthink", "type": "Concept", "tags": ["analysis", "bias"], "summary": "(Janis 1972) A mode of thinking in cohesive groups in which the drive for unanimity overrides a realistic appraisal of alternative courses of action. It is the social analogue of i"}, {"slug": "hindsight-bias", "title": "Hindsight Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "After an outcome is known, the tendency to over-estimate how foreseeable it was beforehand — the \"I knew it all along\" effect, also called creeping determinism. Memory of one's pri"}, {"slug": "intelligence-oversight", "title": "Intelligence Oversight", "type": "Concept", "tags": ["oversight", "jurisdiction"], "summary": "How Australia holds its National Intelligence Community accountable. The architecture is widely regarded as a strong model internationally — anchored by the Inspector-General of In"}, {"slug": "intelligence-relationships-contested-region", "title": "Intelligence Relationships in a Contested Region", "type": "Concept", "tags": ["jurisdiction", "alliance", "collection"], "summary": "For Australia, collection and liaison policy are now foreign policy. The National Intelligence Community runs an alliance system built on Five Eyes while managing a web of partners"}, {"slug": "mirror-imaging", "title": "Mirror Imaging", "type": "Concept", "tags": ["analysis", "bias"], "summary": "(Heuer) Assuming that the other actor shares the analyst's own rationality, values, and constraints — projecting one's own frame of reference onto the subject. A classic source of "}, {"slug": "national-intelligence-community", "title": "National Intelligence Community", "type": "Entity", "tags": ["jurisdiction", "summary", "analysis", "collection"], "summary": "The National Intelligence Community (NIC) is Australia's ten-agency intelligence enterprise — small but well-developed, distinctive for its strong separation of assessment from col"}, {"slug": "overconfidence-bias", "title": "Overconfidence Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "The tendency to systematically over-estimate the accuracy or calibration of one's own judgements and knowledge. It is the gap between how confident an analyst feels and how often t"}, {"slug": "structured-analytic-techniques", "title": "Structured Analytic Techniques", "type": "Concept", "tags": ["analysis", "frameworks"], "summary": "SATs are formal methods for countering cognitive bias and testing hypotheses — the modern complement to (and critique of) older methods like the Admiralty Rating system. Post-9/11 "}, {"slug": "the-intelligence-cycle", "title": "The Intelligence Cycle", "type": "Concept", "tags": ["cycle", "analysis", "collection", "dissemination"], "summary": "The foundational model of the intelligence process: a structured loop for converting raw information into decisions. The classic doctrine formulation is Direction – Collection – Pr"}, {"slug": "timor-leste-bugging-affair", "title": "Timor-Leste Bugging Affair", "type": "Case", "tags": ["case", "humint", "jurisdiction", "oversight"], "summary": "ASIS's 2004 operation against Timorese cabinet deliberations during maritime boundary negotiations — and the subsequent prosecutions of whistleblower \"Witness K\" and lawyer Bernard"}, {"slug": "vividness-bias", "title": "Vividness Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "(Heuer's \"vividness criterion\"; Nisbett \u0026 Ross 1980) The tendency to over-weight concrete, emotionally striking, or graphic information over abstract but more diagnostic statistica"}, {"slug": "critical-thinking-workshop-01-train-preacher", "title": "Workshop 01 — The Train Preacher", "type": "Workshop", "tags": ["workshop", "course", "analysis", "bias"], "summary": "Format: facilitated, 60 minutes, one team, discussion and questions throughout. Material: a single public six-minute video clip. Output: a completed 5W+H; a source-integrity call; "}]</script>
+<script>
+(function(){
+  var box=document.getElementById('wiki-search');
+  if(!box)return;
+  var input=document.getElementById('search-input');
+  var list=document.getElementById('search-results');
+  var clearBtn=document.getElementById('search-clear');
+  var data;
+  try{data=JSON.parse(document.getElementById('search-data').textContent);}catch(e){data=[];}
+  var items=[],active=-1,open=false;
+  function norm(s){return String(s||'').toLowerCase();}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  /* NB: innerHTML below is safe — every dynamic value passes through esc()
+     and the index is a single source (vault pages, classification-gated);
+     the inline JSON additionally has <,>,& escaped as \uXXXX. */
+  data.forEach(function(p){p._hay=norm([p.title,p.summary,p.tags.join(' '),p.slug].join(' ~ '));});
+
+  function run(q){
+    var toks=q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    if(!toks.length){render([],null);return;}
+    var out=[];
+    data.forEach(function(p){
+      for(var i=0;i<toks.length;i++){if(p._hay.indexOf(toks[i])===-1)return;}
+      var s=0,t;
+      for(var j=0;j<toks.length;j++){
+        t=toks[j];
+        if(norm(p.title).indexOf(t)!==-1)s+=10;
+        if(norm(p.tags.join(' ')).indexOf(t)!==-1)s+=4;
+        if(norm(p.slug).indexOf(t)!==-1)s+=2;
+        if(norm(p.summary).indexOf(t)!==-1)s+=1;
+      }
+      out.push({p:p,s:s});
+    });
+    out.sort(function(a,b){return b.s-a.s||norm(a.p.title).localeCompare(norm(b.p.title));});
+    render(out.map(function(o){return o.p;}),toks);
+  }
+
+  function render(res,toks){
+    items=res;
+    list.innerHTML='';
+    if(!toks||!res.length){
+      if(toks){list.innerHTML='<div class="search-empty">No pages match \u201c'+esc(input.value.trim())+'\u201d</div>';show();}
+      else{closePanel();}
+      return;
+    }
+    active=-1;
+    var html='<div class="search-note">'+res.length+' page'+(res.length===1?'':'s')+' \u00b7 \u201c'+esc(input.value.trim())+'\u201d</div>';
+    res.forEach(function(p,i){
+      html+='<button type="button" class="search-row" role="option" id="sr-'+i+'" data-i="'+i+'">'
+        +'<h4>'+esc(p.title)+'<span class="type-pill">'+esc(p.type)+'</span></h4>'
+        +(p.summary?'<p class="snippet">'+esc(p.summary)+'</p>':'')
+        +(p.tags.length?'<div class="tags">'+p.tags.map(function(t){return '<span class="pill tag">'+esc(t)+'</span>';}).join('')+'</div>':'')
+        +'</button>';
+    });
+    list.innerHTML=html;
+    show();
+    Array.prototype.forEach.call(list.querySelectorAll('.search-row'),function(btn){
+      btn.addEventListener('click',function(){var i=parseInt(btn.getAttribute('data-i'),10);if(!isNaN(i)&&items[i])location.href=items[i].slug+'.html';});
+      btn.addEventListener('mousemove',function(){setActive(parseInt(btn.getAttribute('data-i'),10));});
+    });
+  }
+
+  function show(){open=true;list.hidden=false;input.setAttribute('aria-expanded','true');}
+  function closePanel(){open=false;active=-1;list.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');}
+  function setActive(i){
+    active=i;
+    var rows=list.querySelectorAll('.search-row');
+    Array.prototype.forEach.call(rows,function(r,idx){r.classList.toggle('active',idx===i);});
+    if(rows[i]){rows[i].scrollIntoView({block:'nearest'});input.setAttribute('aria-activedescendant',rows[i].id);}
+  }
+  function clearSearch(){input.value='';render([],null);syncClear();}
+
+  function syncClear(){clearBtn.hidden=!input.value;}
+
+  input.addEventListener('input',function(){run(input.value);syncClear();});
+  input.addEventListener('focus',function(){if(input.value.trim())run(input.value);});
+  input.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){clearSearch();e.preventDefault();}
+    else if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+      if(!open||!items.length)return;
+      e.preventDefault();
+      var d=e.key==='ArrowDown'?1:-1;
+      setActive((active+d+items.length)%items.length);
+    }
+    else if(e.key==='Enter'){
+      if(active>=0&&items[active]){location.href=items[active].slug+'.html';e.preventDefault();}
+    }
+  });
+  clearBtn.addEventListener('click',clearSearch);
+  clearBtn.addEventListener('mousedown',function(e){e.preventDefault();});
+  list.addEventListener('mousedown',function(e){e.preventDefault();});
+  document.addEventListener('click',function(e){if(!box.contains(e.target))closePanel();});
+  document.addEventListener('keydown',function(e){
+    var t=e.target||{};
+    if(e.key==='/'&&!/^(input|textarea|select)$/i.test(t.tagName||'')){e.preventDefault();input.focus();input.select();}
+  });
+})();
+</script>
+    <div class="theme-toggle" role="button" aria-label="Toggle light/dark theme" tabindex="0" onclick="toggleTheme()">🌙</div>
+  </div>
+</nav>
+<main class="container">
+
+<div class="crumb"><a href="index.html">Wiki</a><span class="sep">/</span>Workshops</div>
+<div class="page-head">
+  <div class="head-top"><span class="type-pill">Workshop</span></div>
+  <h1>Workshop 01 — The Train Preacher</h1>
+  <div class="tags-row"><span class="pill tag">workshop</span><span class="pill tag">course</span><span class="pill tag">analysis</span><span class="pill tag">bias</span></div>
+  <div class="stamp">Open Source</div>
+</div>
+<article class="wiki-body"><p><strong>Format:</strong> facilitated, 60 minutes, one team, discussion and questions throughout.
+<strong>Material:</strong> a single public six-minute video clip.
+<strong>Output:</strong> a completed 5W+H; a source-integrity call; a reframed task; an intelligence-gap register.</p>
+<h2>Bottom line up front</h2>
+<p>The team watches one short public clip and is handed a question a real customer might ask: <em>is this person a threat to the public?</em> The exercise is not about the preacher. It is about whether that question can be answered from the material in front of us — and on one six-minute, self-published video, it cannot. The session's deliverable is therefore a <strong>gap register</strong>, not a verdict.</p>
+<p>Two failure modes carry the workshop: <strong>framing</strong> (is "threat" the right question, and in which direction does the risk run?) and <strong>source integrity</strong> (the clip is the subject's own edited upload — a single, curated, non-neutral source).</p>
+<h2>What this page is, and is not</h2>
+<ul>
+<li>It is a <strong>training artefact</strong>. It is not an intelligence product, and nothing on it is a finding about any person.</li>
+<li>The material is a <strong>public video</strong>, publicly uploaded in 2019 by the ministry of the person speaking in it. No non-public, personal or sensitive information is used, and none is sought.</li>
+<li>The exercise is about <strong>method</strong>. Analysts are not asked to compile a dossier on an individual, and a real-world product about any named person would require the usual authorities, legal review and handling caveats.</li>
+<li>Any figure a participant produces in the session is <strong>their own working judgement</strong>, not an assessment by this wiki.</li>
+<li>Publication status of the individual, the ministry and the platform metrics changes over time. Anything numeric here carries the date it was checked.</li>
+</ul>
+<h2>Running the session — 60 minutes</h2>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Segment</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–05</td>
+<td>Framing and caveats</td>
+<td>Read the task aloud. Set the ground rule: challenge the question, not the person.</td>
+</tr>
+<tr>
+<td>05–12</td>
+<td>Watch the clip</td>
+<td>Play it once, uninterrupted. No note-taking instruction — let them react.</td>
+</tr>
+<tr>
+<td>12–22</td>
+<td>Exercise 1 — 5W+H</td>
+<td>Build the table together on the whiteboard. Do not reveal model answers yet.</td>
+</tr>
+<tr>
+<td>22–32</td>
+<td>Exercise 2 — Source integrity</td>
+<td>Grade the source, then grade the information. Both gradings on the board.</td>
+</tr>
+<tr>
+<td>32–42</td>
+<td>Exercise 3 — Reframe the task</td>
+<td>Interrogate the customer's question before answering it.</td>
+</tr>
+<tr>
+<td>42–54</td>
+<td>Exercise 4 — Intelligence gaps</td>
+<td>The core output. Build a gap register with collection means and priority.</td>
+</tr>
+<tr>
+<td>54–58</td>
+<td>Exercise 5 — Synthesis</td>
+<td>Read the worked example. Compare the room's gap register with it.</td>
+</tr>
+<tr>
+<td>58–60</td>
+<td>Debrief</td>
+<td>Two failure modes, one commitment for the next real product.</td>
+</tr>
+</tbody>
+</table>
+<p>Facilitator's rule for the room: <strong>decisions and judgements get written down, opinions get tested.</strong> If someone says "clearly he's just a nuisance", the next question is always "what would change that judgement, and how confident are you?"</p>
+<h2>The material</h2>
+<iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/wP4w6hF50XM" title="Anti-abortion preaching triggers fierce backlash on train in Sydney, NSW, Australia" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+
+<p>Source link, for participants who prefer to watch off-platform: <a href="https://www.youtube.com/watch?v=wP4w6hF50XM">youtube.com/watch?v=wP4w6hF50XM</a></p>
+<h3>Source record</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title as published</td>
+<td><em>Anti-abortion preaching triggers fierce backlash on train in Sydney, NSW, Australia</em></td>
+</tr>
+<tr>
+<td>Publisher</td>
+<td>Torch of Christ Ministries (YouTube channel)</td>
+</tr>
+<tr>
+<td>Relationship to the event</td>
+<td>First-party. The clip is published by the speaker's own ministry.</td>
+</tr>
+<tr>
+<td>Published</td>
+<td>3 April 2019</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>6:23, presented as a single continuous clip</td>
+</tr>
+<tr>
+<td>Platform metrics (checked 2026-09-24)</td>
+<td>717,090 views; 12,235 likes; category: Nonprofits and Activism</td>
+</tr>
+<tr>
+<td>Location claimed</td>
+<td>Sydney, NSW, Australia</td>
+</tr>
+<tr>
+<td>Text record</td>
+<td>Machine-generated auto-transcript. No punctuation; profanity redacted by the platform; speaker attribution absent.</td>
+</tr>
+<tr>
+<td>Independent corroboration cited</td>
+<td>None. The clip stands alone.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Facilitator note.</strong> Do not sanitise the material. The room will be uncomfortable — that discomfort is the training value. What matters is that the discomfort gets converted into questions about evidence, not into a judgement about a person's character or beliefs.</p>
+<h2>Exercise 1 — The 5W+H (10 minutes)</h2>
+<p>Work the six questions on the board, together. For each answer, mark how it is known:</p>
+<ul>
+<li><span class="st st-fact">Observable</span> — visible or audible in the clip, or on the platform record.</li>
+<li><span class="st st-report">Reported</span> — stated by a party to the event, and only by that party.</li>
+<li><span class="st st-unknown">Not established</span> — the material cannot answer it.</li>
+</ul>
+<p>Then answer the question that matters more than the six: <strong>what can this source not tell us, and how would we find out?</strong></p>
+<details>
+<summary>Reveal — model 5W+H, and the trap the exercise is built on</summary>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Model answer</th>
+<th>How it is known</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Who</strong></td>
+<td>A man preaching in a train carriage, who names himself on camera and says he is from the United States. Passengers who argue with him, and at least one who offers a personal testimony in return. An unseen camera operator. A publishing ministry — his own.</td>
+<td>Name and nationality: self-reported. Passengers and camera: observable, unverified.</td>
+</tr>
+<tr>
+<td><strong>What</strong></td>
+<td>An evangelistic approach to a carriage of strangers, filmed and published; a hostile exchange follows. A passing reference to abortion is the line the published title elevates to the whole event. What came before, what was cut, and what happened after the clip ends are not shown.</td>
+<td>Observable in the clip; the title is the publisher's framing, not evidence.</td>
+</tr>
+<tr>
+<td><strong>Where</strong></td>
+<td>A moving train carriage, Sydney, NSW, per the publisher and the clip's spoken content. An announcement about the next stop is audible; the line and station are not identifiable from the clip.</td>
+<td>Reported by the publisher.</td>
+</tr>
+<tr>
+<td><strong>When</strong></td>
+<td>Published 3 April 2019. The date of the encounter itself is not stated, and the upload date is not the incident date.</td>
+<td>Observable on the platform record.</td>
+</tr>
+<tr>
+<td><strong>Why</strong></td>
+<td>The speaker states his purpose: to share his faith and offer hope. Why the ministry published it is not stated; the title frames it as content rather than a record. Why passengers reacted as they did is not established by any single clip.</td>
+<td>Speaker's stated intent: reported. Publisher's motive: inferred. Passenger motives: not established.</td>
+</tr>
+<tr>
+<td><strong>How</strong></td>
+<td>In person: one man, a carriage of strangers, raised voices, no amplification. At scale: filmed, published, and distributed by the platform to more than 700,000 views. The audience at the event was a few dozen; the audience for the clip is hundreds of thousands.</td>
+<td>Observable.</td>
+</tr>
+</tbody>
+</table>
+<h3>The trap — the point of this exercise</h3>
+<p>Every row above comes from a party to the event publishing its own conduct. A 5W+H is not a neutral instrument: point it at one curated source and it will describe <strong>what the publisher wants visible</strong>, in a tidy six-row format that looks like fact.</p>
+<p>Three habits to take from this:</p>
+<ol>
+<li>Mark the status of every answer. An unmarked 5W+H is indistinguishable from a verified one.</li>
+<li>Ask whose interest the framing serves — here, a title that promises a backlash rather than merely describing an encounter.</li>
+<li>Finish the exercise by listing what the source <strong>cannot</strong> answer. That list is the bridge to Exercise 4.</li>
+</ol>
+<p>Small detail worth surfacing in the room: the title says <em>train</em>; at least one passenger's words, as transcribed, say <em>bus</em>. A minor discrepancy, but exactly what a transcript check is for.</p>
+</details>
+<p><strong>What good looks like:</strong> at least three answers marked <em>not established</em>; the publisher's interest named within the first two minutes; and one person asking "is that a fact, or is that the title?"</p>
+<h2>Exercise 2 — Source integrity (10 minutes)</h2>
+<p>Four steps, in order. Do not skip to a grade.</p>
+<ol>
+<li>Name the source and its relationship to the event.</li>
+<li>Grade it with the <a href="admiralty-rating.html">Admiralty Rating</a> — source reliability, then information credibility.</li>
+<li>List what the source cannot tell us.</li>
+<li>State whether an independent second source exists. If it does not, say so out loud and say what that does to confidence.</li>
+</ol>
+<details>
+<summary>Reveal — the grading, and the point the two letters hide</summary>
+<p><strong>The source is the publisher, and the publisher is a party to the event.</strong> This is first-party material: the ministry uploaded footage of its own member's encounter. It is primary in the sense that it is the event rather than commentary about it — but it is also selected, edited and titled by an interested party.</p>
+<p>Two defensible gradings, and the reasoning matters more than the letters:</p>
+<table>
+<thead>
+<tr>
+<th>Grading</th>
+<th>The argument for it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>B2</strong> — usually reliable, probably true</td>
+<td>The footage is authentic material of a real encounter, not testimony about one. The publisher is a competent reporter of its own activity.</td>
+</tr>
+<tr>
+<td><strong>C3</strong> — fairly reliable, possibly true</td>
+<td>The material is single-source and self-published, speaker attribution is absent from the transcript, editorial selection is unverifiable, and the encounter is seven years old.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Neither is wrong. The letters hide the decisive point:</strong> reliability and independence are not the same thing. The clip can be entirely authentic — high reliability as an <em>artefact</em> — while being a poor basis for any judgement, because there is no independence in it at all.</p>
+<p>Three consequences the room should reach:</p>
+<ul>
+<li><strong>A source that is also the sole evidence must be flagged as single-source</strong>, and the confidence of anything built on it capped accordingly.</li>
+<li><strong>The transcript is a separate, third-party artefact with its own failure modes:</strong> no punctuation, redacted profanity, and no speaker attribution. The clip never establishes who said which line. Treating a machine transcript as a faithful record is a mistake, and in this material it is a visible one.</li>
+<li><strong>Cumulative metrics are not indicators.</strong> 717,090 views describes distribution, not threat. It is also an incentive: on this platform, provocation is what gets shared. Engagement figures measure the publisher's reach, and reward the behaviour the title advertises.</li>
+</ul>
+<p><strong>What the source cannot tell us:</strong> who else was involved; what happened before or after; whether the encounter was typical of anything; whether the subject is still active, still in Australia, or still practicing; who held the camera; what was cut; how the passengers experienced the exchange; whether anyone complained, was charged or was hurt; and whether any of it has any current relevance at all.</p>
+</details>
+<p><strong>What good looks like:</strong> two gradings offered, each with a reason; the words "there is no second source" said out loud; and someone noting that the views figure is the publisher's incentive rather than the analyst's evidence.</p>
+<h2>Exercise 3 — Reframe the task before answering it (10 minutes)</h2>
+<p>The task, as given to your team:</p>
+<blockquote>
+<p>You work for the NSW Police. You have been asked to assess the threat posed by this individual to the public.</p>
+</blockquote>
+<p>Interrogate the question before anyone collects a single item:</p>
+<ul>
+<li>What decision does the customer actually need to make?</li>
+<li>Who is the subject of protection — the public, or the person on the train?</li>
+<li>What is the time horizon: tonight, this month, or is this historical?</li>
+<li>What threshold does the customer mean — offensive conduct, unlawful conduct, or physical violence?</li>
+<li>What would "no threat" look like, and what would it take to say it?</li>
+<li>Is the material current? What is the date on it?</li>
+</ul>
+<details>
+<summary>Reveal — the assumptions inside the question, four candidate framings, and the legal trap</summary>
+<p><strong>Two assumptions sit inside the task.</strong> That the preacher is the threat source; and that a 2019 clip is evidence of a present condition. Both are testable, and testing them is the exercise.</p>
+<p><strong>Four candidate framings — each leads to different collection, different products and different risks:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Framing</th>
+<th>The question it implies</th>
+<th>What it would require</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>H1 — the speaker is the threat source</strong></td>
+<td>Public order, offensive conduct, harassment of a captive audience</td>
+<td>Complaint records, transport operator logs, legal review of the conduct offence</td>
+</tr>
+<tr>
+<td><strong>H2 — the speaker is the potential victim</strong></td>
+<td>A lone, identifiable, contrarian speaker filmed in an enclosed space, with a hostile crowd; the risk runs <em>towards</em> him</td>
+<td>Assault and incident data, counter-mobilisation, crowd behaviour in comparable settings</td>
+</tr>
+<tr>
+<td><strong>H3 — the clip is the vector</strong></td>
+<td>Content distributed for engagement; the encounter is incidental to the distribution</td>
+<td>Platform analytics, other uploads, whether the format is repeated for reach</td>
+</tr>
+<tr>
+<td><strong>H4 — currency failure</strong></td>
+<td>A seven-year-old artefact unless the subject is currently active in NSW</td>
+<td>Presence, activity and recency — collected before anything else</td>
+</tr>
+</tbody>
+</table>
+<p>The direction of risk, and the currency of the material, do most of the work here. A team that produces H1 by default has answered a question nobody asked, and may have written a record of lawful expression while believing it wrote a threat assessment.</p>
+<p><strong>Legal frame — check the premise, do not assume it:</strong></p>
+<ul>
+<li><strong>Summary Offences Act 1988 (NSW)</strong> — s 4 (offensive conduct) and s 4A (offensive language). The prescribed maximum for the conduct offence is six penalty units or three months' imprisonment. Re-read the current text before relying on it.</li>
+<li><strong>Safe access zones</strong> — <em>Public Health Act 2010</em> (NSW) Part 6A, inserted by the <em>Public Health Amendment (Safe Access to Reproductive Health Clinics) Act 2018</em> (NSW), assented 15 June 2018 and commenced on assent. A safe access zone is the clinic premises and the area within 150 metres of them; ss 98C–98E cover interference with access, communications about abortion likely to cause distress or anxiety, and capturing or distributing visual data.</li>
+<li><strong>The trap:</strong> those provisions operate <em>inside a safe access zone</em>. A moving train carriage is not one. The first instinct in the room is usually "the abortion laws — charge him", and that instinct is wrong on these facts. That is the exercise working exactly as intended.</li>
+</ul>
+<p>The distinction the team must hold, and state: <strong>offensive is not unlawful; unlawful is not a security threat; and a threat assessment is not a charge.</strong></p>
+<p>Verify the statute directly rather than trusting a summary: <a href="https://legislation.nsw.gov.au/view/whole/html/inforce/current/act-1988-025">Summary Offences Act 1988</a> · <a href="https://legislation.nsw.gov.au/view/whole/html/inforce/current/act-2018-026">Safe Access to Reproductive Health Clinics Act 2018</a></p>
+</details>
+<p><strong>What good looks like:</strong> the team rewrites the task in one sentence that names the customer's decision, the time horizon and the direction of risk — and refuses to move to collection until it does.</p>
+<h2>Exercise 4 — Intelligence gaps (12 minutes)</h2>
+<p>This is the session's real output. Three questions to answer, in order:</p>
+<ol>
+<li><strong>Is the preacher alone</strong> — one man, or part of something organised that repeats this?</li>
+<li><strong>Is he a threat, and why?</strong> State the judgment, the direction of the risk, and your confidence.</li>
+<li><strong>What are the key gaps we have to fill</strong> — and which of them would change the answer?</li>
+</ol>
+<p>Capture it as a register, not a discussion:</p>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Why it matters</th>
+<th>What we hold</th>
+<th>Collection means</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>Reveal — a model gap register, the priority rule, and what we should not collect</summary>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Why it matters</th>
+<th>What we hold</th>
+<th>Collection means</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Currency and presence</strong> — is the subject active now, and in NSW?</td>
+<td>Everything rests on it. If the encounter is historical, the live task largely dissolves.</td>
+<td>A 2019 upload. Nothing else.</td>
+<td>Overt check of current public activity; internal holdings under lawful authority.</td>
+<td><strong>Critical</strong></td>
+</tr>
+<tr>
+<td><strong>Organisational status</strong> — alone, or ministry-organised and repeated?</td>
+<td>Answers the first question directly, and separates a single man from a programme.</td>
+<td>A ministry name and a channel.</td>
+<td>The ministry's own public material; registration records; other uploads; travel and posting patterns.</td>
+<td><strong>High</strong></td>
+</tr>
+<tr>
+<td><strong>Pattern and frequency</strong> — one encounter, or a standing practice on Sydney services?</td>
+<td>One clip cannot establish a pattern. Repetition is what generates complaints, disruption and escalation.</td>
+<td>One edited clip.</td>
+<td>Transport operator incident records; other passengers' accounts; other uploads; media.</td>
+<td><strong>High</strong></td>
+</tr>
+<tr>
+<td><strong>Independent accounts and unedited footage</strong></td>
+<td>The only route out of single-source dependency; establishes what was cut and what actually happened.</td>
+<td>A platform transcript and an edited clip.</td>
+<td>Operator CCTV and records; other recordings; witness accounts, lawfully obtained.</td>
+<td><strong>High</strong></td>
+</tr>
+<tr>
+<td><strong>Complaint, injury and charge history</strong> — either direction</td>
+<td>Separates "unpopular" from "harmful", for the public and for the speaker.</td>
+<td>Nothing — the task as posed holds no records at all.</td>
+<td>Internal holdings; operator records.</td>
+<td><strong>High</strong></td>
+</tr>
+<tr>
+<td><strong>The crowd, not the speaker</strong> — who reacted, how far, was it organised?</td>
+<td>The most striking feature of the clip is the hostility towards him, not his theology.</td>
+<td>The clip alone.</td>
+<td>Incident data; assembly and protest monitoring; comparable events.</td>
+<td><strong>Medium</strong></td>
+</tr>
+<tr>
+<td><strong>Any indicator of intent beyond preaching</strong></td>
+<td>The difference between a public-order nuisance question and a threat question.</td>
+<td>Nothing.</td>
+<td>Overt sources only. Absent indicators, the gap stays open and confidence stays low.</td>
+<td><strong>Medium</strong></td>
+</tr>
+<tr>
+<td><strong>Speaker attribution</strong> — who said which line</td>
+<td>Evidentiary integrity of every quote anyone uses from this clip.</td>
+<td>A machine transcript with no attribution.</td>
+<td>Audio review; the room's own listening.</td>
+<td><strong>Low</strong> — but it caps what can be quoted</td>
+</tr>
+<tr>
+<td><strong>Legal characterisation</strong></td>
+<td>Keeps the product from becoming a legal opinion, and gates any action.</td>
+<td>A framework of provisions, unverified in detail.</td>
+<td>Legal review against current statutory text.</td>
+<td><strong>Medium</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>The priority rule</h3>
+<p><strong>Gaps that would change the judgement come first. Gaps that only add colour are not gaps.</strong> The view count, the speaker's nationality, his denomination and his theology are all readily available, all interesting, and none of them move the assessment. A register padded with those is a register that has not been thought about.</p>
+<p>Note what the first two rows have in common: they are cheap to fill. The reason this task stalls is not that the answers are hard to get — it is that the task was accepted without asking what it was for.</p>
+<h3>What we should not collect</h3>
+<ul>
+<li>Anything about the individual beyond <strong>overt, public, lawful</strong> material, unless a real tasking, authority and legal review exist. The fictional scenario does not grant them, and the exercise does not require them.</li>
+<li>A profile of a person's <strong>beliefs, associations or expression</strong> in place of evidence of conduct. Belief is not a threat indicator; conduct, frequency and harm are.</li>
+<li>Platform metrics as if they were intelligence. They are the publisher's distribution figures.</li>
+</ul>
+</details>
+<p><strong>What good looks like:</strong> the register leads with currency and organisational status; at least one gap is marked as unfillable and left open; and no row is filled with information that was merely interesting to find.</p>
+<h2>Exercise 5 — Synthesis (4 minutes)</h2>
+<p>The worked example below shows the <strong>shape</strong> of a defensible answer. It is not a finding about anyone.</p>
+<details>
+<summary>Reveal — the worked example, written the way a product should read</summary>
+<blockquote>
+<p><strong>This is a template, not an assessment.</strong> It demonstrates form: the reframed question, explicit confidence, the separation of fact from judgement, and the gaps left open. Nothing here may be lifted into a real product without the collection, authorities and handling that a real product requires.</p>
+</blockquote>
+<p><strong>Task as reframed.</strong> <em>Does the subject present a current public-safety or public-order risk to NSW transit users, and if so, in which direction?</em></p>
+<p><strong>BLUF.</strong> The question as posed cannot be answered from the material available: the only substantive source is a single, first-party, edited upload from 2019. We assess with <strong>high confidence</strong> that the source is inadequate for a judgement about the subject, and with <strong>high confidence</strong> that there is no evidence of a present condition — noting that this reflects an empty evidence base, not a finding of safety.</p>
+<p><strong>Key judgements.</strong></p>
+<ul>
+<li><strong>Currency — no finding possible.</strong> No collection establishes whether the subject is active in NSW today. Absence of evidence is a collection gap, not evidence of absence.</li>
+<li><strong>Source — single, interested, edited.</strong> The clip is authentic as an artefact and unusable as a sole basis for judgement. <em>Confidence: high.</em></li>
+<li><strong>Risk direction — unresolved.</strong> The observed pattern, if current, contains risk in both directions: to the public from a disruptive approach in an enclosed space, and to the speaker from an agitated crowd. <em>Confidence: low</em> about this subject; <em>moderate</em> as a pattern statement about the activity.</li>
+<li><strong>Intent and character — no judgement offered.</strong> No lawful collection exists to support one, and none is needed for the decision the customer faces.</li>
+</ul>
+<p><strong>What would change the call.</strong> A current incident report from the operator; evidence of a repeated practice on NSW services; a complaint history in either direction; an assault at either end of an encounter; evidence of organised activity; or one independent recording of the same encounter.</p>
+<p><strong>Recommendation to the customer.</strong> Do not accept the task as framed. Establish the decision it serves. If the concern is transit disruption, the operator's incident data answers it. If the concern is speech that offends, that is a legal and policy question, not an intelligence one — and framing it as a threat assessment creates a record that will not bear the weight.</p>
+<p><strong>Confidence and caveats.</strong> Judgements about the source are high confidence. Judgements about the subject are low confidence and rest on a single-source base with no independent corroboration. Collection gaps: currency, organisational status, pattern, complaint history.</p>
+</details>
+<p><strong>What good looks like:</strong> a product that leads with the reframed question, states confidence for each judgement, offers no judgement it cannot support, and closes by telling the customer what would change the call.</p>
+<h2>Debrief — five things to take away (2 minutes)</h2>
+<ol>
+<li><strong>The 5W+H inherits the framing of whatever you point it at.</strong> Mark how each answer is known, or the table reads as fact when it is testimony.</li>
+<li><strong>Reliability is not independence.</strong> Authentic material can still be a single, interested source. Flag it and cap the confidence.</li>
+<li><strong>Interrogate the task before answering it.</strong> Direction of risk and currency did the work here; a question accepted unexamined produces a product nobody asked for.</li>
+<li><strong>Popularity is not significance.</strong> More than 700,000 views measure distribution, and reward the conduct that earns them.</li>
+<li><strong>"We do not know" plus a collection plan beats a confident guess.</strong> The gap register is the deliverable.</li>
+</ol>
+<h3>Biases this material invites</h3>
+<table>
+<thead>
+<tr>
+<th>Bias</th>
+<th>Where it bites here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="vividness-bias.html">Vividness Bias</a></td>
+<td>Six minutes of confrontation, raised voices and profanity feels like significance.</td>
+</tr>
+<tr>
+<td><a href="availability-heuristic.html">Availability Heuristic</a></td>
+<td>The view count makes the incident feel important because it is easy to recall.</td>
+</tr>
+<tr>
+<td><a href="mirror-imaging.html">Mirror Imaging</a></td>
+<td>Judging a US street evangelist's conduct against Sydney commuter norms — and assuming he reads the carriage the way we do.</td>
+</tr>
+<tr>
+<td><a href="anchoring-bias.html">Anchoring Bias</a></td>
+<td>The title's framing ("fierce backlash") anchors the whole exercise in the first ten seconds.</td>
+</tr>
+<tr>
+<td><a href="confirmation-bias.html">Confirmation Bias</a></td>
+<td>The clip will confirm whatever each analyst already believes about street preachers or about religion.</td>
+</tr>
+<tr>
+<td><a href="groupthink.html">Groupthink</a></td>
+<td>The room converges on "nuisance, not a threat" within three minutes. Push for confidence and disconfirming evidence.</td>
+</tr>
+<tr>
+<td><a href="hindsight-bias.html">Hindsight Bias</a></td>
+<td>Once the session is over, the answers will feel obvious. They were not.</td>
+</tr>
+</tbody>
+</table>
+<h2>Facilitator notes</h2>
+<p><strong>Three traps the room will fall into</strong></p>
+<ul>
+<li><strong>Moralising.</strong> The material is designed to provoke. Redirect every value judgement to an evidentiary one: "what would we need in order to know that?"</li>
+<li><strong>Converging early.</strong> The comfortable answer ("he is a nuisance, not a threat") arrives fast and is not wrong — but arriving without stating confidence, gaps and what would change the call is the failure mode. Insist on the three.</li>
+<li><strong>Metric worship.</strong> Someone will cite the view count as evidence of significance. Ask what decision the count informs. The answer is none.</li>
+</ul>
+<p><strong>Reserve questions</strong> for a quiet room:</p>
+<ul>
+<li>Who is the customer of this product, and what do they do differently tomorrow if we are right?</li>
+<li>If the same encounter were filmed by a passenger instead of the speaker, what would change in our reading?</li>
+<li>Which single gap, if filled, would most change the judgement?</li>
+<li>What does "lawful but disruptive" require of a police customer, and is that an intelligence question at all?</li>
+<li>What would we write if the subject were a well-known public figure rather than a stranger on a train?</li>
+</ul>
+<p><strong>After-action step.</strong> Log the judgements made in the session and revisit them later, per the evaluation phase of <a href="the-intelligence-cycle.html">The Intelligence Cycle</a>. Which held up, which were wrong, and which gaps turned out to have been answerable all along? The point of the exercise is the habit, not the answer.</p>
+<h2>Related</h2>
+<ul>
+<li><a href="admiralty-rating.html">Admiralty Rating</a> — the grading scheme used in Exercise 2</li>
+<li><a href="structured-analytic-techniques.html">Structured Analytic Techniques</a> — ACH and the Key Assumptions Check, used implicitly in Exercise 3</li>
+<li><a href="estimative-language.html">Estimative Language</a> — the confidence and likelihood language in the worked example</li>
+<li><a href="bottom-line-up-front.html">Bottom Line Up Front</a> — the product structure demonstrated in Exercise 5</li>
+<li><a href="the-intelligence-cycle.html">The Intelligence Cycle</a> — planning, and the evaluation step in the debrief</li>
+<li><a href="cognitive-bias.html">Cognitive Bias</a> — the hub for the bias map above</li>
+</ul></article>
+<a class="nav-back" href="index.html">&larr; Back to Wiki index</a>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>Intelligence Analysis Wiki</span>
+    <span class="foot-dim">open-source tradecraft &middot; classification-gated build</span>
+  </div>
+</footer>
+<script>
+function toggleTheme(){var h=document.documentElement;var b=document.querySelector('.theme-toggle');var t=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',t);if(b)b.textContent=t==='dark'?'☀️':'🌙';try{localStorage.setItem('intel-theme',t)}catch(e){}}
+(function(){try{var s=localStorage.getItem('intel-theme');if(s)document.documentElement.setAttribute('data-theme',s);var b=document.querySelector('.theme-toggle');if(b)b.textContent=(s||'dark')==='dark'?'☀️':'🌙'}catch(e){}})();
+</script>
+</body>
+</html>
