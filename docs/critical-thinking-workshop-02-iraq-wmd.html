@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workshop 02 — Iraq&#x27;s WMD: A Bias Post-Mortem · Intel Wiki</title>
+<meta name="description" content="Open-source intelligence analysis tradecraft — a living reference wiki.">
+<link rel="canonical" href="https://intel.peterjaycox.com/critical-thinking-workshop-02-iraq-wmd.html">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=20260924">
+</head>
+<body>
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Intel Wiki</span>
+      <small>open-source</small>
+    </a>
+    <div class="nav-links"><a class="" href="index.html">Home</a><a class="" href="index.html#concepts">Concepts</a><a class="" href="index.html#entities">Entities</a><a class="" href="index.html#workshops">Workshops</a></div>
+    
+<div class="search-widget compact" id="wiki-search">
+  <div class="search-control">
+    <span class="search-glyph" aria-hidden="true">&#8965;</span>
+    <input id="search-input" type="search" placeholder="Search the wiki…" autocomplete="off" spellcheck="false"
+           role="combobox" aria-expanded="false" aria-controls="search-results" aria-label="Search the wiki">
+    <button class="search-clear" id="search-clear" type="button" aria-label="Clear search" hidden>&#10005;</button>
+  </div>
+  <div class="search-results" id="search-results" role="listbox" hidden></div>
+</div>
+<script type="application/json" id="search-data">[{"slug": "absence-of-evidence-fallacy", "title": "Absence of Evidence Fallacy", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Treating the absence of evidence as evidence of absence — reading \"we found nothing\" as proof that nothing exists. In intelligence the error runs in both directions, and the second"}, {"slug": "admiralty-rating", "title": "Admiralty Rating", "type": "Concept", "tags": ["admiralty", "analysis", "dissemination"], "summary": "The Admiralty (NATO 6×6) system for grading intelligence reports — a two-character code separating source reliability (A–F) from information credibility (1–6). Devised by Director "}, {"slug": "ai-in-intelligence-analysis", "title": "AI in Intelligence Analysis", "type": "Concept", "tags": ["analysis", "ai", "osint"], "summary": "Two supply shocks are hitting a small analytic workforce at once — open source becoming first-class collection, and AI that is already operational in some missions and arriving fas"}, {"slug": "aipio", "title": "AIPIO", "type": "Entity", "tags": ["course", "collection", "frameworks"], "summary": "The Australian Institute of Professional Intelligence Officers — the professional body for the intelligence profession in Australia. The wiki's course material derives from the AIP"}, {"slug": "anchoring-bias", "title": "Anchoring Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Over-reliance on the first piece of information offered (the anchor) when forming subsequent estimates, with insufficient adjustment away from it — even when the anchor is arbitrar"}, {"slug": "asd-project-redspice", "title": "ASD Project Redspice", "type": "Entity", "tags": ["cyber-intel", "collection", "jurisdiction"], "summary": "REDSPICE (Resilience, Effects, Defence, Space, Intelligence, Cyber, Enablers) is ASD's transformation programme, announced March 2022: roughly $9.9 billion over a decade, aimed at "}, {"slug": "aukus-intelligence-sharing", "title": "AUKUS Intelligence Sharing", "type": "Entity", "tags": ["alliance", "jurisdiction", "collection"], "summary": "AUKUS is not only a submarine and advanced-capabilities pact — for the intelligence community it is a classification, workforce and counter-espionage shock. Its two pillars create "}, {"slug": "availability-heuristic", "title": "Availability Heuristic", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Judging the probability or frequency of an event by how easily instances come to mind. Vivid, recent, or dramatic events are recalled readily and are therefore over-weighted relati"}, {"slug": "base-rate-neglect", "title": "Base-Rate Neglect", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Ignoring the prior probability of an event in favour of vivid, specific, case-level detail. The analyst reasons about the individual case as if it existed outside any population — "}, {"slug": "belief-perseverance", "title": "Belief Perseverance", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Difficulty abandoning a mindset once formed, even after the evidence that produced it has been discredited. The judgement persists after its foundation is gone — and the analyst ex"}, {"slug": "bottom-line-up-front", "title": "Bottom Line Up Front", "type": "Concept", "tags": ["writing", "dissemination"], "summary": "The BLUF principle — lead any intelligence product with its single most important judgment or implication, before background or detail. This is the structural core of analytic writ"}, {"slug": "cognitive-bias", "title": "Cognitive Bias", "type": "Concept", "tags": ["analysis", "frameworks", "bias"], "summary": "A cognitive bias is a systematic — as opposed to random — error in judgement, driven by the mental shortcuts (heuristics) the brain uses to process information efficiently. In inte"}, {"slug": "confirmation-bias", "title": "Confirmation Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "The tendency to search for, interpret, favour, and recall information in ways that confirm one's pre-existing beliefs, while giving disproportionately less weight to disconfirming "}, {"slug": "conformity-bias", "title": "Conformity Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Adopting the position of the surrounding group — or of a senior voice — regardless of one's own analysis. Distinct from Groupthink: groupthink describes a group's shared degradatio"}, {"slug": "electronic-surveillance-law-reform", "title": "Electronic Surveillance Law Reform", "type": "Concept", "tags": ["law", "collection", "jurisdiction"], "summary": "The most important legal renovation on Australia's books — and it has not happened."}, {"slug": "escalation-of-commitment", "title": "Escalation of Commitment", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Persisting with a failing line of reasoning, collection effort or product because of what has already been invested in it — the sunk-cost fallacy applied to analysis. The investmen"}, {"slug": "estimative-language", "title": "Estimative Language", "type": "Concept", "tags": ["dissemination", "writing", "analysis"], "summary": "A standardised vocabulary for expressing likelihood and confidence in analytical products, so judgements are calibrated and consistently understood (Sherman Kent tradition, adapted"}, {"slug": "five-eyes", "title": "Five Eyes", "type": "Entity", "tags": ["collection", "alliance", "jurisdiction"], "summary": "The Five Eyes (FVEY) — Australia, Canada, New Zealand, the UK and the US — is the intelligence-sharing alliance at the heart of Australia's National Intelligence Community. Austral"}, {"slug": "framing-effect", "title": "Framing Effect", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Reaching different conclusions from identical information because of how the options, risks or question were expressed. The framing is usually supplied by someone else — a customer"}, {"slug": "fundamental-attribution-error", "title": "Fundamental Attribution Error", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Explaining other people's behaviour by their character while explaining one's own by circumstance. Applied to adversaries, it converts structural pressure into disposition: an acto"}, {"slug": "groupthink", "title": "Groupthink", "type": "Concept", "tags": ["analysis", "bias"], "summary": "(Janis 1972) A mode of thinking in cohesive groups in which the drive for unanimity overrides a realistic appraisal of alternative courses of action. It is the social analogue of i"}, {"slug": "hindsight-bias", "title": "Hindsight Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "After an outcome is known, the tendency to over-estimate how foreseeable it was beforehand — the \"I knew it all along\" effect, also called creeping determinism. Memory of one's pri"}, {"slug": "insensitivity-to-sample-size", "title": "Insensitivity to Sample Size", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Drawing strong conclusions from small samples — treating a handful of observations as representative of a population or a pattern. The error is not in using small samples: in intel"}, {"slug": "intelligence-oversight", "title": "Intelligence Oversight", "type": "Concept", "tags": ["oversight", "jurisdiction"], "summary": "How Australia holds its National Intelligence Community accountable. The architecture is widely regarded as a strong model internationally — anchored by the Inspector-General of In"}, {"slug": "intelligence-relationships-contested-region", "title": "Intelligence Relationships in a Contested Region", "type": "Concept", "tags": ["jurisdiction", "alliance", "collection"], "summary": "For Australia, collection and liaison policy are now foreign policy. The National Intelligence Community runs an alliance system built on Five Eyes while managing a web of partners"}, {"slug": "loss-aversion", "title": "Loss Aversion", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Losses loom larger than equivalent gains, skewing risk judgement. From prospect theory: the same outcome is weighed differently depending on whether it is presented as giving somet"}, {"slug": "mirror-imaging", "title": "Mirror Imaging", "type": "Concept", "tags": ["analysis", "bias"], "summary": "(Heuer) Assuming that the other actor shares the analyst's own rationality, values, and constraints — projecting one's own frame of reference onto the subject. A classic source of "}, {"slug": "national-intelligence-community", "title": "National Intelligence Community", "type": "Entity", "tags": ["jurisdiction", "summary", "analysis", "collection"], "summary": "The National Intelligence Community (NIC) is Australia's ten-agency intelligence enterprise — small but well-developed, distinctive for its strong separation of assessment from col"}, {"slug": "overconfidence-bias", "title": "Overconfidence Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "The tendency to systematically over-estimate the accuracy or calibration of one's own judgements and knowledge. It is the gap between how confident an analyst feels and how often t"}, {"slug": "recency-bias", "title": "Recency Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Over-weighting the most recent reporting or events at the expense of the longer record. What arrived this week is treated as the state of the world, and the baseline it should be c"}, {"slug": "representativeness-heuristic", "title": "Representativeness Heuristic", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Judging probability by stereotypical similarity — how closely a case matches the mental image of a category — rather than by base rates or the quality of the evidence. \"This looks "}, {"slug": "selective-perception", "title": "Selective Perception", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Noticing what fits prior expectation and filtering out the rest — the perceptual stage of Confirmation Bias. The disconfirming item is not discounted in analysis; it is never regis"}, {"slug": "status-quo-bias", "title": "Status Quo Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Preferring the existing state and treating change as the option that must justify itself, even when the current position is arbitrary or has never been tested. The default is not n"}, {"slug": "structured-analytic-techniques", "title": "Structured Analytic Techniques", "type": "Concept", "tags": ["analysis", "frameworks"], "summary": "SATs are formal methods for countering cognitive bias and testing hypotheses — the modern complement to (and critique of) older methods like the Admiralty Rating system. Post-9/11 "}, {"slug": "the-intelligence-cycle", "title": "The Intelligence Cycle", "type": "Concept", "tags": ["cycle", "analysis", "collection", "dissemination"], "summary": "The foundational model of the intelligence process: a structured loop for converting raw information into decisions. The classic doctrine formulation is Direction – Collection – Pr"}, {"slug": "timor-leste-bugging-affair", "title": "Timor-Leste Bugging Affair", "type": "Case", "tags": ["case", "humint", "jurisdiction", "oversight"], "summary": "ASIS's 2004 operation against Timorese cabinet deliberations during maritime boundary negotiations — and the subsequent prosecutions of whistleblower \"Witness K\" and lawyer Bernard"}, {"slug": "vividness-bias", "title": "Vividness Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "(Heuer's \"vividness criterion\"; Nisbett \u0026 Ross 1980) The tendency to over-weight concrete, emotionally striking, or graphic information over abstract but more diagnostic statistica"}, {"slug": "critical-thinking-workshop-01-train-preacher", "title": "Workshop 01 — The Train Preacher", "type": "Workshop", "tags": ["workshop", "course", "analysis", "bias"], "summary": "Format: facilitated, 60 minutes, one team, discussion and questions throughout. Material: a single public six-minute video clip. Output: a completed 5W+H; a source-integrity call; "}, {"slug": "critical-thinking-workshop-02-iraq-wmd", "title": "Workshop 02 — Iraq's WMD: A Bias Post-Mortem", "type": "Workshop", "tags": ["workshop", "analysis", "bias", "case"], "summary": "Format: facilitated, 60 minutes, one team, discussion and questions throughout. Material: the published findings of the official inquiries into the pre-war Iraq WMD assessments. Ou"}]</script>
+<script>
+(function(){
+  var box=document.getElementById('wiki-search');
+  if(!box)return;
+  var input=document.getElementById('search-input');
+  var list=document.getElementById('search-results');
+  var clearBtn=document.getElementById('search-clear');
+  var data;
+  try{data=JSON.parse(document.getElementById('search-data').textContent);}catch(e){data=[];}
+  var items=[],active=-1,open=false;
+  function norm(s){return String(s||'').toLowerCase();}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  /* NB: innerHTML below is safe — every dynamic value passes through esc()
+     and the index is a single source (vault pages, classification-gated);
+     the inline JSON additionally has <,>,& escaped as \uXXXX. */
+  data.forEach(function(p){p._hay=norm([p.title,p.summary,p.tags.join(' '),p.slug].join(' ~ '));});
+
+  function run(q){
+    var toks=q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    if(!toks.length){render([],null);return;}
+    var out=[];
+    data.forEach(function(p){
+      for(var i=0;i<toks.length;i++){if(p._hay.indexOf(toks[i])===-1)return;}
+      var s=0,t;
+      for(var j=0;j<toks.length;j++){
+        t=toks[j];
+        if(norm(p.title).indexOf(t)!==-1)s+=10;
+        if(norm(p.tags.join(' ')).indexOf(t)!==-1)s+=4;
+        if(norm(p.slug).indexOf(t)!==-1)s+=2;
+        if(norm(p.summary).indexOf(t)!==-1)s+=1;
+      }
+      out.push({p:p,s:s});
+    });
+    out.sort(function(a,b){return b.s-a.s||norm(a.p.title).localeCompare(norm(b.p.title));});
+    render(out.map(function(o){return o.p;}),toks);
+  }
+
+  function render(res,toks){
+    items=res;
+    list.innerHTML='';
+    if(!toks||!res.length){
+      if(toks){list.innerHTML='<div class="search-empty">No pages match \u201c'+esc(input.value.trim())+'\u201d</div>';show();}
+      else{closePanel();}
+      return;
+    }
+    active=-1;
+    var html='<div class="search-note">'+res.length+' page'+(res.length===1?'':'s')+' \u00b7 \u201c'+esc(input.value.trim())+'\u201d</div>';
+    res.forEach(function(p,i){
+      html+='<button type="button" class="search-row" role="option" id="sr-'+i+'" data-i="'+i+'">'
+        +'<h4>'+esc(p.title)+'<span class="type-pill">'+esc(p.type)+'</span></h4>'
+        +(p.summary?'<p class="snippet">'+esc(p.summary)+'</p>':'')
+        +(p.tags.length?'<div class="tags">'+p.tags.map(function(t){return '<span class="pill tag">'+esc(t)+'</span>';}).join('')+'</div>':'')
+        +'</button>';
+    });
+    list.innerHTML=html;
+    show();
+    Array.prototype.forEach.call(list.querySelectorAll('.search-row'),function(btn){
+      btn.addEventListener('click',function(){var i=parseInt(btn.getAttribute('data-i'),10);if(!isNaN(i)&&items[i])location.href=items[i].slug+'.html';});
+      btn.addEventListener('mousemove',function(){setActive(parseInt(btn.getAttribute('data-i'),10));});
+    });
+  }
+
+  function show(){open=true;list.hidden=false;input.setAttribute('aria-expanded','true');}
+  function closePanel(){open=false;active=-1;list.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');}
+  function setActive(i){
+    active=i;
+    var rows=list.querySelectorAll('.search-row');
+    Array.prototype.forEach.call(rows,function(r,idx){r.classList.toggle('active',idx===i);});
+    if(rows[i]){rows[i].scrollIntoView({block:'nearest'});input.setAttribute('aria-activedescendant',rows[i].id);}
+  }
+  function clearSearch(){input.value='';render([],null);syncClear();}
+
+  function syncClear(){clearBtn.hidden=!input.value;}
+
+  input.addEventListener('input',function(){run(input.value);syncClear();});
+  input.addEventListener('focus',function(){if(input.value.trim())run(input.value);});
+  input.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){clearSearch();e.preventDefault();}
+    else if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+      if(!open||!items.length)return;
+      e.preventDefault();
+      var d=e.key==='ArrowDown'?1:-1;
+      setActive((active+d+items.length)%items.length);
+    }
+    else if(e.key==='Enter'){
+      if(active>=0&&items[active]){location.href=items[active].slug+'.html';e.preventDefault();}
+    }
+  });
+  clearBtn.addEventListener('click',clearSearch);
+  clearBtn.addEventListener('mousedown',function(e){e.preventDefault();});
+  list.addEventListener('mousedown',function(e){e.preventDefault();});
+  document.addEventListener('click',function(e){if(!box.contains(e.target))closePanel();});
+  document.addEventListener('keydown',function(e){
+    var t=e.target||{};
+    if(e.key==='/'&&!/^(input|textarea|select)$/i.test(t.tagName||'')){e.preventDefault();input.focus();input.select();}
+  });
+})();
+</script>
+    <div class="theme-toggle" role="button" aria-label="Toggle light/dark theme" tabindex="0" onclick="toggleTheme()">🌙</div>
+  </div>
+</nav>
+<main class="container">
+
+<div class="crumb"><a href="index.html">Wiki</a><span class="sep">/</span>Workshops</div>
+<div class="page-head">
+  <div class="head-top"><span class="type-pill">Workshop</span></div>
+  <h1>Workshop 02 — Iraq&#x27;s WMD: A Bias Post-Mortem</h1>
+  <div class="tags-row"><span class="pill tag">workshop</span><span class="pill tag">analysis</span><span class="pill tag">bias</span><span class="pill tag">case</span></div>
+  <div class="stamp">Open Source</div>
+</div>
+<article class="wiki-body"><p><strong>Format:</strong> facilitated, 60 minutes, one team, discussion and questions throughout.
+<strong>Material:</strong> the published findings of the official inquiries into the pre-war Iraq WMD assessments.
+<strong>Output:</strong> a bias → countermeasure map, and a <strong>bias-hunt protocol</strong> you can run against a live product before it goes out.</p>
+<h2>Bottom line up front</h2>
+<p>We work a case whose outcome is public: the 2002 judgements that Iraq held chemical and biological weapons stocks, and the post-war finding that it did not. The point is not to establish that anyone was wrong — that is settled and uninteresting. The point is to catch, in our own reasoning, the specific biases that carried those judgements, and to leave the room with a checklist that catches them before we publish.</p>
+<p>The inquiries that examined this case are consistent on one thing, and it is the thing most people get wrong: <strong>nobody distorted the evidence.</strong> The Butler Review found "no evidence of deliberate distortion or of culpable negligence" (paragraph 449). The US Commission on the Intelligence Capabilities of the United States Regarding Weapons of Mass Destruction found "no indication that the Intelligence Community distorted the evidence regarding Iraq's weapons of mass destruction… They were simply wrong." Competent analysts, working honestly, produced judgements the evidence could not bear. That is the failure mode this session is built to install in you.</p>
+<p>Two failure modes carry the workshop: <strong>reasoning bias</strong> — which biases fired, and where — and <strong>structural bias</strong> — what the organisation did that made those biases cheap to indulge. Collection gaps, a single-source dependency, inherited foreign reporting and a very small analytic team are not excuses for bias; they are the conditions it thrives in.</p>
+<h2>How the session runs — 60 minutes</h2>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Segment</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–05</td>
+<td>Framing</td>
+<td>The case is set, and the rule: no verdicts on people, only on reasoning.</td>
+</tr>
+<tr>
+<td>05–10</td>
+<td>The 2002 pack</td>
+<td>We read the evidence as it stood before the war. Nothing about the outcome is used yet.</td>
+</tr>
+<tr>
+<td>10–20</td>
+<td>Exercise 1 — Commit</td>
+<td>Write your own judgement, key judgements and confidence in writing, before anything else is revealed.</td>
+</tr>
+<tr>
+<td>20–30</td>
+<td>Exercise 2 — Provenance audit</td>
+<td>Mark every item; count the independent sources; find what would collapse the judgement.</td>
+</tr>
+<tr>
+<td>30–42</td>
+<td>Exercise 3 — The bias hunt</td>
+<td>Match each pack item to the bias it invites.</td>
+</tr>
+<tr>
+<td>42–52</td>
+<td>Exercise 4 — Countermeasures</td>
+<td>Build the bias → countermeasure map.</td>
+</tr>
+<tr>
+<td>52–58</td>
+<td>Exercise 5 — The protocol</td>
+<td>Draft the pre-issue bias-hunt protocol.</td>
+</tr>
+<tr>
+<td>58–60</td>
+<td>Debrief</td>
+<td>One commitment for the next product you issue.</td>
+</tr>
+</tbody>
+</table>
+<p>The working rule for the session: <strong>we judge reasoning, not people.</strong> When someone says "of course, they just wanted a war", the next question is "which item in the pack would have told you otherwise, and what would it have had to say?"</p>
+<h2>The material</h2>
+<p>No clip and no invented scenario this time. The material is the published findings of the official inquiries into the pre-war assessments — most of them released within eighteen months of the invasion, which is unusually fast for this kind of accountability work.</p>
+<table>
+<thead>
+<tr>
+<th>Inquiry</th>
+<th>Published</th>
+<th>What it examined</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Butler Review</strong> — <em>Review of Intelligence on Weapons of Mass Destruction</em> (HC 898, UK)</td>
+<td>14 July 2004</td>
+<td>UK intelligence and JIC assessments, and the post-war validation of the human sources</td>
+</tr>
+<tr>
+<td><strong>Senate Select Committee on Intelligence</strong> — <em>Report… on the U.S. Intelligence Community's Prewar Intelligence Assessments on Iraq</em> (S. Rept. 108-301, US)</td>
+<td>9 July 2004</td>
+<td>The October 2002 National Intelligence Estimate and the analytic process behind it</td>
+</tr>
+<tr>
+<td><strong>Parliamentary Joint Committee on ASIO, ASIS and DSD</strong> (the Jull Committee, Australia)</td>
+<td>Tabled 1 March 2004</td>
+<td>Australian assessments (ONA and DIO) and how the intelligence was presented publicly</td>
+</tr>
+<tr>
+<td><strong>Inquiry into Australian Intelligence Agencies</strong> (the Flood Inquiry, Australia)</td>
+<td>July 2004</td>
+<td>Agency performance and structure, with Iraq as one of three case studies</td>
+</tr>
+<tr>
+<td><strong>Iraq Survey Group</strong> — <em>Comprehensive Report of the Special Advisor to the DCI</em> (Duelfer Report, US)</td>
+<td>30 September 2004</td>
+<td>What was actually in Iraq: the post-war ground truth</td>
+</tr>
+<tr>
+<td><strong>Commission on the Intelligence Capabilities of the United States Regarding Weapons of Mass Destruction</strong> (Silberman–Robb, US)</td>
+<td>31 March 2005</td>
+<td>US intelligence capabilities and the causes of the failure</td>
+</tr>
+</tbody>
+</table>
+<p>Read them directly rather than trusting any summary, including this one:</p>
+<ul>
+<li><a href="https://warwick.ac.uk/fac/soc/pais/people/kettell/cloud/butler_report.pdf">Butler Review, HC 898, 14 July 2004</a> — the conclusions are Chapter 8; the material used here is at paragraphs 27–29, 36, 53–58, 433–436, 449, 504–512, 513–530, 532–545, 560–565 and the summary conclusions 46–48 and 51–53.</li>
+<li><a href="https://www.govinfo.gov/content/pkg/CRPT-108srpt301/html/CRPT-108srpt301.htm">Senate Select Committee on Intelligence report, S. Rept. 108-301</a></li>
+<li><a href="https://www.govinfo.gov/app/details/GPO-DUELFERREPORT">Duelfer Report (Iraq Survey Group)</a></li>
+<li><a href="https://govinfo.gov/content/pkg/GPO-WMD/pdf/GPO-WMD.pdf">Silberman–Robb Commission report</a></li>
+<li><a href="https://nla.gov.au/nla.obj-869475168">Flood Inquiry report, July 2004</a></li>
+<li><a href="https://www.theguardian.com/world/2011/feb/15/defector-admits-wmd-lies-iraq-war">The mobile-laboratories source admitting he fabricated the account, 2011</a></li>
+</ul>
+<p>The Australian layer is the reason this case is worth an Australian team's time. The Jull Committee — chaired by a Liberal member, unanimous, reporting inside the first year after the invasion — found that ministerial statements were <strong>"more strongly worded than most of the Australian intelligence community's judgements"</strong>, and that the Government's public case was not the picture that emerged from the assessments ONA and DIO had actually provided. That finding is about the <em>use</em> of intelligence rather than its production, and it matters here for a reason worth naming: <strong>an estimate is only as good as the traffic between the analyst, the product and the person speaking from it.</strong> You will meet that problem in your own work long before you meet a curveball.</p>
+<p><strong>What this material cannot tell us, and why that matters.</strong> Each inquiry was bounded. The Flood Inquiry's terms of reference covered agency performance, not how the government used what it was given; Flood noted that it is not reasonable to expect an intelligence agency to comment on how a government presents its intelligence. Butler found no deliberate distortion and was not asked to apportion blame to individuals. The Duelfer Report is ground truth about Iraq, not a finding about analysis. So no single document here is the whole answer, and reading one alone will mislead you — the same single-source lesson as <a href="critical-thinking-workshop-01-train-preacher.html">Workshop 01 — The Train Preacher</a>, applied to reports instead of a video.</p>
+<p><em>Every claim on this page is attributed to a published inquiry or to reporting of one. Where a figure comes from reporting about an inquiry rather than from a text I have read directly, it is labelled </em><em>as reported</em><em>.</em></p>
+<h2>Exercise 1 — Commit to a judgement (10 minutes)</h2>
+<p>Read the pack below. This is the evidence as it stood before the war, described the way the inquiries describe it. Nothing about the outcome is in it, and nothing about the outcome is to be used yet — not even what you know.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>What was in hand</th>
+<th>How it was known</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The UNSCOM record, 1991–1998: Iraq had chemical and biological weapons programmes, and significant quantities of material were unaccounted for.</td>
+<td>Established on the record.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Inspectors left in December 1998. After that, "information sources were sparse, particularly on Iraq's chemical and biological weapons programmes" (Butler, para 433).</td>
+<td>Butler's finding about what collection actually held.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A source handled by a liaison service reports mobile biological-agent production facilities inside Iraq. We have no direct access to the source, and the service will not permit it (Butler, paras 513–530).</td>
+<td>Reported — single source, indirect, unverified.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A report that Iraq could deploy chemical and biological weapons <strong>within 45 minutes</strong> of an order to use them (Butler, paras 504–512).</td>
+<td>Reported. The intelligence did not state what the 45 minutes referred to.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Large quantities of aluminium tubes procured abroad; assessed as possibly intended for gas-centrifuge rotors (Butler, paras 532–545).</td>
+<td>Assessed from procurement reporting. Interpretations differed between agencies.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Iraq's non-cooperation with UN inspectors and its concealment behaviour. The regime moved military assets to hide them from air attack (Duelfer Report).</td>
+<td>Observable behaviour — and this is the item to sit with.</td>
+</tr>
+</tbody>
+</table>
+<p>Two structural facts, which in 2002 were not facts anyone had assembled:</p>
+<ul>
+<li>In the six months before the war, Iraq-related intelligence reporting increased tenfold. About 3 per cent of it originated in Australia; 97 per cent came from allies; and about 78 per cent came from untested or uncertain sources <em>(figures as reported from the parliamentary committee's findings)</em>.</li>
+<li>From mid-2002, ONA had one or two analysts working on Iraq's weapons, with two Middle East analysts on wider Iraq issues. None of the WMD analysts had a specific technical background in such weapons, and no overall assessment of Saddam Hussein's weapons was produced <em>(as reported from the Flood Inquiry)</em>.</li>
+</ul>
+<p><strong>Your task, in writing, before anything else is revealed:</strong></p>
+<ol>
+<li>A one-sentence <strong>BLUF</strong> judgement: does Iraq hold chemical and biological weapons stocks?</li>
+<li>Two <strong>key judgements</strong>, each with a confidence term.</li>
+<li>One thing that would <strong>raise</strong> your confidence.</li>
+<li>One thing that would <strong>lower</strong> it.</li>
+</ol>
+<p>Write it as you would write a product. Then read it aloud before moving on — the exercise only works if you commit.</p>
+<details>
+<summary>Reveal — what the post-war record found, and what your judgement was standing on</summary>
+<p><strong>Source by source, after the war (Butler, para 436).</strong> Post-war validation of the main human sources found:</p>
+<ul>
+<li>one main source reported authoritatively on some issues, but <strong>on others was passing on what he had heard within his circle</strong>;</li>
+<li>reporting from a sub-source to a second main source, important to the JIC's judgements on Iraqi chemical and biological weapons possession, <strong>"must be open to doubt"</strong>;</li>
+<li>a third main source's reports were <strong>withdrawn as unreliable</strong>;</li>
+<li>two further main sources remained reliable — "although it is notable that <strong>their reports were less worrying</strong> than the rest about Iraqi chemical and biological weapons capabilities";</li>
+<li>reports from a liaison service on Iraqi production of biological agent were <strong>seriously flawed</strong>, "so that the grounds for JIC assessments drawing on those reports that Iraq had recently-produced stocks of biological agent <strong>no longer exist</strong>."</li>
+</ul>
+<p>Two consequences to reach, and they are the core of the whole session:</p>
+<ol>
+<li><strong>The arithmetic was invisible at the time.</strong> Nothing in the pack told you that four of the sources producing the alarming reporting would fail validation. You could not have known; you could only have marked what you were standing on.</li>
+<li><strong>The sources that failed validation were the ones that said the alarming things.</strong> The two that survived said less. That single sentence explains how the judgement drifted, and — note — it is not a story about anybody lying.</li>
+</ol>
+<p><strong>The mobile laboratories (Butler, conclusion 47, para 530).</strong> It was reasonable to include the reporting. But had SIS obtained direct access to the source from 2000 and therefore correct reporting, "the main evidence for JIC judgements on Iraq's stocks of recently-produced biological agent, as opposed to a break-out capacity, <strong>would not have existed</strong>." The source was later identified in published reporting as a defector code-named Curveball; he admitted in 2011 that he had fabricated the account. His own service had doubts about him before the invasion and would not certify his reporting, and the CIA never had direct contact with him — one American official had met him once and came away doubtful. <em>He is named in published reporting and has spoken publicly; nothing on this page is a profile of him, and nothing here turns on him as a person. The lesson is about a reporting chain with no direct access at either end.</em></p>
+<p><strong>The 45-minute claim (Butler, conclusion 46, para 511).</strong> The JIC should not have included the report in its assessment and in the Government's dossier "without stating what it was believed to refer to"; the repetition in the dossier "later led to suspicions that it had been included because of its <strong>eye-catching character</strong>." Butler records at para 512 that SIS later informed the Review that the validity of the report the claim rested on had come into question.</p>
+<p><strong>The tubes (conclusion 48, para 545).</strong> The evidence the Review received was "overwhelmingly that they were intended for rockets rather than a centrifuge". The JIC was right to consider the other possibility. But in transferring its judgement to the dossier it omitted the need for substantial re-engineering of the tubes, which had the effect of <strong>materially strengthening the impression</strong> that they were for a centrifuge — and therefore for a nuclear programme.</p>
+<p><strong>Plague and dusty mustard (conclusions 51–52, paras 564–565).</strong> 'Dusty mustard' disappeared from assessments from 1993. Plague did not, although little new intelligence arrived and most of what did was historical or unconvincing. The Review concluded that the assessments on plague "reflected historic evidence, and intelligence of dubious reliability, <strong>reinforced by suspicion of Iraq</strong>, rather than up-to-date evidence."</p>
+<p><strong>The ground truth (Duelfer Report).</strong> Iraq's WMD stocks did not exist. The nuclear programme was ended in 1991 and not restarted; the biological weapons programme was abandoned in 1995; chemical stocks had been destroyed. Saddam Hussein's priority was lifting sanctions and preserving the capacity to reconstitute later. He deliberately maintained the <em>appearance</em> of having chemical and biological weapons — his chemical capability had saved the regime in the Iran–Iraq war, and he believed such weapons had deterred the United States from removing him after 1991 and would deter Iran in future. And the item in the pack that should now trouble you most: <strong>Iraq moved conventional military assets to hide them from air attack, and US intelligence often read those movements as the movement of illicit weapons.</strong> Ambiguous behaviour, interpreted through the hypothesis already held.</p>
+<p><strong>And the finding that keeps this exercise honest.</strong> Butler: "we have found no evidence of deliberate distortion or of culpable negligence" (para 449). The Silberman–Robb Commission: "no indication that the Intelligence Community distorted the evidence… They were simply wrong." The analysts were honest and the judgement was still wrong. That is the failure mode worth four hours of your career, not the cartoon version.</p>
+<p><strong>Now read your own BLUF aloud and answer three questions:</strong></p>
+<ul>
+<li>How many <em>independent</em> sources did your judgement actually rest on?</li>
+<li>Which single item did the work?</li>
+<li>Did you say "probably", "likely" or "we assess" — and what did that term cost you in honesty?</li>
+</ul>
+</details>
+<p><strong>What good looks like:</strong> a written judgement that names its confidence term explicitly; at least one person marking the mobile-laboratory source as single-source with no direct access; and somebody refusing to use post-2003 knowledge in the first ten minutes.</p>
+<h2>Exercise 2 — Provenance audit (10 minutes)</h2>
+<p>Four steps, in order, on your own judgement. Do not skip to a grade.</p>
+<ol>
+<li>Mark every item in the pack: <span class="st st-fact">Observed</span>, <span class="st st-report">Reported</span>, or <span class="st st-assessed">Assessed</span> — our interpretation, not the source's statement.</li>
+<li>Count the <strong>independent</strong> sources behind your judgement. Not the number of items: the number of things that could independently have been wrong.</li>
+<li>Name the item that, if <strong>withdrawn</strong>, collapses your judgement. Say it out loud.</li>
+<li>State whether the surviving independent reporting pointed the <strong>same way</strong> as the reporting that carried the judgement. This is the step everybody skips, and it is the step that decides this case.</li>
+</ol>
+<details>
+<summary>Reveal — the audit, the single-source dependency, and the trap of over-correcting into "single source = worthless"</summary>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+<th>What it rests on</th>
+<th>Independent?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. UNSCOM record to 1998</td>
+<td>Observed</td>
+<td>Inspectors' physical verification work</td>
+<td>Yes — but it is a 1998 picture, four years old</td>
+</tr>
+<tr>
+<td>2. Sources sparse after 1998</td>
+<td>—</td>
+<td>The collection picture itself</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3. Mobile production facilities</td>
+<td>Reported</td>
+<td>One source, via a liaison service, with no direct access</td>
+<td><strong>No</strong></td>
+</tr>
+<tr>
+<td>4. 45-minute claim</td>
+<td>Reported</td>
+<td>One report whose reference was unstated, and whose validity Butler records "has come into question"</td>
+<td><strong>No</strong></td>
+</tr>
+<tr>
+<td>5. Aluminium tubes</td>
+<td>Assessed</td>
+<td>Procurement reporting plus technical interpretation; agencies disagreed with each other</td>
+<td>Partly — and it was interpretation, not statement</td>
+</tr>
+<tr>
+<td>6. Non-cooperation and concealment</td>
+<td>Observed behaviour</td>
+<td>The regime's conduct</td>
+<td>Yes — but the <em>meaning</em> was ours</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Two items carried the stocks judgement, and neither was independent.</strong> The mobile-laboratory source and the 45-minute report were the material that made the difference between "capability" and "recently produced stocks". Butler's conclusion 47 states the consequence precisely: had SIS had direct access to the first source, "the main evidence for JIC judgements on Iraq's stocks of recently-produced biological agent… would not have existed" (para 530).</p>
+<p>And the decisive fact, which could not be known at the time: <strong>the reporting that survived validation was the reporting that said less.</strong> The four sources producing the alarming material did not survive post-war validation; the two that did "were less worrying than the rest" (para 436). Detection of that drift is not possible at the moment of the judgement. Detection of <em>dependency</em> is, and it is free.</p>
+<p><strong>Do not over-correct.</strong> Butler is explicit that a single source is not automatically suspect: "It is incorrect to say, as some commentators have done, that 'single source' intelligence is always suspect. A single photograph showing missiles on launchers… trumps any number of agent reports that missiles are not part of a division's order of battle" (para 36). The question is never <em>how many</em> sources; it is <strong>what the source is, what access it has, and how the claim depends on it</strong>. A single image of a physical fact beats twenty hearsay reports. A single hearsay report behind a claim about stocks — with no direct access at either end of the chain — is a different object entirely.</p>
+<p><strong>Butler's validation questions, which belong in your own kit</strong> (paras 27–29, condensed):</p>
+<ul>
+<li>Has the informant been properly quoted, all the way along the chain?</li>
+<li>Does he have <strong>credible access</strong> to the facts he claims to know?</li>
+<li>Does he have the knowledge to understand what he is reporting?</li>
+<li>Could he be under opposition control, or being fed information? Is he fabricating?</li>
+<li>Can his activities and movements be checked?</li>
+<li><strong>Do we understand his motivations and private agenda</strong> — and could a desire to please, or to be rewarded, be shaping the report?</li>
+</ul>
+<p>Assertion in Butler's own words: "Before the actual content of an intelligence report can be considered, <strong>the validity of the process which has led to its production must be confirmed</strong>." Note the order. Validate, then read.</p>
+</details>
+<p><strong>What good looks like:</strong> two items named as the single-source dependency; the words "there is no independent second source for the key judgement" said aloud; and the trustworthy-but-unexciting reporting identified as the piece that should have been weighted hardest.</p>
+<h2>Exercise 3 — The bias hunt (12 minutes)</h2>
+<p>Seven biases carry this session. For each, decide <strong>where it bit</strong> — which item in the pack, and at which moment: when the question was set, when the evidence was read, when the judgement was expressed, or when it was published. Write your answer before opening the reveal; the mapping is the discussion.</p>
+<p>Then one question worth more than the mapping: <strong>which of these was an individual failure, and which was a property of the system the analysts worked in?</strong></p>
+<details>
+<summary>Reveal — the mapping, with the inquiries' own words, and the two biases nobody names out loud</summary>
+<p><strong>This mapping is a reading of the case for training, not a finding of any inquiry.</strong> Every inquiry here concluded there was no distortion; the biases below are the reasoning mechanisms that produced an honest error.</p>
+<table>
+<thead>
+<tr>
+<th>Bias</th>
+<th>Where it bit</th>
+<th>The record</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="confirmation-bias.html">Confirmation Bias</a></td>
+<td>The presumption was never tested, and ambiguous reporting was read as support for it. Pack item 6 is the cleanest example: movements of conventional assets hidden from air attack were read as movements of illicit weapons.</td>
+<td>The Committee's own statement on release: the Community "began with a presumption that Iraq had the weapons, <strong>never fully questioned that assumption</strong>, and then viewed virtually every bit of ambiguous information as supporting the premise that weapons were there."</td>
+</tr>
+<tr>
+<td><a href="groupthink.html">Groupthink</a></td>
+<td>Throughout: the prevailing view shaped what was noticed, collected and assessed.</td>
+<td>The Committee found the Community "suffering from a collective <strong>'group think'</strong> which led analysts, collectors and managers to presume that Iraq had active and growing WMD programmes." Butler names it too: "'group think' — the development of a 'prevailing wisdom'", and warns that where the pool of experts is dangerously small, individual views pass unchallenged (para 57).</td>
+</tr>
+<tr>
+<td><a href="mirror-imaging.html">Mirror Imaging</a></td>
+<td>Assuming the regime reasoned as we would: that a state with nothing to hide would prove it, and that concealment must therefore mean concealment <em>of something</em>.</td>
+<td>Butler names it directly: "the belief that can permeate some intelligence analysts that the practices and values of their own cultures are universal" (para 56), alongside the risk of transferring a model that worked on the Soviet Union to a target that only partly resembles it (paras 53–55).</td>
+</tr>
+<tr>
+<td><a href="vividness-bias.html">Vividness Bias</a></td>
+<td>The concrete, quotable items carried the weight: "45 minutes", the defector's first-person narrative of mobile plants. The sober reporting that survived validation was the reporting that did not stick.</td>
+<td>Butler on the 45-minute claim: the dossier's repetition of it "later led to suspicions that it had been included because of its <strong>eye-catching character</strong>" (para 511).</td>
+</tr>
+<tr>
+<td><a href="anchoring-bias.html">Anchoring Bias</a></td>
+<td>The 1991–1998 baseline anchored everything after it, and each product anchored the next.</td>
+<td>The Committee's "<strong>layering effect</strong>… assessments were built based on previous judgments without carrying forward the uncertainties of those judgments." Plague is the illustration: assessments to March 2003 "reflected historic evidence, and intelligence of dubious reliability, reinforced by suspicion of Iraq, rather than up-to-date evidence" (paras 564–565).</td>
+</tr>
+<tr>
+<td><a href="overconfidence-bias.html">Overconfidence Bias</a></td>
+<td>The language outran the evidence — and one analyst said so at the time.</td>
+<td>Butler: Dr Jones "was right to raise concerns about the manner of expression of the '45 minute' report in the dossier <strong>given the vagueness of the underlying intelligence</strong>" (conclusion 53), and about "the certainty of language used in the dossier on Iraqi production and possession of chemical agents" (para 572).</td>
+</tr>
+<tr>
+<td><a href="absence-of-evidence-fallacy.html">Absence of Evidence Fallacy</a></td>
+<td>The absence of an Iraqi accounting for missing material, and the regime's refusal to co-operate, were read as evidence of concealment rather than as an unresolved collection problem.</td>
+<td>Item 2 in the pack is the giveaway and it was in the record at the time: after the inspectors left, "information sources were sparse" (para 433). A thin evidence base was treated as a suspicious target's behaviour.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The two biases nobody names out loud, and they are structural:</strong></p>
+<ul>
+<li><a href="base-rate-neglect.html">Base-Rate Neglect</a> and <a href="insensitivity-to-sample-size.html">Insensitivity to Sample Size</a>. The judgement was built on a very small number of primary sources, in an environment where 97 per cent of reporting came from allies and about 78 per cent came from untested or uncertain sources <em>(as reported)</em> — with one or two analysts on the file and no technical specialist among them <em>(as reported)</em>. Nothing about that is exotic: it describes a busy team with a thin file. It is also exactly the condition in which a vivid single source becomes decisive.</li>
+<li><a href="framing-effect.html">Framing Effect</a>. The dossier was published in the JIC's name and with its authority, and the Review concluded that this "had the result that <strong>more weight was placed on the intelligence than it could bear</strong>". The same judgements, framed as an internal assessment with explicit uncertainty, would have been read differently by everyone downstream — including by the people who then spoke publicly about them.</li>
+</ul>
+<p><strong>The answer to the question, then.</strong> <a href="confirmation-bias.html">Confirmation Bias</a>, <a href="vividness-bias.html">Vividness Bias</a> and <a href="anchoring-bias.html">Anchoring Bias</a> are the ones an individual analyst can catch in their own draft. <a href="groupthink.html">Groupthink</a>, <a href="conformity-bias.html">Conformity Bias</a> and the small-team, thin-file conditions are the ones an individual cannot catch alone — they are properties of the system, and they require a structure to counter: independent judgements before discussion, a standing red-team role, and someone whose job is to argue the contrary case. Recognising which failure is which is the difference between a checklist and a habit.</p>
+</details>
+<p><strong>What good looks like:</strong> the room mapping item 6 (concealment behaviour) to <a href="confirmation-bias.html">Confirmation Bias</a> without being told; <strong>one</strong> bias resisted rather than all seven claimed; and the structural pair identified as something no individual can fix by resolving to think harder.</p>
+<h2>Exercise 4 — Countermeasures (10 minutes)</h2>
+<p>Build your own map first. For each bias, name the <strong>structured technique</strong> that counters it and the <strong>artefact</strong> that makes the technique real in your work — a checklist line, a table column, a line in the assessment, a named role. A technique with no artefact is a good intention.</p>
+<table>
+<thead>
+<tr>
+<th>Bias</th>
+<th>Technique</th>
+<th>The artefact that makes it real</th>
+<th>The trigger — when it runs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>Reveal — a model bias → countermeasure map, written for the work you actually do</summary>
+<table>
+<thead>
+<tr>
+<th>Bias</th>
+<th>Technique</th>
+<th>The artefact that makes it real</th>
+<th>The trigger — when it runs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="confirmation-bias.html">Confirmation Bias</a></td>
+<td><strong>Analysis of Competing Hypotheses</strong> — test all evidence against <em>each</em> hypothesis, seeking what discriminates between them</td>
+<td>The competing hypothesis written on the page, next to the leading one</td>
+<td>Before drafting any assessment where a hypothesis has already formed</td>
+</tr>
+<tr>
+<td><a href="groupthink.html">Groupthink</a></td>
+<td><strong>Independent judgements in writing, then reconciliation</strong>; a named devil's advocate or red team</td>
+<td>Independently drafted judgements, and a recorded contrary argument in the file</td>
+<td>Any judgement going to a customer that nobody has argued against</td>
+</tr>
+<tr>
+<td><a href="mirror-imaging.html">Mirror Imaging</a></td>
+<td><strong>Key Assumptions Check</strong> — surface the assumption about what the actor believes and why</td>
+<td>One line naming what the actor would have to believe for the behaviour to make sense to <em>them</em></td>
+<td>Every statement of intent, motive or planned behaviour</td>
+</tr>
+<tr>
+<td><a href="vividness-bias.html">Vividness Bias</a></td>
+<td><strong>Source grading and weighting by provenance, not by punch</strong> (<a href="admiralty-rating.html">Admiralty Rating</a>)</td>
+<td>The source status stated against every striking claim in the product</td>
+<td>Whenever a single anecdote, image or figure sits in the BLUF</td>
+</tr>
+<tr>
+<td><a href="anchoring-bias.html">Anchoring Bias</a></td>
+<td><strong>Blind independent estimates</strong>, then reconciliation; carry uncertainty forward at re-issue</td>
+<td>The running assessment retains each judgement's uncertainty rather than hardening it</td>
+<td>Every time a product is refreshed from a previous one</td>
+</tr>
+<tr>
+<td><a href="overconfidence-bias.html">Overconfidence Bias</a></td>
+<td><strong>Calibrated estimative language</strong> (<a href="estimative-language.html">Estimative Language</a>) and a certainty-word audit</td>
+<td>Every absolute in the draft re-earned or struck</td>
+<td>The final read before issue</td>
+</tr>
+<tr>
+<td><a href="absence-of-evidence-fallacy.html">Absence of Evidence Fallacy</a></td>
+<td><strong>Pair every negative finding with the collection behind it</strong></td>
+<td>A "what we did not collect" line in the product</td>
+<td>Any sentence containing "no evidence of", "we have not seen", "there is no indication"</td>
+</tr>
+<tr>
+<td>Small-team thin-file conditions (the structural pair)</td>
+<td><strong>Contestability by design</strong> — a named challenger, rotated, with time to do it</td>
+<td>A reviewer's name against the judgement, not just on the distribution list</td>
+<td>Any judgement produced by a team smaller than three on the topic</td>
+</tr>
+<tr>
+<td>Inherited reporting (97 per cent, as reported)</td>
+<td><strong>Provenance labelling of partner reporting</strong></td>
+<td>"Reported by a partner service; not independently corroborated"</td>
+<td>Whenever the analysis rests substantially on someone else's product</td>
+</tr>
+</tbody>
+</table>
+<p>Two points the map makes, and they are worth saying out loud:</p>
+<ul>
+<li><strong>The cheapest controls are at the front.</strong> Marking provenance, naming the dependency and writing the competing hypothesis cost minutes and catch most of this case. Adding more collection would not have — the reporting increased tenfold and the judgement did not move.</li>
+<li><strong>The expensive controls are the ones worth fighting for.</strong> A named challenger with time, and independent judgements before discussion, need resourcing and permission. They are the only controls that touch <a href="groupthink.html">Groupthink</a> and <a href="conformity-bias.html">Conformity Bias</a>. Butler recommends exactly this: structured challenge with established methods and procedures, "often described as a 'Devil's advocate' or a 'red teaming' approach" (para 57).</li>
+</ul>
+</details>
+<p><strong>What good looks like:</strong> every row naming an artefact that exists in your workflow or is cheap to add; at least one row that requires somebody else's agreement to implement; and nobody writing "be more sceptical" in the technique column.</p>
+<h2>Exercise 5 — The protocol (6 minutes)</h2>
+<p>The deliverable from this session. Draft <strong>eight to ten checks</strong> you can run in ten minutes against a live product before it goes out. Rules: each check must be answerable yes/no or with a name; each must catch a specific failure from this case; and it must survive a busy Tuesday.</p>
+<p>Write yours before reading the model. Then compare, and take the version you will actually use.</p>
+<details>
+<summary>Reveal — the model bias-hunt protocol</summary>
+<p><strong>The bias hunt — run before issue. Ten minutes, ten checks.</strong></p>
+<ol>
+<li><strong>The decision.</strong> Who is the customer, what decision does this serve, and what do they do differently tomorrow if we are right? <em>Catches: framing, and products nobody asked for.</em></li>
+<li><strong>The hypothesis.</strong> Is the leading judgement written as a hypothesis, with the strongest competing one next to it? <em>Catches: <a href="confirmation-bias.html">Confirmation Bias</a>.</em></li>
+<li><strong>The dependency.</strong> Name the single source that, if withdrawn, collapses the key judgement. <em>Catches: single-source dependency; the mobile-laboratories failure.</em></li>
+<li><strong>Provenance, twice.</strong> For the key judgement: source reliability <strong>and</strong> independence — stated separately, with inherited reporting labelled as such. <em>Catches: <a href="vividness-bias.html">Vividness Bias</a>; 97 per cent inherited reporting.</em></li>
+<li><strong>The missing item.</strong> What would we expect to see if the leading hypothesis were false, and did we look? <em>Catches: <a href="absence-of-evidence-fallacy.html">Absence of Evidence Fallacy</a>.</em></li>
+<li><strong>The vivid item.</strong> Does anything in the BLUF rest on one striking item — a figure, an image, a quote? Mark it. <em>Catches: <a href="vividness-bias.html">Vividness Bias</a>; the 45-minute claim.</em></li>
+<li><strong>The baseline.</strong> What changed since the last product, and is that change real or just recent? <em>Catches: <a href="recency-bias.html">Recency Bias</a>, <a href="anchoring-bias.html">Anchoring Bias</a>, status quo drift.</em></li>
+<li><strong>The challenger.</strong> Has anyone argued the contrary case, and is the argument recorded — with a name against it? <em>Catches: <a href="groupthink.html">Groupthink</a>, <a href="conformity-bias.html">Conformity Bias</a>.</em></li>
+<li><strong>The certainty audit.</strong> Re-earn or strike every "will", "clearly", "obviously", "always", and every unqualified number. <em>Catches: <a href="overconfidence-bias.html">Overconfidence Bias</a>; Dr Jones's dissent.</em></li>
+<li><strong>Both errors.</strong> State what it costs to be wrong in each direction, and what we did not collect. <em>Catches: <a href="loss-aversion.html">Loss Aversion</a>, base-rate neglect, and unexamined negative findings.</em></li>
+</ol>
+<p>Two notes on running it. First, the protocol is written to be read against a draft, not from memory — a checklist you recite is a checklist you skip. Second, make it yours: change the wording, cut a check that does not fit your product and add one that does. <strong>A protocol you did not write is a protocol you will not run</strong>, and this is the one artefact from today worth keeping on the desk.</p>
+</details>
+<p><strong>What good looks like:</strong> a protocol of ten checks or fewer, each with an artefact behind it; at least one check a colleague could run <em>on your</em> draft; and a copy that physically exists somewhere other than this page by the end of the session.</p>
+<h2>Debrief — five things to take away (2 minutes)</h2>
+<ol>
+<li><strong>Bias does not need dishonesty.</strong> Every inquiry found no distortion, and the judgement was still wrong. The mechanism that produced it is the one you use every day.</li>
+<li><strong>The dependence question is answerable and free.</strong> You could not have known which sources would fail validation. You could have known — and stated — that the key judgement rested on one source with no direct access.</li>
+<li><strong>The unexciting reporting is the reporting that survives.</strong> In this case the sources that held up said less. Weight by provenance, not by punch.</li>
+<li><strong>Some of this is not yours to fix.</strong> Independent judgements before discussion, and a standing challenger, are properties of a team, not of an individual's discipline. Ask for them.</li>
+<li><strong>Interrogate the framing, and the use.</strong> The judgements and the words spoken from them were two different things: "more weight was placed on the intelligence than it could bear." You own the product; you rarely own the sentence it becomes.</li>
+</ol>
+<p><strong>A hindsight warning before you leave.</strong> Everyone in the room now knows the answer, and that will make this case feel obvious. It was not. The evidence that the dissent existed at the time is in Butler's conclusions: one analyst raised concerns <em>during</em> the drafting about the vagueness of the underlying intelligence and the certainty of the language, and the Review subsequently found he had been right (conclusions 53–54). Notice what happened to that concern: it was ignored while it mattered and vindicated afterwards. <a href="hindsight-bias.html">Hindsight Bias</a> will have you believe you would have spoken up. The useful question is not that one — it is <strong>who in your team is raising the equivalent concern this month, and what are you doing with it?</strong></p>
+<h3>The atlas in action — where each bias in the taxonomy appears in this case</h3>
+<p>Grouped by family, one line each. The point of the table is not that all of them fired; it is that this is what a single failure looks like when you unpack it, and that none of the mechanisms is exotic.</p>
+<p><strong>Perception and mindset</strong></p>
+<table>
+<thead>
+<tr>
+<th>Bias</th>
+<th>In this case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="confirmation-bias.html">Confirmation Bias</a></td>
+<td>The presumption was never fully questioned, and ambiguous reporting — including monitored movements of conventional assets — was read as support for it.</td>
+</tr>
+<tr>
+<td><a href="belief-perseverance.html">Belief Perseverance</a></td>
+<td>The judgement survived the withdrawal of the very sources that produced it.</td>
+</tr>
+<tr>
+<td><a href="mirror-imaging.html">Mirror Imaging</a></td>
+<td>Named in the Butler Review itself: assuming that our own practices and values are universal, and that a state with nothing to hide would prove it.</td>
+</tr>
+<tr>
+<td><a href="selective-perception.html">Selective Perception</a></td>
+<td>The reporting that fitted the picture was registered; the reporting that did not was thin and stayed thin.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Evidence evaluation</strong></p>
+<table>
+<thead>
+<tr>
+<th>Bias</th>
+<th>In this case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="vividness-bias.html">Vividness Bias</a></td>
+<td>"45 minutes" and the defector's mobile-plant narrative carried the weight; the sober reporting did not.</td>
+</tr>
+<tr>
+<td><a href="anchoring-bias.html">Anchoring Bias</a></td>
+<td>The 1991–1998 UNSCOM baseline anchored every later judgement; the Committee's "layering effect" carried uncertainty-free judgements forward.</td>
+</tr>
+<tr>
+<td><a href="availability-heuristic.html">Availability Heuristic</a></td>
+<td>The stockpile question felt urgent because the material was loud and recent, not because the base rates supported it.</td>
+</tr>
+<tr>
+<td><a href="representativeness-heuristic.html">Representativeness Heuristic</a></td>
+<td>Dual-use procurement, concealment and a non-cooperative regime matched the template of a weapons programme.</td>
+</tr>
+<tr>
+<td><a href="absence-of-evidence-fallacy.html">Absence of Evidence Fallacy</a></td>
+<td>No accounting for missing material, and refusal to co-operate, read as proof of concealment rather than as an unresolved collection problem.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Estimation and confidence</strong></p>
+<table>
+<thead>
+<tr>
+<th>Bias</th>
+<th>In this case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="overconfidence-bias.html">Overconfidence Bias</a></td>
+<td>Certainty of language outran the evidence; the analyst who said so during drafting was right.</td>
+</tr>
+<tr>
+<td><a href="hindsight-bias.html">Hindsight Bias</a></td>
+<td>The case is now universally "obvious", which is exactly why it teaches so little on its own.</td>
+</tr>
+<tr>
+<td><a href="base-rate-neglect.html">Base-Rate Neglect</a></td>
+<td>The prior for any specific procurement item being part of a weapons programme was never stated or estimated.</td>
+</tr>
+<tr>
+<td><a href="insensitivity-to-sample-size.html">Insensitivity to Sample Size</a></td>
+<td>Judgements of stockpiles rested on a handful of sources, in a file where most reporting was untested <em>(as reported)</em>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Social and group</strong></p>
+<table>
+<thead>
+<tr>
+<th>Bias</th>
+<th>In this case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="groupthink.html">Groupthink</a></td>
+<td>The Committee's own finding: a collective presumption that Iraq had active and growing programmes, held across analysts, collectors and managers.</td>
+</tr>
+<tr>
+<td><a href="conformity-bias.html">Conformity Bias</a></td>
+<td>The dissent that existed was not carried into the assessment; there is no record of it changing anything at the time.</td>
+</tr>
+<tr>
+<td><a href="fundamental-attribution-error.html">Fundamental Attribution Error</a></td>
+<td>Explained by disposition — the regime is deceptive by nature — rather than by the situation the regime was actually in.</td>
+</tr>
+<tr>
+<td><a href="loss-aversion.html">Loss Aversion</a></td>
+<td>The asymmetry of institutional risk: understating a threat is a career event, overstating it is rarely one.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Decision and commitment</strong></p>
+<table>
+<thead>
+<tr>
+<th>Bias</th>
+<th>In this case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="escalation-of-commitment.html">Escalation of Commitment</a></td>
+<td>The picture persisted through tenfold more reporting; effort and standing had accumulated behind it.</td>
+</tr>
+<tr>
+<td><a href="framing-effect.html">Framing Effect</a></td>
+<td>The dossier's authority framed the judgements for every downstream reader, including the people who spoke publicly from them.</td>
+</tr>
+<tr>
+<td><a href="status-quo-bias.html">Status Quo Bias</a></td>
+<td>The standing assessment was carried forward at each re-issue without the evidence behind it being re-tested.</td>
+</tr>
+<tr>
+<td><a href="recency-bias.html">Recency Bias</a></td>
+<td>New reporting moved the picture without changing the underlying base; volume was mistaken for development.</td>
+</tr>
+</tbody>
+</table>
+<h2>Watch for these in your own reasoning</h2>
+<ul>
+<li><strong>Blaming the analysts, or exonerating them.</strong> Both are ways of not learning. The inquiries found honest work and a wrong answer, and that combination is the only one worth studying.</li>
+<li><strong>Collecting all seven biases.</strong> Some of this case was <a href="confirmation-bias.html">Confirmation Bias</a> operating on an ambiguous file; some was one team with one hypothesis and no challenger. Naming the structural causes matters more than naming every mechanism.</li>
+<li><strong>Solving it with more collection.</strong> The reporting volume increased tenfold and the judgement did not move. Weighting and provenance, not volume, were the levers.</li>
+<li><strong>Hindsight confidence.</strong> The room will end up certain it would have caught this. The evidence against that certainty is in the case itself: the person who did catch part of it was overruled, and only credited later.</li>
+</ul>
+<h2>Questions to keep on the table</h2>
+<ul>
+<li>What is the single source your current key judgement would collapse without — and does the customer know that?</li>
+<li>Which reporting in your file says <em>less</em> than the rest, and are you weighting it or discarding it as uninteresting?</li>
+<li>Where is the "conventional assets moved to hide them from attack" in your own work — behaviour that fits two explanations, read as the more alarming one?</li>
+<li>What would you have to see for your current assessment to be wrong, and who is looking for it?</li>
+<li>If your judgement were published in your organisation's name, and then spoken about in public, what weight would it be carrying that it cannot bear?</li>
+<li>Who raised the awkward concern in your last product cycle, and what happened to it?</li>
+</ul>
+<p><strong>After-action step.</strong> Log the judgements made in this session — each person's committed BLUF from Exercise 1 — and revisit them at the next session, per the evaluation phase of <a href="the-intelligence-cycle.html">The Intelligence Cycle</a>. The interesting comparison is not whether anyone guessed right about 2002. It is whether the protocol from Exercise 5 is still in use six weeks from now.</p>
+<h2>Related</h2>
+<ul>
+<li><a href="critical-thinking-workshop-01-train-preacher.html">Workshop 01 — The Train Preacher</a> — the same method applied to a single self-published source; source integrity, framing and gaps</li>
+<li><a href="cognitive-bias.html">Cognitive Bias</a> — the taxonomy hub; every bias named in this session has its own page there</li>
+<li><a href="structured-analytic-techniques.html">Structured Analytic Techniques</a> — ACH, the Key Assumptions Check, devil's advocacy and red-teaming: the techniques behind Exercise 4</li>
+<li><a href="estimative-language.html">Estimative Language</a> — the confidence and likelihood terms the Exercise 1 judgement should have carried</li>
+<li><a href="admiralty-rating.html">Admiralty Rating</a> — source reliability and information credibility, used in Exercise 2</li>
+<li><a href="the-intelligence-cycle.html">The Intelligence Cycle</a> — how the framing arrives, and where the review is meant to happen</li>
+</ul></article>
+<a class="nav-back" href="index.html">&larr; Back to Wiki index</a>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>Intelligence Analysis Wiki</span>
+    <span class="foot-dim">open-source tradecraft &middot; classification-gated build</span>
+  </div>
+</footer>
+<script>
+function toggleTheme(){var h=document.documentElement;var b=document.querySelector('.theme-toggle');var t=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',t);if(b)b.textContent=t==='dark'?'☀️':'🌙';try{localStorage.setItem('intel-theme',t)}catch(e){}}
+(function(){try{var s=localStorage.getItem('intel-theme');if(s)document.documentElement.setAttribute('data-theme',s);var b=document.querySelector('.theme-toggle');if(b)b.textContent=(s||'dark')==='dark'?'☀️':'🌙'}catch(e){}})();
+</script>
+</body>
+</html>
