@@ -219,9 +219,13 @@ def head(title, active="", root="", search_markup="", canonical_path="index.html
         ("index.html#concepts", "Concepts", "concepts"),
         ("index.html#entities", "Entities", "entities"),
         ("index.html#workshops", "Workshops", "workshops"),
+        # The way back up to the hub, as the AI daily's nav carries it. An
+        # absolute href is off-site, so it gets no `root` prefix.
+        ("https://peterjaycox.com", "Hub", "hub"),
     ]
     links = "".join(
-        f'<a class="{"active" if active == a else ""}" href="{root}{h}">{lbl}</a>'
+        f'<a class="{"active" if active == a else ""}" '
+        f'href="{h if h.startswith(("http://", "https://")) else root + h}">{lbl}</a>'
         for h, lbl, a in nav
     )
     return f"""<!DOCTYPE html>
