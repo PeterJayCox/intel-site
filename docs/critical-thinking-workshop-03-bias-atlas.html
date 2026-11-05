@@ -549,20 +549,22 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 <h2 id="exercise-1-the-hunt-18-minutes">Exercise 1 — the hunt (18 minutes)<a class="headerlink" href="#exercise-1-the-hunt-18-minutes" title="Permanent link">&#128279;</a></h2>
 <p>Work on your own or in pairs. For each numbered judgement, name the bias and quote the phrase that produced it. The second half is the part that counts. A bias with no tell is a bias you have not found.</p>
 <p>One test applies throughout, because the rows sit close together: ask what the neighbouring bias would have looked like instead. If you cannot say what separates representativeness from confirmation in this text, you have matched a word rather than read the mechanism.</p>
-<p><strong>The draft.</strong> Written for this exercise. It is not a real assessment, it is not about a real actor, and every judgement in it is invented. It is deliberately overloaded: a real draft this length would carry two or three of these, not nineteen. The compression is the point. You are learning the tells, not auditing a plausible product.</p>
+<p><strong>The draft.</strong> A constructed product. It is not an assessment, it is not about a real actor, and every judgement in it is invented — VANTAGE does not exist. What is real is the shape: marking and handling, tasking, BLUF, key judgements carrying confidence, basis, outlook, recommendations. Written this way it is deliberately overloaded, because a draft of this length would normally carry two or three of these mechanisms, not nineteen. The compression is the point. You are learning the tells, not auditing a plausible product.</p>
 <blockquote>
-<p><strong>Tasking.</strong> How serious is the threat to critical infrastructure from state-linked intrusion activity this quarter?</p>
-<p><strong>BLUF.</strong> A state-linked group is conducting a sustained campaign against Australian critical-infrastructure providers. We assess with high confidence that it intends to preposition access for disruptive operations.</p>
+<p><strong>CTI-2026-114</strong> · TLP:CLEAR · Reference assessment · Australian critical infrastructure · quarter ending 30 September</p>
+<p><strong>Tasking.</strong> How serious is the threat to Australian critical infrastructure from state-linked intrusion activity this quarter?</p>
+<p><strong>BLUF.</strong> We assess with high confidence that a state-linked intrusion set we track as VANTAGE is conducting a sustained campaign against Australian critical-infrastructure providers. We assess that it intends to preposition access for disruptive operations against energy distribution.</p>
 <p><strong>Key judgements</strong></p>
 <ol>
-<li>We assess with high confidence that the group is Vantage. Its tooling and its targeting closely match Vantage's established profile.</li>
-<li>We have observed this signature twice this quarter and assess it as Vantage's characteristic tradecraft.</li>
+<li>We assess with high confidence that the activity is VANTAGE. Its tooling and its targeting closely match VANTAGE's established profile; the tooling includes a signed loader first observed in July.</li>
+<li>We have observed this signature twice this quarter and assess it as VANTAGE's characteristic tradecraft.</li>
 <li>There is no evidence of collection against the water sector, which indicates the group has not yet moved against that target set.</li>
-<li>Reporting volume has risen every week since August, and the campaign will clearly escalate.</li>
+<li>Reporting volume has risen every week since August, and the campaign will clearly escalate through the quarter.</li>
 <li>Our assessment is unchanged from the previous six products.</li>
 </ol>
-<p><strong>Basis.</strong> The assessment rests on reporting from a partner service, which does not permit direct access to the underlying collection. One report describes the tooling in detail and carries judgement 1. Where reporting is ambiguous we have taken the more alarming reading, since a missed warning is the more serious error. Public reporting on the group's most recent victim, a regional hospital, corroborates the picture.</p>
+<p><strong>Basis.</strong> The assessment rests on reporting from a partner service, which does not permit direct access to the underlying collection. Partner reporting is graded B2. One report describes the tooling in detail and carries judgement 1. Where reporting is ambiguous we have taken the more alarming reading, since a missed warning is the more serious error. Public reporting on the group's most recent victim, a regional hospital, corroborates the picture.</p>
 <p><strong>Outlook.</strong> We have consistently assessed that the group will prioritise energy over water. Its restraint toward the water sector is difficult to reconcile with the behaviour we would expect from an actor seeking maximum effect. The group is aggressive and opportunistic by nature.</p>
+<p><strong>Recommendations.</strong> Hunt for the loader in scheduled-task and service-creation telemetry on energy distribution networks, and confirm that remote-access gateways are logged at the perimeter.</p>
 <p><strong>Handling.</strong> A colleague questioned the attribution in review. The query did not change the assessment and has not been recorded.</p>
 </blockquote>
 <p><strong>Your task, before opening the reveal:</strong></p>
@@ -610,12 +612,12 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 <td>Two observations are described as a campaign. Not base-rate neglect — the error here is the <em>n</em>, not a missing denominator. The honest sentence names the count: "activity observed on two occasions".</td>
 </tr>
 <tr>
-<td>"<strong>high confidence</strong>" throughout</td>
+<td>"<strong>high confidence</strong>" in the BLUF and key judgements</td>
 <td><a href="overconfidence-bias.html" data-tt="overconfidence-bias">Overconfidence Bias</a></td>
 <td>Confidence language is asserted and never earned. It is not vividness — nothing is vivid about the phrase; the failure is calibration. The tell is that nothing in the draft could ever show whether this analyst's high-confidence calls are right most of the time.</td>
 </tr>
 <tr>
-<td><strong>KJ1</strong> — "tooling and targeting closely match Vantage's established profile"</td>
+<td><strong>KJ1</strong> — "tooling and its targeting closely match VANTAGE's established profile"</td>
 <td><a href="representativeness-heuristic.html" data-tt="representativeness-heuristic">Representativeness Heuristic</a></td>
 <td>Attribution by resemblance. Distinguish it from confirmation: confirmation would be <em>discounting a rival</em>; this is <em>never forming one</em>. The test the draft fails is "how many other actors would look exactly like this?"</td>
 </tr>
@@ -630,7 +632,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 <td>The same mechanism as the campaign line, applied to a TTP. One or two intrusions become a profile. Not representativeness: nobody is matching a stereotype here; the count is simply too small to carry the word "characteristic".</td>
 </tr>
 <tr>
-<td><strong>KJ3</strong> — "no evidence of collection against water, which indicates it has not yet moved"</td>
+<td><strong>KJ3</strong> — "no evidence of collection against the water sector, which indicates the group has not yet moved"</td>
 <td><a href="absence-of-evidence-fallacy.html" data-tt="absence-of-evidence-fallacy">Absence of Evidence Fallacy</a></td>
 <td>A negative finding about <em>someone else's collection</em> is written as a positive finding about the target. Not confirmation bias on its own — the mechanism is the specific inversion of absent evidence into evidence of absence. The fix is a sentence about what was searched.</td>
 </tr>
@@ -670,7 +672,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 </thead>
 <tbody>
 <tr>
-<td><em>Basis:</em> "rests on reporting from a partner service, which does not permit direct access… one report carries judgement 1"</td>
+<td><em>Basis:</em> "rests on reporting from a partner service, which does not permit direct access… One report… carries judgement 1"</td>
 <td><strong>Structural single-source dependency</strong>, with <a href="vividness-bias.html" data-tt="vividness-bias">Vividness Bias</a></td>
 <td>Not a cognitive bias at all: it is a property of the collection. A single, detailed, vivid report behind the key judgement, with no direct access at either end of the chain. Butler's point applies: one source is not automatically weak, but a claim about an actor's identity resting on one indirect report is a different object.</td>
 </tr>
@@ -705,7 +707,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 <td>The original call is the anchor, and every later product has adjusted around it rather than re-derived it.</td>
 </tr>
 <tr>
-<td><em>Outlook:</em> "its restraint toward water is difficult to reconcile with the behaviour we would expect from an actor seeking maximum effect"</td>
+<td><em>Outlook:</em> "its restraint toward the water sector is difficult to reconcile with the behaviour we would expect from an actor seeking maximum effect"</td>
 <td><a href="mirror-imaging.html" data-tt="mirror-imaging">Mirror Imaging</a></td>
 <td>The standard of rationality applied is ours. This is the sentence to sit with: the assumption that a rational actor maximises effect, unexamined, is doing the work of an entire collection plan.</td>
 </tr>
@@ -729,12 +731,13 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 </details>
 <details>
 <summary>Reveal 5 of 5 — the two the draft cannot show, and the answers to Q2 and Q3</summary>
+<p><strong>The recommendations are clean.</strong> Not every sentence carries a mechanism. If you found one there, check that you can quote the phrase that produced it — that test is the whole exercise.</p>
 <p><strong>Two the draft cannot show.</strong></p>
 <ul>
 <li><a href="selective-perception.html" data-tt="selective-perception">Selective Perception</a> cannot be diagnosed from a single draft. Its tell is an absence: the disconfirming report that was never registered and so never appears in the text. You catch it by looking at the file the draft came from and asking what should have been there. The clip is that absence at full size: a gorilla crossed the room and never entered the count.</li>
 <li><a href="hindsight-bias.html" data-tt="hindsight-bias">Hindsight Bias</a> cannot appear in a draft written before the outcome. You will meet it in the post-mortem, when this draft’s wrong call becomes obvious in hindsight and nobody can remember how uncertain it felt.</li>
 </ul>
-<p><strong>Q2, the judgement the BLUF rests on.</strong> Judgement 1. Withdraw the attribution to Vantage and the BLUF loses the group and the intent. Judgement 1 rests on one indirect report from a service that will not permit direct access. That is the free finding: the attribution may well be right, but a single-source dependency is carrying the whole product and nothing in the draft says so.</p>
+<p><strong>Q2, the judgement the BLUF rests on.</strong> Judgement 1. Withdraw the attribution to VANTAGE and the BLUF loses the group and the intent. Judgement 1 rests on one indirect report from a service that will not permit direct access. That is the free finding: the attribution may well be right, but a single-source dependency is carrying the whole product and nothing in the draft says so.</p>
 <p><strong>Q3, the biases no individual can fix alone.</strong> <a href="groupthink.html" data-tt="groupthink">Groupthink</a> and <a href="conformity-bias.html" data-tt="conformity-bias">Conformity Bias</a>, because both are properties of how the team argues. <a href="loss-aversion.html" data-tt="loss-aversion">Loss Aversion</a> and <a href="escalation-of-commitment.html" data-tt="escalation-of-commitment">Escalation of Commitment</a>, because both are written into how the organisation and the programme are managed. Every structural row. The rest of the card you can run against your own draft in ten minutes: <a href="framing-effect.html" data-tt="framing-effect">Framing Effect</a> is a tasking you can rewrite, <a href="status-quo-bias.html" data-tt="status-quo-bias">Status Quo Bias</a> is a date you can add, <a href="recency-bias.html" data-tt="recency-bias">Recency Bias</a> is a baseline you can print. That split is why the card has two blocks.</p>
 </details>
 <p><strong>What good looks like:</strong> at least one row where a pair disagrees about the mechanism and can argue both sides from the text, the single-source dependency named before the reveal, and nobody claiming all nineteen.</p>
