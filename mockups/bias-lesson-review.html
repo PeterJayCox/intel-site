@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workshop 03 — review register · Intel Wiki (mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#12100d; --surface:#191612; --surface2:#1f1b16; --border:#332d24;
+  --text:#e9e2d4; --dim:#a89d89; --faint:#7d7365;
+  --brass:#c8a24a; --brass-bg:rgba(200,162,74,.10);
+  --red:#c96a5a; --amber:#c9a24a; --green:#7fa87f;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;padding:0 0 80px}
+.wrap{max-width:940px;margin:0 auto;padding:0 22px}
+
+/* ---- masthead ---- */
+header.mast{padding:38px 0 22px;border-bottom:1px solid var(--border);margin-bottom:6px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.eyebrow .dot{width:5px;height:5px;background:var(--brass);border-radius:50%;display:inline-block}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4.4vw,42px);line-height:1.12;margin:14px 0 10px;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--brass)}
+.lede{color:var(--dim);font-size:16px;max-width:64ch;margin:0}
+.lede b{color:var(--text);font-weight:500}
+
+/* ---- stat strip ---- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:26px 0 8px}
+.stat{background:var(--surface);padding:14px 16px}
+.stat .n{font-family:var(--serif);font-size:26px;line-height:1;color:var(--text)}
+.stat .n.bad{color:var(--red)}
+.stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:6px}
+
+/* ---- groups ---- */
+.group{margin-top:46px}
+.group-head{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:4px}
+.group-head h2{font-family:var(--serif);font-weight:600;font-size:21px;margin:0;letter-spacing:-.01em}
+.group-head .count{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.08em}
+.group-note{color:var(--faint);font-size:13.5px;margin:12px 0 6px;max-width:70ch}
+
+/* ---- rows ---- */
+.row{display:grid;grid-template-columns:34px 1fr auto;gap:14px;align-items:start;
+  padding:15px 12px;border-bottom:1px solid var(--border);cursor:default;position:relative;
+  border-radius:8px;transition:background .13s ease,transform .13s ease}
+.row:last-child{border-bottom:0}
+.row:hover,.row:focus-visible,.row.pinned{background:var(--surface);outline:none}
+.row:hover .num,.row:focus-visible .num,.row.pinned .num{color:var(--brass);border-color:var(--brass)}
+.num{font-family:var(--mono);font-size:11px;color:var(--faint);padding-top:3px;border-left:2px solid transparent;padding-left:8px;transition:color .13s ease,border-color .13s ease}
+.row h3{font-family:var(--sans);font-size:15px;font-weight:600;margin:0 0 3px;line-height:1.35;letter-spacing:0}
+.row .teaser{color:var(--dim);font-size:13.5px;margin:0;max-width:62ch}
+.pills{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;padding-top:2px}
+.pill{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:20px;border:1px solid var(--border);color:var(--faint);white-space:nowrap}
+.pill.hi{color:var(--red);border-color:rgba(201,106,90,.45);background:rgba(201,106,90,.08)}
+.pill.mid{color:var(--amber);border-color:rgba(201,162,74,.40);background:var(--brass-bg)}
+.pill.lo{color:var(--green);border-color:rgba(127,168,127,.35);background:rgba(127,168,127,.07)}
+.pill.ef{color:var(--faint)}
+.hint{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.06em;text-transform:uppercase;margin:18px 0 0}
+
+/* ---- hover card ---- */
+#pop{position:fixed;z-index:90;width:min(420px,calc(100vw - 28px));background:#221d17;border:1px solid var(--brass);
+  border-radius:10px;padding:16px 18px 15px;box-shadow:0 22px 50px rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.4);
+  opacity:0;transform:translateY(6px);pointer-events:none;transition:opacity .12s ease,transform .12s ease;font-size:13px;line-height:1.55}
+#pop.on{opacity:1;transform:translateY(0)}
+#pop .pk{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);margin-bottom:6px;display:flex;justify-content:space-between;gap:8px}
+#pop h4{font-family:var(--serif);font-size:16.5px;font-weight:600;margin:0 0 9px;line-height:1.25;letter-spacing:-.01em}
+#pop dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:10px 0 2px}
+#pop dd{margin:0;color:var(--dim)}
+#pop dd.ev{color:var(--text)}
+#pop code{font-family:var(--mono);font-size:11.5px;background:rgba(200,162,74,.12);color:var(--brass);padding:1px 4px;border-radius:3px}
+#pop .pin-note{font-family:var(--mono);font-size:9px;color:var(--faint);letter-spacing:.06em;margin-top:11px;border-top:1px solid var(--border);padding-top:8px}
+
+/* ---- demo section ---- */
+.demo{margin-top:54px;border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:24px}
+.demo h2{font-family:var(--serif);font-size:20px;margin:0 0 6px;font-weight:600}
+.demo p{color:var(--dim);font-size:14.5px;max-width:66ch}
+.demo .sample{background:var(--surface2);border-left:2px solid var(--brass);border-radius:0 8px 8px 0;padding:14px 18px;margin:18px 0 0;font-family:var(--serif);font-size:15.5px;line-height:1.75;color:var(--text)}
+.bias{color:var(--brass);border-bottom:1px dotted var(--brass);cursor:help;text-decoration:none}
+.bias:hover,.bias:focus-visible{background:var(--brass-bg);outline:none}
+footer{margin-top:46px;border-top:1px solid var(--border);padding-top:16px;color:var(--faint);font-size:12.5px;font-family:var(--mono);letter-spacing:.03em;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+@media (max-width:640px){
+  .row{grid-template-columns:26px 1fr;gap:10px}
+  .pills{grid-column:2;justify-content:flex-start;padding-top:6px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <div class="eyebrow"><span>Review register</span><span class="dot"></span><span>intel.peterjaycox.com</span><span class="dot"></span><span>mockup</span></div>
+  <h1>Workshop 03 — <em>the bias atlas</em></h1>
+  <p class="lede">Fifteen improvements to the lesson, ordered by leverage rather than by tidiness. <b>Hover a row</b> — or tab to it, or tap it — to see what I found, why it matters, and the specific fix.</p>
+
+  <p class="lede" style="margin-top:14px;border-left:2px solid var(--brass);padding-left:12px;color:var(--text)">
+    <b>Implemented 5 November 2026.</b> All fifteen items are in the build — the lesson, the twenty-one bias pages, five new structural pages and the site generator. This page is kept as the review record.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">6,556</div><div class="l">words on the page</div></div>
+    <div class="stat"><div class="n">21</div><div class="l">biases covered</div></div>
+    <div class="stat"><div class="n bad">0</div><div class="l">section anchors</div></div>
+    <div class="stat"><div class="n bad">0</div><div class="l">inline citations</div></div>
+    <div class="stat"><div class="n bad">0</div><div class="l">table rules &lt;640px</div></div>
+  </div>
+</header>
+<section class="group">
+  <div class="group-head"><h2>Content and analytical rigour</h2><span class="count">6 items</span></div>
+  <p class="group-note">The lesson is well written and the signature-card idea is genuinely good. These are the places where its own argument is not yet carried through.</p>
+
+  <div class="row" tabindex="0" data-k="a1">
+    <div class="num">01</div>
+    <div><h3>Build the structural half of the atlas</h3>
+      <p class="teaser">The session promises two families and delivers one. The structural row — the one that carried Iraq — is a paragraph.</p></div>
+    <div class="pills"><span class="pill hi">high</span><span class="pill ef">medium effort</span></div>
+  </div>
+
+  <div class="row" tabindex="0" data-k="a2">
+    <div class="num">02</div>
+    <div><h3>Correct what Workshop 02 is said to cover</h3>
+      <p class="teaser">The page claims the earlier session names seven of twenty-one biases. It names all twenty-one.</p></div>
+    <div class="pills"><span class="pill hi">high</span><span class="pill ef">one line</span></div>
+  </div>
+
+  <div class="row" tabindex="0" data-k="a3">
+    <div class="num">03</div>
+    <div><h3>Resolve “no individual can fix alone”</h3>
+      <p class="teaser">Decision-and-commitment rows are declared unfixable by one person, then given a one-move individual fix in the card.</p></div>
+    <div class="pills"><span class="pill hi">high</span><span class="pill ef">low effort</span></div>
+  </div>
+
+  <div class="row" tabindex="0" data-k="a4">
+    <div class="num">04</div>
+    <div><h3>Deliver the bias → technique → artefact map</h3>
+      <p class="teaser">The run sheet says Exercise 3 produces a map and a check sheet. Only the check sheet exists.</p></div>
+    <div class="pills"><span class="pill mid">medium</span><span class="pill ef">medium effort</span></div>
+  </div>
+
+  <div class="row" tabindex="0" data-k="a5">
+    <div class="num">05</div>
+    <div><h3>Fix the Exercise 1 brief — it undercounts the work</h3>
+      <p class="teaser">Pairs are asked for eight passages. The reveal marks nineteen rows, and the card target contradicts itself.</p></div>
+    <div class="pills"><span class="pill mid">medium</span><span class="pill ef">low effort</span></div>
+  </div>
+
+  <div class="row" tabindex="0" data-k="a6">
+    <div class="num">06</div>
+    <div><h3>Generate the signature card from the bias pages</h3>
+      <p class="teaser">Twenty-one signatures are hand-typed into the lesson while the twenty-one pages they duplicate carry no signature at all.</p></div>
+    <div class="pills"><span class="pill hi">high</span><span class="pill ef">medium effort</span></div>
+  </div>
+</section>
+
+<section class="group">
+  <div class="group-head"><h2>Reading and navigation</h2><span class="count">4 items</span></div>
+  <p class="group-note">It is a 6,500-word document used live, in a room, against a clock. Nothing on the page helps you move through it.</p>
+
+  <div class="row" tabindex="0" data-k="b1">
+    <div class="num">07</div>
+    <div><h3>Add a contents rail and section anchors</h3>
+      <p class="teaser">Seventeen headings, zero ids, no in-page navigation. A facilitator cannot jump to Exercise 1.</p></div>
+    <div class="pills"><span class="pill hi">high</span><span class="pill ef">low effort</span></div>
+  </div>
+
+  <div class="row" tabindex="0" data-k="b2">
+    <div class="num">08</div>
+    <div><h3>Give bias names hover context</h3>
+      <p class="teaser">Every bias in the prose is a link out. The definition you wanted is one sentence — and it costs you your place.</p></div>
+    <div class="pills"><span class="pill hi">high</span><span class="pill ef">low effort</span></div>
+  </div>
+
+  <div class="row" tabindex="0" data-k="b3">
+    <div class="num">09</div>
+    <div><h3>Lead with the hook, not the metadata</h3>
+      <p class="teaser">The page and its homepage card both open with “Format. Facilitated, 90 minutes…” instead of the idea.</p></div>
+    <div class="pills"><span class="pill mid">medium</span><span class="pill ef">low effort</span></div>
+  </div>
+
+  <div class="row" tabindex="0" data-k="b4">
+    <div class="num">10</div>
+    <div><h3>Navigate the three-part series</h3>
+      <p class="teaser">Workshops 01 and 02 are reachable only at the very bottom, after 6,000 words. No prev/next, no reading time.</p></div>
+    <div class="pills"><span class="pill lo">low</span><span class="pill ef">low effort</span></div>
+  </div>
+</section>
+<section class="group">
+  <div class="group-head"><h2>Mobile, print and reuse</h2><span class="count">5 items</span></div>
+  <p class="group-note">The artefact this session exists to produce is a card you keep and a room you can run. Neither survives the page as built.</p>
+
+  <div class="row" tabindex="0" data-k="c1">
+    <div class="num">11</div>
+    <div><h3>Make the tables survive a phone</h3>
+      <p class="teaser">Four-column prose tables at 390px, with nothing in the mobile breakpoint touching tables at all.</p></div>
+    <div class="pills"><span class="pill hi">high</span><span class="pill ef">medium effort</span></div>
+  </div>
+
+  <div class="row" tabindex="0" data-k="c2">
+    <div class="num">12</div>
+    <div><h3>Make the card printable and exportable</h3>
+      <p class="teaser">No print stylesheet anywhere in the site; the three answer keys print collapsed and empty.</p></div>
+    <div class="pills"><span class="pill hi">high</span><span class="pill ef">medium effort</span></div>
+  </div>
+
+  <div class="row" tabindex="0" data-k="c3">
+    <div class="num">13</div>
+    <div><h3>Reveal the hunt row by row</h3>
+      <p class="teaser">One <code>&lt;details&gt;</code> holds the whole nineteen-row answer. The facilitator can only open all of it or none.</p></div>
+    <div class="pills"><span class="pill mid">medium</span><span class="pill ef">low effort</span></div>
+  </div>
+
+  <div class="row" tabindex="0" data-k="c4">
+    <div class="num">14</div>
+    <div><h3>Cite what the lesson leans on</h3>
+      <p class="teaser">Sources sit in front matter only. The body has no citations, in a page that teaches people to test claims.</p></div>
+    <div class="pills"><span class="pill mid">medium</span><span class="pill ef">low effort</span></div>
+  </div>
+
+  <div class="row" tabindex="0" data-k="c5">
+    <div class="num">15</div>
+    <div><h3>Write the facilitator notes</h3>
+      <p class="teaser">Workshop 01 ships a facilitator companion. The most facilitator-dependent session in the set ships none.</p></div>
+    <div class="pills"><span class="pill mid">medium</span><span class="pill ef">medium effort</span></div>
+  </div>
+</section>
+
+<section class="demo">
+  <h2>The hover pattern, applied to the lesson itself</h2>
+  <p>Item 08 in one screen. Three bias names lifted from the atlas — hover, focus or tap a name and the signature arrives without leaving the sentence. On the real page the card also carries a “read the page” link, so the lesson keeps its depth without breaking the read.</p>
+
+  <div class="sample">
+    A leading hypothesis becomes self-reinforcing whenever <a class="bias" tabindex="0" href="#" data-b="confirmation">confirmation bias</a> is doing the reading: each new item raises confidence without any test against a rival. Watch for two observations described as a campaign — that is <a class="bias" tabindex="0" href="#" data-b="sample">insensitivity to sample size</a>, not a trend. And a negative finding written as a positive one is <a class="bias" tabindex="0" href="#" data-b="absent">absence of evidence</a>, which is a claim about our collection, not about the target.
+  </div>
+</section>
+
+<footer>
+  <span>Review register · Workshop 03 — the bias atlas</span>
+  <span>15 items · 6 high leverage · mockup, not published</span>
+</footer>
+<div id="pop" role="tooltip" aria-hidden="true"></div>
+<script>
+(function(){
+  var D = {
+  a1:{k:"01 · content",t:"Build the structural half of the atlas",
+    ev:"Part 2 sets up cognitive vs structural as the session’s second cut. The atlas then delivers only the taxonomy’s five cognitive families. The structural side is one row inside the Exercise 1 reveal, plus a parenthetical list in Part 2: single-source dependency, a two-analyst team on a national question, inherited partner reporting, “no change” carried forward without review, volume mistaken for development. None of the five has a page, a signature, a fix, or an owner.",
+    why:"The page’s own argument is that the structural rows are what carried the Iraq judgements, and that no amount of personal discipline fixes them. As built, it spends twenty-one fully-tabled rows on the part an individual can fix in ten minutes, and a paragraph on the part that needs a decision from somebody with authority over the team or the collection. The closing exercise then asks which rows need another person’s agreement — with no table to point at.",
+    fix:"A second table, five rows, same three columns plus “who owns the fix” (team lead, collection manager, product owner). Give each structural pattern its own wiki page tagged family: structural, so one loop renders both tables, the check sheet prints in two blocks, and the Exercise 3 card cannot quietly come out all-cognitive."},
+  a2:{k:"02 · content",t:"Correct what Workshop 02 is said to cover",
+    ev:"The page says Workshop 02 “names seven biases out of twenty-one”. Counting the body of workshop-02-iraq-wmd.md before its Related list finds all twenty-one names present, and it carries its own table headed “The atlas in action — where each bias in the taxonomy appears in this case”.",
+    why:"A reader who opens Workshop 02 finds the claim false in the first scroll — and the comparison is doing real work, because it is the reason this session exists. An error on the page’s opening argument costs more than an error in a table row.",
+    fix:"Replace the quantity with the actual distinction: Workshop 02 works a handful in depth inside one case; this session covers all twenty-one shallowly and gives each a signature you can use on any draft. Depth versus breadth is the true claim, and it is more persuasive than the count."},
+  a3:{k:"03 · content",t:"Resolve “no individual can fix alone”",
+    ev:"Two places say every row under Decision and commitment is not an individual’s to fix: the note under the atlas (“every row under decision and commitment is a property of how the team and the collection posture are managed”) and the Q3 answer. The signature card then gives each of those rows a one-move individual fix — rewrite the tasking (framing), date the review (status quo), show the prior baseline (recency), “if it did not exist today, would we build it?” (escalation).",
+    why:"The contradiction lands in the artefact people keep. A learner who notices it either discounts the card or discounts the warning, and both are the wrong lesson. It also blurs the page’s genuinely sharp distinction between what a draft review can catch and what only an owner can change.",
+    fix:"Split the card into two labelled blocks — “yours to fix in the draft” and “yours to raise with whoever owns the team”. Framing, status quo and recency stay in the first: the analyst can restate a tasking and date a review alone. Groupthink, conformity, escalation of commitment and the structural row move to the second."},
+  a4:{k:"04 · content",t:"Deliver the bias → technique → artefact map",
+    ev:"The run sheet’s 80–88 segment says Exercise 3 builds “the bias → technique → artefact map, and the check sheet”. Exercise 3 delivers the check sheet only: bias / signature / fix. There is no technique column, no artefact column, and no mention of Structured Analytic Techniques in the exercise itself.",
+    why:"The map is the piece that connects the lesson to the SAT material and the piece a manager can act on — ACH against confirmation bias, a Key Assumptions Check against status quo, a confidence ledger against overconfidence. Right now that link is asserted in the prose and never built, so the session ends with a reading aid rather than an instrument.",
+    fix:"Two more columns on the same table: the SAT that counters it, and the artefact it leaves behind (ACH matrix, assumptions log, confidence ledger, source-grading record). One artefact, four columns — the card and the map become the same object instead of two competing handouts."},
+  a5:{k:"05 · content",t:"Fix the Exercise 1 brief — it undercounts the work",
+    ev:"The brief asks pairs for “each of the five key judgements and the three other marked passages”. The reveal maps nineteen rows: the tasking, the BLUF and five key judgements, three items in the basis, three in the outlook, and two readings of the handling sentence. A second count slips the other way: “what good looks like” asks for twenty rows or fewer against a twenty-one-row model card.",
+    why:"Pairs stop at five, then meet a reveal that marks nineteen — so the comparison the exercise depends on turns into a lecture. The count mismatch is small, but it is visible in the same screen as the answer key, on a page that insists on precision.",
+    fix:"Say what the work is: “every numbered judgement, plus the tasking, the basis, the outlook and the handling paragraph — expect eighteen to twenty rows.” Drop the numeric target on the card and replace it with the standard that already appears in the prose: every signature quotable, every fix a single move."},
+  a6:{k:"06 · content",t:"Generate the signature card from the bias pages",
+    ev:"The twenty-one concept pages carry a ## Countermeasure section with generic bullets — ACH, devil’s advocacy — but no signature and no one-move fix. The card in Workshop 03 carries a signature and a fix for all twenty-one, hand-typed. The same knowledge now lives twice with no link between the copies, on a site that generates every other page from the vault.",
+    why:"The first revision to any bias page silently stales the card, and the card is the deliverable. It also explains a gap a reader feels: land on Confirmation Bias from a link mid-lesson and there is no “what this looks like in a draft” line at the top — only a definition and a countermeasure list.",
+    fix:"Add signature: and one_move: to front matter on each bias page. build_site.py renders the atlas tables and the signature card from those fields, and each concept page prints its own signature and fix directly under the title. The lesson then cannot drift, and all twenty-one pages gain the hook they currently lack."},
+  b1:{k:"07 · reading",t:"Add a contents rail and section anchors",
+    ev:"Seventeen H2 headings, five of them atlas sub-heads, across 6,556 words. No heading carries an id, there is no in-page navigation, and no per-section link. The build already computes a heading outline for every page.",
+    why:"The page is used live, in a room, against a ninety-minute clock. A facilitator needs to reach Exercise 1 without scrolling past three thousand words, and a returning reader needs a URL that lands on the atlas rather than the top of the document.",
+    fix:"Ids from the existing outline, a sticky “in this page” rail on desktop, a collapsible list under the H1 on mobile, and a copy-link anchor on each heading. Cheap, and it is the difference between a document and a reference."},
+  b2:{k:"08 · reading",t:"Give bias names hover context",
+    ev:"Every bias name in the prose is a wiki link to a separate page, and there are twenty-one of them in a document meant to be read in order. Clicking costs the reader their place, and there is no way back to the sentence they left.",
+    why:"The thing the reader wants is one sentence long — the signature. Making them leave the lesson to fetch it is the main reason people skim the tables instead of running them against a draft, which is the whole point of the session.",
+    fix:"A hover/focus card on wiki links carrying the one-line definition, the signature and the one-move fix, plus an explicit “read the page” link. Keyboard and tap supported, closing on Escape. Demonstrated on this page — see the sample at the bottom."},
+  b3:{k:"09 · reading",t:"Lead with the hook, not the metadata",
+    ev:"The page opens with Format / Material / Output as a bold-run paragraph, and the homepage card repeats it verbatim: “Format. Facilitated, 90 minutes, one team, discussion and questions throughout. Material. No case pack this time…” Every page on the site also shares one meta description — “Open-source intelligence analysis tradecraft — a living reference wiki.”",
+    why:"The first thing a reader, a search result and a shared link see is room logistics. The best line on the page — a bias is a mechanism with a signature, not a label for an opinion — sits four hundred words in, where most readers will not reach it.",
+    fix:"A summary: front-matter field used for the card dek, the meta description and an opening line under the H1. Lead with the signature idea, then a small spec strip (90 minutes · one team · no case pack · output: a check sheet) where the admin detail belongs."},
+  b4:{k:"10 · reading",t:"Navigate the three-part series",
+    ev:"The crumb reads “Wiki / Workshops”. Workshop 01 and Workshop 02 appear only in the Related list at the very bottom, after 6,000 words. No previous/next control, no reading time, no series strip.",
+    why:"It is a three-part course presented as three unrelated documents. The sequencing argument — why this session exists after the Iraq case — lives in the prose and nowhere in the navigation, so a reader arriving directly at Workshop 03 has no idea there are two before it.",
+    fix:"Previous/next by workshop type at the top and bottom, plus a reading-time chip (about 30 minutes at 250 wpm) and a three-item series strip. All derivable at build time from front matter."},
+  c1:{k:"11 · build",t:"Make the tables survive a phone",
+    ev:"The only rule in the 640px breakpoint hides the nav links and collapses the search field. Tables are untouched: site.css sets table{width:100%} with no overflow wrapper. The atlas is a four-column prose table, and at 390px each column is roughly 80 pixels wide — a vertical strip of stacked words.",
+    why:"The atlas and the signature card are the lesson. On a phone they are either an unusable strip or a horizontal scroll that hides three of the four columns, and this is a page people will open the night before a session.",
+    fix:"As a floor, wrap every table in a scroll container with a visible edge fade. Properly, stack to cards below 640px: bias name, then signature, example and fix as labelled rows. The reveal tables need the same treatment — they are the widest on the page."},
+  c2:{k:"12 · build",t:"Make the card printable and exportable",
+    ev:"There is no print stylesheet anywhere in site.css, and all three answer keys live inside collapsed <details> elements, which print closed and empty. The session’s stated output is “a card you will keep”.",
+    why:"A ninety-minute facilitated session needs paper: the constructed draft to mark up, the card to carry to a desk, the answer key for the facilitator. Printing today produces a twenty-six-page document with the answers missing and the navigation repeated on every sheet.",
+    fix:"A print block: open every details, hide nav, search, pills and footer, set the tables to two columns, add page-break rules before each exercise. Plus a dedicated /bias-card.html print view, or a single-file HTML download of the card alone."},
+  c3:{k:"13 · build",t:"Reveal the hunt row by row",
+    ev:"Each reveal is a single <details> holding a whole table — nineteen rows in Exercise 1. A facilitator either opens the entire answer key at once or none of it.",
+    why:"The pedagogic value is in the argument row by row — “is this representativeness or confirmation, and what phrase settles it?”. One container forces the whole answer onto the screen before the room has had the argument, which is exactly how a good exercise becomes a slide.",
+    fix:"One <details> per mapped passage, or per block (tasking, judgements, basis, outlook, handling). Pairs self-mark and the facilitator opens each as the room arrives at it — no other change to the content."},
+  c4:{k:"14 · build",t:"Cite what the lesson leans on",
+    ev:"Front matter lists Heuer’s Psychology of Intelligence Analysis and Janis’s Victims of Groupthink. The body has zero inline citations, while the concept pages in the same wiki footnote theirs inline. The load-bearing claim that “every official inquiry into the Iraq WMD failure found no deliberate distortion” carries nothing to click.",
+    why:"It is a teaching document in an intelligence wiki, and an unsourced absolute is exactly the kind of claim the page spends six thousand words telling analysts to test. Front-matter sources are invisible on the published page — the build does not render them.",
+    fix:"Inline footnotes at the four load-bearing points — Heuer on bias surviving more information, Janis on unanimity over appraisal, Butler on absence of deliberate distortion, the Senate report on the layering effect — and have the build render a Sources block from front matter so the citation is visible, not just present."},
+  c5:{k:"15 · build",t:"Write the facilitator notes",
+    ev:"Workshop 01 ships a companion facilitator file in the vault. Workshop 03 — three exercises, timed reveals, and a room that will disagree about mechanisms — ships none.",
+    why:"The session’s quality depends on what the facilitator does when a pair finds nothing, finds ten, or disagrees about the mechanism. The page anticipates those moments in the reveal, but a run book is a different document: it says what to do, in what order, and what to skip when you are ten minutes behind.",
+    fix:"A companion page: the timing table with cut points, the four symptoms and the reply to each, the three failure modes, the expected wrong answer per atlas row, and a pre-session checklist (draft printed, pairs assigned, reveal pages open)."}
+  };
+
+  var B = {
+  confirmation:{t:"Confirmation Bias",
+    ev:"Seeking, interpreting and recalling information that supports an existing view, while discounting what contradicts it.",
+    why:"Signature: a hypothesis and a pile of support, with no rival hypothesis anywhere on the page.",
+    fix:"Write the strongest competing hypothesis beside the leading one and mark which evidence discriminates."},
+  sample:{t:"Insensitivity to Sample Size",
+    ev:"Drawing strong conclusions from small samples — the error is not using them, but failing to lower confidence to match.",
+    why:"Signature: “campaign”, “pattern”, “characteristic” with no count anywhere in the sentence.",
+    fix:"Put the n in the sentence and let the reader see it."},
+  absent:{t:"Absence of Evidence Fallacy",
+    ev:"Treating “we found nothing” as proof that nothing exists — a property of the collection, not of the target.",
+    why:"Signature: “no evidence of”, “we have not seen”, “there is no indication”, with nothing said about what was searched.",
+    fix:"Pair every negative finding with the collection behind it."}
+  };
+
+  var pop = document.getElementById('pop');
+  var pinned = null, current = null;
+
+  /* innerHTML is safe here: 'card' is built only from the static D/B objects
+     authored in this file. There is no user, URL or remote input anywhere. */
+  function card(o, kicker){
+    return '<div class="pk"><span>'+kicker+'</span></div><h4>'+o.t+'</h4><dl>'
+      + (o.ev ? '<dt>What I found</dt><dd class="ev">'+o.ev+'</dd>' : '')
+      + (o.why ? '<dt>Why it matters</dt><dd>'+o.why+'</dd>' : '')
+      + (o.fix ? '<dt>'+o.fixLabel+'</dt><dd>'+o.fix+'</dd>' : '')
+      + '</dl><div class="pin-note">click to pin · esc to release</div>';
+  }
+
+  function place(el, html, kicker, data){
+    pop.innerHTML = card(Object.assign({}, data, {fixLabel: kicker==='Bias' ? 'The one move' : 'The fix'}), kicker);
+    pop.classList.add('on');
+    pop.setAttribute('aria-hidden','false');
+    var r = el.getBoundingClientRect();
+    var w = pop.offsetWidth, h = pop.offsetHeight;
+    var vw = window.innerWidth, vh = window.innerHeight;
+    var x, y;
+    if (r.right + 18 + w <= vw - 12) { x = r.right + 18; y = Math.min(Math.max(12, r.top - 8), vh - h - 12); }
+    else { x = Math.min(Math.max(12, r.left), vw - w - 12); y = (r.bottom + 12 + h <= vh - 12) ? r.bottom + 12 : Math.max(12, r.top - h - 12); }
+    pop.style.left = x+'px'; pop.style.top = y+'px';
+  }
+  function hide(){ if(pinned) return; pop.classList.remove('on'); pop.setAttribute('aria-hidden','true'); current=null; }
+
+  function bindRows(){
+    document.querySelectorAll('.row').forEach(function(row){
+      var key = row.getAttribute('data-k');
+      var d = D[key]; if(!d) return;
+      row.addEventListener('mouseenter', function(){ if(pinned && pinned!==row) return; current=row; place(row, null, d.k, d); });
+      row.addEventListener('mouseleave', hide);
+      row.addEventListener('focus', function(){ current=row; place(row, null, d.k, d); });
+      row.addEventListener('blur', hide);
+      row.addEventListener('click', function(e){
+        e.preventDefault();
+        if (pinned === row){ pinned=null; row.classList.remove('pinned'); hide(); }
+        else { if(pinned) pinned.classList.remove('pinned'); pinned=row; row.classList.add('pinned'); current=row; place(row, null, d.k, d); }
+      });
+    });
+  }
+  function bindBias(){
+    document.querySelectorAll('a.bias').forEach(function(a){
+      var d = B[a.getAttribute('data-b')]; if(!d) return;
+      a.addEventListener('mouseenter', function(){ place(a, null, 'Bias', d); });
+      a.addEventListener('mouseleave', hide);
+      a.addEventListener('focus', function(){ place(a, null, 'Bias', d); });
+      a.addEventListener('blur', hide);
+      a.addEventListener('click', function(e){ e.preventDefault(); });
+    });
+  }
+  document.addEventListener('click', function(e){
+    if(!pinned) return;
+    if(e.target.closest('.row') || e.target.closest('#pop')) return;
+    pinned.classList.remove('pinned'); pinned=null; hide();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape'){ if(pinned) pinned.classList.remove('pinned'); pinned=null; hide(); }
+  });
+  window.addEventListener('scroll', function(){ if(!pinned) hide(); }, {passive:true});
+  bindRows(); bindBias();
+})();
+</script>
+</div>
+</body>
+</html>

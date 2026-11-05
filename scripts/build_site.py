@@ -112,12 +112,21 @@ WIKILINK_DISPLAY = re.compile(r"\[\[([^\[\]|]+)\|([^\[\]]+)\]\]")
 WIKILINK_SIMPLE = re.compile(r"\[\[([^\[\]]+)\]\]")
 
 
-def resolve_wikilinks(md, slug_map):
+def reading_minutes(body):
+    """Rounded reading time at 250 wpm (provenance markers excluded)."""
+    words = len(re.findall(r"\S+", strip_provenance(body)))
+    return max(1, int(round(words / 250.0)))
+
+
+def resolve_wikilinks(md, slug_map, tt_slugs=()):
     def link(target, display):
         t = target.strip()
         k = key(t)
         if k in slug_map:
-            return f'<a href="{html.escape(slug_map[k] + ".html")}">{html.escape(display)}</a>'
+            slug = slug_map[k]
+            tt = f' data-tt="{html.escape(slug)}"' if slug in tt_slugs else ""
+            return (f'<a href="{html.escape(slug + ".html")}"{tt}>'
+                    f'{html.escape(display)}</a>')
         return html.escape(display)  # unresolved -> plain text (graceful)
 
     # display form first: [[Target|display]]
@@ -201,6 +210,17 @@ if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
 })();
 </script>"""
+PRINT_JS = """<script>
+/* open every spoiler before printing, close it again afterwards */
+(function(){
+  var closed=[];
+  function openAll(){closed=[];var d=document.querySelectorAll('details:not([open])');
+    for(var i=0;i<d.length;i++){d[i].open=true;closed.push(d[i]);}}
+  function closeAll(){for(var i=0;i<closed.length;i++){closed[i].open=false;}closed=[];}
+  window.addEventListener('beforeprint',openAll);
+  window.addEventListener('afterprint',closeAll);
+})();
+</script>"""
 THEME_TOGGLE = ('<div class="theme-toggle" role="button" tabindex="0"'
     ' aria-label="Appearance" title="Appearance"'
     ' onclick="window.__intelTheme.cycle(event)"'
@@ -211,9 +231,12 @@ THEME_TOGGLE = ('<div class="theme-toggle" role="button" tabindex="0"'
 
 
 # ---------------- chrome ----------------
-def head(title, active="", root="", search_markup="", canonical_path="index.html"):
+def head(title, active="", root="", search_markup="", canonical_path="index.html",
+         desc=""):
     v = TODAY.strftime("%Y%m%d")
     canon = f"{SITE_BASE}/" if title == "Home" else f"{SITE_BASE}/{canonical_path}"
+    meta_desc = (desc or SITE_TAGLINE).replace('"', "&quot;")
+    meta_desc = re.sub(r"\s+", " ", meta_desc).strip()[:300]
     nav = [
         ("index.html", "Home", "index"),
         ("index.html#concepts", "Concepts", "concepts"),
@@ -234,8 +257,17 @@ def head(title, active="", root="", search_markup="", canonical_path="index.html
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {THEME_HEAD}
+{PRINT_JS}
 <title>{html.escape(title)} · {SITE_NAME}</title>
-<meta name="description" content="Open-source intelligence analysis tradecraft — a living reference wiki.">
+<meta name="description" content="{meta_desc}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="{SITE_NAME}">
+<meta property="og:title" content="{html.escape(title)}">
+<meta property="og:description" content="{meta_desc}">
+<meta property="og:url" content="{canon}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{html.escape(title)}">
+<meta name="twitter:description" content="{meta_desc}">
 <link rel="canonical" href="{canon}">
 <link rel="icon" type="image/svg+xml" href="{root}assets/img/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -299,6 +331,17 @@ class Page(object):
         self.body = body
         self.summary = summary
         self.tags = tags
+        # optional editorial fields (see SCHEMA.md)
+        self.dek_explicit = bool(scalar(fm.get("summary")))
+        self.dek = scalar(fm.get("summary")) or summary
+        self.signature = scalar(fm.get("signature"))
+        self.one_move = scalar(fm.get("one_move"))
+        self.owner = scalar(fm.get("owner")).lower()
+        self.technique = scalar(fm.get("technique"))
+        self.artefact = scalar(fm.get("artefact"))
+        self.family = scalar(fm.get("family"))
+        self.toc = str(scalar(fm.get("toc"))).lower() in {"true", "yes", "1"}
+        self.mins = reading_minutes(body)
 
 
 def load_pages():
@@ -346,34 +389,178 @@ def build_slug_map(pages):
     return m
 
 
-def render_body(p, slug_map):
+def _md_cell(s):
+    """One-line, pipe-safe table cell text."""
+    s = re.sub(r"\s+", " ", str(s or "")).strip()
+    return s.replace("|", "\\|")
+
+
+def bias_pages(pages):
+    return [p for p in pages if p.signature]
+
+
+def bias_card_md(pages):
+    """The signature card, generated from the bias pages' front matter."""
+    bp = bias_pages(pages)
+    mine = sorted([p for p in bp if p.owner != "system"], key=lambda p: p.title.lower())
+    theirs = sorted([p for p in bp if p.owner == "system"], key=lambda p: p.title.lower())
+    out = []
+    out.append(f"**Yours to fix in the draft** — {len(mine)} rows you can close in ten "
+               "minutes, alone, before issue.\n")
+    out.append("| Bias | The signature — what you will see in your own draft | The fix — one move |")
+    out.append("|---|---|---|")
+    for p in mine:
+        out.append(f"| [[{p.title}]] | {_md_cell(p.signature)} | {_md_cell(p.one_move)} |")
+    out.append("")
+    out.append(f"**Yours to raise with whoever owns the team or the collection** — "
+               f"{len(theirs)} rows no amount of personal discipline will close. The "
+               "signature is still yours to spot; the fix is somebody else's to make.\n")
+    out.append("| Bias | The signature | What to raise, and with whom |")
+    out.append("|---|---|---|")
+    for p in theirs:
+        out.append(f"| [[{p.title}]] | {_md_cell(p.signature)} | {_md_cell(p.one_move)} |")
+    return "\n".join(out)
+
+
+def bias_map_md(pages):
+    """bias -> technique -> artefact, grouped by technique."""
+    bp = [p for p in bias_pages(pages) if p.technique]
+    groups = {}
+    for p in bp:
+        groups.setdefault(p.technique, []).append(p)
+    out = ["| Technique | The biases it counters | The artefact it leaves behind |",
+           "|---|---|---|"]
+    order = sorted(groups, key=lambda t: (-len(groups[t]), t.lower()))
+    for tech in order:
+        names = ", ".join(sorted("[[%s]]" % p.title for p in groups[tech]))
+        arts = sorted({p.artefact for p in groups[tech] if p.artefact})
+        out.append(f"| **{_md_cell(tech)}** | {names} | "
+                   + ("; ".join(_md_cell(a) for a in arts) or "—") + " |")
+    return "\n".join(out)
+
+
+def render_body(p, pages, slug_map, tt_slugs=()):
     md = p.body
     # drop the leading H1 (title is rendered in the page header)
     md = re.sub(r"\A\s*#\s+[^\n]*\n?", "", md, count=1)
     md = strip_provenance(md)
-    md = resolve_wikilinks(md, slug_map)
+    if "{{BIAS_CARD}}" in md:
+        md = md.replace("{{BIAS_CARD}}", bias_card_md(pages))
+    if "{{BIAS_MAP}}" in md:
+        md = md.replace("{{BIAS_MAP}}", bias_map_md(pages))
+    md = resolve_wikilinks(md, slug_map, tt_slugs)
     md = blank_before_blocks(md)
-    return md_lib.markdown(md, extensions=["extra"])
+    if p.toc:
+        body_html = md_lib.markdown(
+            md, extensions=["extra", "toc"],
+            extension_configs={"toc": {"permalink": "&#128279;", "toc_depth": "2-3"}})
+    else:
+        body_html = md_lib.markdown(md, extensions=["extra"])
+    # wide tables get their own scroll container (see site.css .table-wrap)
+    body_html = body_html.replace("<table>", '<div class="table-wrap"><table>')
+    body_html = body_html.replace("</table>", "</table></div>")
+    return body_html
 
 
-def build_page(p, pages, slug_map):
+def toc_html(body_html):
+    """Contents rail built from the rendered h2/h3 ids."""
+    items = []
+    for m in re.finditer(r'<h([23]) id="([^"]+)"[^>]*>(.*?)</h\1>', body_html, re.S):
+        level = int(m.group(1))
+        text = re.sub(r"<[^>]+>", "", m.group(3)).replace("&#128279;", "").strip()
+        if not text:
+            continue
+        items.append((level, m.group(2), text))
+    if len(items) < 4:
+        return ""
+    rows = "".join(
+        f'<li class="lvl{lv}"><a href="#{html.escape(hid)}">{html.escape(txt)}</a></li>'
+        for lv, hid, txt in items)
+    return (f'<details class="toc" open><summary>On this page '
+            f'<span class="toc-n">{len(items)}</span></summary>'
+            f'<ol class="toc-list">{rows}</ol></details>')
+
+
+def signature_block(p):
+    """The draft signature + one move, rendered on the bias page itself."""
+    if not p.signature:
+        return ""
+    owner = p.owner == "system"
+    cls = "sig-card sig-system" if owner else "sig-card"
+    owner_tag = ('<span class="sig-owner">Raise, do not fix alone</span>'
+                 if owner else '<span class="sig-owner">Yours to fix in the draft</span>')
+    return f"""
+<aside class="{cls}">
+  <div class="sig-kicker">Signature in a draft {owner_tag}</div>
+  <p class="sig-main">{html.escape(p.signature)}</p>
+  <div class="sig-kicker">The one move</div>
+  <p class="sig-fix">{html.escape(p.one_move)}</p>
+</aside>"""
+
+
+def prev_next_html(p, pages):
+    """Previous / next within the same page type (workshops, concepts…)."""
+    if p.rtype != "workshop":
+        return ""
+    sibs = sorted([q for q in pages if q.rtype == p.rtype], key=lambda q: q.slug)
+    try:
+        i = [q.slug for q in sibs].index(p.slug)
+    except ValueError:
+        return ""
+    prev = sibs[i - 1] if i > 0 else None
+    nxt = sibs[i + 1] if i + 1 < len(sibs) else None
+    cells = []
+    for q, lbl, cls in ((prev, "&larr; Previous", "pn-prev"), (nxt, "Next &rarr;", "pn-next")):
+        if q:
+            cells.append(f'<a class="pn {cls}" href="{html.escape(q.slug)}.html">'
+                         f'<span class="pn-lbl">{lbl}</span>'
+                         f'<span class="pn-title">{html.escape(q.title)}</span></a>')
+    return f'<nav class="prevnext">{"".join(cells)}</nav>' if cells else ""
+
+
+def tt_payload(pages, tt_slugs):
+    out = {}
+    for p in pages:
+        if p.slug in tt_slugs:
+            out[p.slug] = {
+                "t": p.title,
+                "d": re.sub(r"\s+", " ", p.dek)[:240],
+                "s": p.signature,
+                "m": p.one_move,
+                "o": "system" if p.owner == "system" else "",
+            }
+    return json.dumps(out, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e")
+
+
+def build_page(p, pages, slug_map, tt_slugs=()):
     rtype_label = TYPE_LABELS.get(p.rtype, "Concepts")
     badges = [f'<span class="type-pill">{html.escape(rtype_label.rstrip("s"))}</span>',
               confidence_badge(p.fm)]
     chips = tag_chips(p.tags)
-    body = render_body(p, slug_map)
-    related = [q for q in pages if q.slug != p.slug][:0]  # keep simple; Related rendered inline already
+    body = render_body(p, pages, slug_map, tt_slugs)
+    rail = toc_html(body)
+    sig = signature_block(p)
+    pn = prev_next_html(p, pages)
+    has_tt = "data-tt=" in body
+    tt_block = ""
+    if has_tt:
+        tt_block = (f'<script type="application/json" id="tt-data">'
+                    f'{tt_payload(pages, tt_slugs)}</script>{TT_JS}')
 
     inner = f"""
 <div class="crumb"><a href="index.html">Wiki</a><span class="sep">/</span>{html.escape(rtype_label)}</div>
 <div class="page-head">
-  <div class="head-top">{''.join(badges)}</div>
+  <div class="head-top">{''.join(badges)}<span class="pill meta-pill">{p.mins} min read</span></div>
   <h1>{html.escape(p.title)}</h1>
+  {f'<p class="dek">{html.escape(p.dek)}</p>' if p.dek_explicit else ''}
   <div class="tags-row">{chips}</div>
   <div class="stamp">Open Source</div>
 </div>
+{pn}{sig}{rail}
 <article class="wiki-body">{body}</article>
+{pn}
 <a class="nav-back" href="index.html">&larr; Back to Wiki index</a>
+{tt_block}
 """
 
     html_out = head(
@@ -381,6 +568,7 @@ def build_page(p, pages, slug_map):
         active=p.rtype if p.rtype in ("concept", "entity", "workshop") else "index",
         search_markup=search_widget_html(pages, compact=True),
         canonical_path=p.slug + ".html",
+        desc=p.dek,
     )
     html_out += inner + FOOT
     out_path = os.path.join(DOCS, p.slug + ".html")
@@ -395,7 +583,7 @@ def card_html(p):
     chips = tag_chips(p.tags[:3])
     return f"""<a class="card" href="{html.escape(p.slug)}.html">
   <h3>{html.escape(p.title)}</h3>
-  <div class="summary">{html.escape(p.summary)}</div>
+  <div class="summary">{html.escape(p.dek[:220])}</div>
   <div class="meta">{''.join(badges)}{chips}</div>
 </a>"""
 
@@ -409,7 +597,7 @@ def search_widget_html(pages, compact=False):
         "title": p.title,
         "type": TYPE_SINGULAR.get(p.rtype, "Concept"),
         "tags": p.tags[:5],
-        "summary": p.summary[:180],
+        "summary": p.dek[:180],
     } for p in pages]
     index = json.dumps(search_pages, ensure_ascii=False)
     # keep the inline JSON from ever terminating the script tag early
@@ -532,6 +720,53 @@ SEARCH_JS = r"""<script>
 </script>"""
 
 
+TT_JS = r"""<script>
+(function(){
+  var raw=document.getElementById('tt-data');
+  if(!raw)return;
+  var data={};try{data=JSON.parse(raw.textContent);}catch(e){return;}
+  var el=document.createElement('div');
+  el.id='tt-card';el.setAttribute('role','tooltip');el.setAttribute('aria-hidden','true');
+  document.body.appendChild(el);
+  var cur=null;
+  function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  /* innerHTML is safe: values come from #tt-data, a build-time JSON blob
+     generated from classification-gated vault pages, and every field passes
+     through esc(); the JSON itself has <,> escaped as \uXXXX. */
+  function fill(d){
+    var h='<div class="tt-k">';
+    h+= (d.o==='system') ? 'Bias &middot; raise, do not fix alone' : 'Bias';
+    h+='</div><h4>'+esc(d.t)+'</h4>';
+    if(d.d)h+='<p>'+esc(d.d)+'</p>';
+    if(d.s)h+='<div class="tt-row"><span>Signature</span><em>'+esc(d.s)+'</em></div>';
+    if(d.m)h+='<div class="tt-row"><span>The one move</span><em>'+esc(d.m)+'</em></div>';
+    h+='<div class="tt-foot">'+esc(d.t)+'.html &rarr;</div>';
+    el.innerHTML=h;
+  }
+  function show(a){
+    var d=data[a.getAttribute('data-tt')];
+    if(!d)return;
+    cur=a;fill(d);
+    el.classList.add('on');el.setAttribute('aria-hidden','false');
+    var r=a.getBoundingClientRect(),w=el.offsetWidth,h=el.offsetHeight;
+    var x=Math.min(Math.max(12,r.left),window.innerWidth-w-12);
+    var y=(r.bottom+10+h<=window.innerHeight-12)?r.bottom+10:Math.max(12,r.top-h-10);
+    el.style.left=x+'px';el.style.top=y+'px';
+  }
+  function hide(){if(!cur)return;cur=null;el.classList.remove('on');el.setAttribute('aria-hidden','true');}
+  var links=document.querySelectorAll('a[data-tt]');
+  Array.prototype.forEach.call(links,function(a){
+    a.addEventListener('mouseenter',function(){show(a);});
+    a.addEventListener('mouseleave',hide);
+    a.addEventListener('focus',function(){show(a);});
+    a.addEventListener('blur',hide);
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')hide();});
+  window.addEventListener('scroll',hide,{passive:true});
+})();
+</script>"""
+
+
 def build_index(pages, skipped):
     by_type = {t: [p for p in pages if p.rtype == t] for t in TYPE_ORDER}
     total = len(pages)
@@ -575,7 +810,7 @@ def build_index(pages, skipped):
 {search_widget_html(pages)}
 {''.join(sections)}
 """
-    html_out = head("Home", active="index") + inner + FOOT
+    html_out = head("Home", active="index", desc=SITE_TAGLINE) + inner + FOOT
     with open(os.path.join(DOCS, "index.html"), "w", encoding="utf-8") as f:
         f.write(html_out)
 
@@ -624,12 +859,14 @@ def main():
     os.makedirs(DOCS, exist_ok=True)
     pages, skipped = load_pages()
     slug_map = build_slug_map(pages)
+    # pages that get a hover card wherever they are wikilinked
+    tt_slugs = {p.slug for p in bias_pages(pages)}
 
     copy_assets()
     copy_cname()
     build_index(pages, skipped)
     for p in pages:
-        build_page(p, pages, slug_map)
+        build_page(p, pages, slug_map, tt_slugs)
     build_robots()
     build_sitemap(pages)
 

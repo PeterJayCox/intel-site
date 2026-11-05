@@ -31,14 +31,33 @@ if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
 })();
 </script>
+<script>
+/* open every spoiler before printing, close it again afterwards */
+(function(){
+  var closed=[];
+  function openAll(){closed=[];var d=document.querySelectorAll('details:not([open])');
+    for(var i=0;i<d.length;i++){d[i].open=true;closed.push(d[i]);}}
+  function closeAll(){for(var i=0;i<closed.length;i++){closed[i].open=false;}closed=[];}
+  window.addEventListener('beforeprint',openAll);
+  window.addEventListener('afterprint',closeAll);
+})();
+</script>
 <title>Workshop 03 — the bias atlas · Intel Wiki</title>
-<meta name="description" content="Open-source intelligence analysis tradecraft — a living reference wiki.">
+<meta name="description" content="Twenty-one biases, one signature each. Learn what a bias looks like in a draft — not what it is called — and a page of prose becomes readable in ten minutes.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Intel Wiki">
+<meta property="og:title" content="Workshop 03 — the bias atlas">
+<meta property="og:description" content="Twenty-one biases, one signature each. Learn what a bias looks like in a draft — not what it is called — and a page of prose becomes readable in ten minutes.">
+<meta property="og:url" content="https://intel.peterjaycox.com/critical-thinking-workshop-03-bias-atlas.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Workshop 03 — the bias atlas">
+<meta name="twitter:description" content="Twenty-one biases, one signature each. Learn what a bias looks like in a draft — not what it is called — and a page of prose becomes readable in ten minutes.">
 <link rel="canonical" href="https://intel.peterjaycox.com/critical-thinking-workshop-03-bias-atlas.html">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=20261023">
+<link rel="stylesheet" href="assets/site.css?v=20261105">
 </head>
 <body>
 <nav class="topnav">
@@ -59,7 +78,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   </div>
   <div class="search-results" id="search-results" role="listbox" hidden></div>
 </div>
-<script type="application/json" id="search-data">[{"slug": "absence-of-evidence-fallacy", "title": "Absence of Evidence Fallacy", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Treating the absence of evidence as evidence of absence — reading \"we found nothing\" as proof that nothing exists. In intelligence the error runs in both directions, and the second"}, {"slug": "admiralty-rating", "title": "Admiralty Rating", "type": "Concept", "tags": ["admiralty", "analysis", "dissemination"], "summary": "The Admiralty (NATO 6×6) system for grading intelligence reports — a two-character code separating source reliability (A–F) from information credibility (1–6). Devised by Director "}, {"slug": "ai-in-intelligence-analysis", "title": "AI in Intelligence Analysis", "type": "Concept", "tags": ["analysis", "ai", "osint"], "summary": "Two supply shocks are hitting a small analytic workforce at once — open source becoming first-class collection, and AI that is already operational in some missions and arriving fas"}, {"slug": "aipio", "title": "AIPIO", "type": "Entity", "tags": ["course", "collection", "frameworks"], "summary": "The Australian Institute of Professional Intelligence Officers — the professional body for the intelligence profession in Australia. The wiki's course material derives from the AIP"}, {"slug": "anchoring-bias", "title": "Anchoring Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Over-reliance on the first piece of information offered (the anchor) when forming subsequent estimates, with insufficient adjustment away from it — even when the anchor is arbitrar"}, {"slug": "asd-project-redspice", "title": "ASD Project Redspice", "type": "Entity", "tags": ["cyber-intel", "collection", "jurisdiction"], "summary": "REDSPICE (Resilience, Effects, Defence, Space, Intelligence, Cyber, Enablers) is ASD's transformation programme, announced March 2022: roughly $9.9 billion over a decade, aimed at "}, {"slug": "aukus-intelligence-sharing", "title": "AUKUS Intelligence Sharing", "type": "Entity", "tags": ["alliance", "jurisdiction", "collection"], "summary": "AUKUS is not only a submarine and advanced-capabilities pact — for the intelligence community it is a classification, workforce and counter-espionage shock. Its two pillars create "}, {"slug": "availability-heuristic", "title": "Availability Heuristic", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Judging the probability or frequency of an event by how easily instances come to mind. Vivid, recent, or dramatic events are recalled readily and are therefore over-weighted relati"}, {"slug": "base-rate-neglect", "title": "Base-Rate Neglect", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Ignoring the prior probability of an event in favour of vivid, specific, case-level detail. The analyst reasons about the individual case as if it existed outside any population — "}, {"slug": "belief-perseverance", "title": "Belief Perseverance", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Difficulty abandoning a mindset once formed, even after the evidence that produced it has been discredited. The judgement persists after its foundation is gone — and the analyst ex"}, {"slug": "bottom-line-up-front", "title": "Bottom Line Up Front", "type": "Concept", "tags": ["writing", "dissemination"], "summary": "The BLUF principle — lead any intelligence product with its single most important judgment or implication, before background or detail. This is the structural core of analytic writ"}, {"slug": "cognitive-bias", "title": "Cognitive Bias", "type": "Concept", "tags": ["analysis", "frameworks", "bias"], "summary": "A cognitive bias is a systematic — as opposed to random — error in judgement, driven by the mental shortcuts (heuristics) the brain uses to process information efficiently. In inte"}, {"slug": "confirmation-bias", "title": "Confirmation Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "The tendency to search for, interpret, favour, and recall information in ways that confirm one's pre-existing beliefs, while giving disproportionately less weight to disconfirming "}, {"slug": "conformity-bias", "title": "Conformity Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Adopting the position of the surrounding group — or of a senior voice — regardless of one's own analysis. Distinct from Groupthink: groupthink describes a group's shared degradatio"}, {"slug": "electronic-surveillance-law-reform", "title": "Electronic Surveillance Law Reform", "type": "Concept", "tags": ["law", "collection", "jurisdiction"], "summary": "The most important legal renovation on Australia's books — and it has not happened."}, {"slug": "escalation-of-commitment", "title": "Escalation of Commitment", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Persisting with a failing line of reasoning, collection effort or product because of what has already been invested in it — the sunk-cost fallacy applied to analysis. The investmen"}, {"slug": "estimative-language", "title": "Estimative Language", "type": "Concept", "tags": ["dissemination", "writing", "analysis"], "summary": "A standardised vocabulary for expressing likelihood and confidence in analytical products, so judgements are calibrated and consistently understood (Sherman Kent tradition, adapted"}, {"slug": "five-eyes", "title": "Five Eyes", "type": "Entity", "tags": ["collection", "alliance", "jurisdiction"], "summary": "The Five Eyes (FVEY) — Australia, Canada, New Zealand, the UK and the US — is the intelligence-sharing alliance at the heart of Australia's National Intelligence Community. Austral"}, {"slug": "framing-effect", "title": "Framing Effect", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Reaching different conclusions from identical information because of how the options, risks or question were expressed. The framing is usually supplied by someone else — a customer"}, {"slug": "fundamental-attribution-error", "title": "Fundamental Attribution Error", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Explaining other people's behaviour by their character while explaining one's own by circumstance. Applied to adversaries, it converts structural pressure into disposition: an acto"}, {"slug": "groupthink", "title": "Groupthink", "type": "Concept", "tags": ["analysis", "bias"], "summary": "(Janis 1972) A mode of thinking in cohesive groups in which the drive for unanimity overrides a realistic appraisal of alternative courses of action. It is the social analogue of i"}, {"slug": "hindsight-bias", "title": "Hindsight Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "After an outcome is known, the tendency to over-estimate how foreseeable it was beforehand — the \"I knew it all along\" effect, also called creeping determinism. Memory of one's pri"}, {"slug": "insensitivity-to-sample-size", "title": "Insensitivity to Sample Size", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Drawing strong conclusions from small samples — treating a handful of observations as representative of a population or a pattern. The error is not in using small samples: in intel"}, {"slug": "intelligence-oversight", "title": "Intelligence Oversight", "type": "Concept", "tags": ["oversight", "jurisdiction"], "summary": "How Australia holds its National Intelligence Community accountable. The architecture is widely regarded as a strong model internationally — anchored by the Inspector-General of In"}, {"slug": "intelligence-relationships-contested-region", "title": "Intelligence Relationships in a Contested Region", "type": "Concept", "tags": ["jurisdiction", "alliance", "collection"], "summary": "For Australia, collection and liaison policy are now foreign policy. The National Intelligence Community runs an alliance system built on Five Eyes while managing a web of partners"}, {"slug": "loss-aversion", "title": "Loss Aversion", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Losses loom larger than equivalent gains, skewing risk judgement. From prospect theory: the same outcome is weighed differently depending on whether it is presented as giving somet"}, {"slug": "mirror-imaging", "title": "Mirror Imaging", "type": "Concept", "tags": ["analysis", "bias"], "summary": "(Heuer) Assuming that the other actor shares the analyst's own rationality, values, and constraints — projecting one's own frame of reference onto the subject. A classic source of "}, {"slug": "national-intelligence-community", "title": "National Intelligence Community", "type": "Entity", "tags": ["jurisdiction", "summary", "analysis", "collection"], "summary": "The National Intelligence Community (NIC) is Australia's ten-agency intelligence enterprise — small but well-developed, distinctive for its strong separation of assessment from col"}, {"slug": "overconfidence-bias", "title": "Overconfidence Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "The tendency to systematically over-estimate the accuracy or calibration of one's own judgements and knowledge. It is the gap between how confident an analyst feels and how often t"}, {"slug": "recency-bias", "title": "Recency Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Over-weighting the most recent reporting or events at the expense of the longer record. What arrived this week is treated as the state of the world, and the baseline it should be c"}, {"slug": "representativeness-heuristic", "title": "Representativeness Heuristic", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Judging probability by stereotypical similarity — how closely a case matches the mental image of a category — rather than by base rates or the quality of the evidence. \"This looks "}, {"slug": "selective-perception", "title": "Selective Perception", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Noticing what fits prior expectation and filtering out the rest — the perceptual stage of Confirmation Bias. The disconfirming item is not discounted in analysis; it is never regis"}, {"slug": "status-quo-bias", "title": "Status Quo Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Preferring the existing state and treating change as the option that must justify itself, even when the current position is arbitrary or has never been tested. The default is not n"}, {"slug": "structured-analytic-techniques", "title": "Structured Analytic Techniques", "type": "Concept", "tags": ["analysis", "frameworks"], "summary": "SATs are formal methods for countering cognitive bias and testing hypotheses — the modern complement to (and critique of) older methods like the Admiralty Rating system. Post-9/11 "}, {"slug": "the-intelligence-cycle", "title": "The Intelligence Cycle", "type": "Concept", "tags": ["cycle", "analysis", "collection", "dissemination"], "summary": "The foundational model of the intelligence process: a structured loop for converting raw information into decisions. The classic doctrine formulation is Direction – Collection – Pr"}, {"slug": "timor-leste-bugging-affair", "title": "Timor-Leste Bugging Affair", "type": "Case", "tags": ["case", "humint", "jurisdiction", "oversight"], "summary": "ASIS's 2004 operation against Timorese cabinet deliberations during maritime boundary negotiations — and the subsequent prosecutions of whistleblower \"Witness K\" and lawyer Bernard"}, {"slug": "vividness-bias", "title": "Vividness Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "(Heuer's \"vividness criterion\"; Nisbett \u0026 Ross 1980) The tendency to over-weight concrete, emotionally striking, or graphic information over abstract but more diagnostic statistica"}, {"slug": "critical-thinking-workshop-01-train-preacher", "title": "Workshop 01 — the transit clip", "type": "Workshop", "tags": ["workshop", "course", "analysis", "source-evaluation"], "summary": "Format. Facilitated, 60 minutes, one team, discussion throughout. Material. One public six-minute video. Output. One completed worksheet: a 5W+H with every answer marked for how it"}, {"slug": "critical-thinking-workshop-02-iraq-wmd", "title": "Workshop 02 — Iraq's WMD: A Bias Post-Mortem", "type": "Workshop", "tags": ["workshop", "analysis", "bias", "case"], "summary": "Format: facilitated, 60 minutes, one team, discussion and questions throughout. Material: the published findings of the official inquiries into the pre-war Iraq WMD assessments. Ou"}, {"slug": "critical-thinking-workshop-03-bias-atlas", "title": "Workshop 03 — the bias atlas", "type": "Workshop", "tags": ["workshop", "analysis", "bias", "frameworks"], "summary": "Format. Facilitated, 90 minutes, one team, discussion and questions throughout. Material. No case pack this time. The material is a short constructed draft to hunt through, then ou"}]</script>
+<script type="application/json" id="search-data">[{"slug": "absence-of-evidence-fallacy", "title": "Absence of Evidence Fallacy", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Treating the absence of evidence as evidence of absence — reading \"we found nothing\" as proof that nothing exists. In intelligence the error runs in both directions, and the second"}, {"slug": "admiralty-rating", "title": "Admiralty Rating", "type": "Concept", "tags": ["admiralty", "analysis", "dissemination"], "summary": "The Admiralty (NATO 6×6) system for grading intelligence reports — a two-character code separating source reliability (A–F) from information credibility (1–6). Devised by Director "}, {"slug": "ai-in-intelligence-analysis", "title": "AI in Intelligence Analysis", "type": "Concept", "tags": ["analysis", "ai", "osint"], "summary": "Two supply shocks are hitting a small analytic workforce at once — open source becoming first-class collection, and AI that is already operational in some missions and arriving fas"}, {"slug": "aipio", "title": "AIPIO", "type": "Entity", "tags": ["course", "collection", "frameworks"], "summary": "The Australian Institute of Professional Intelligence Officers — the professional body for the intelligence profession in Australia. The wiki's course material derives from the AIP"}, {"slug": "anchoring-bias", "title": "Anchoring Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Over-reliance on the first piece of information offered (the anchor) when forming subsequent estimates, with insufficient adjustment away from it — even when the anchor is arbitrar"}, {"slug": "asd-project-redspice", "title": "ASD Project Redspice", "type": "Entity", "tags": ["cyber-intel", "collection", "jurisdiction"], "summary": "REDSPICE (Resilience, Effects, Defence, Space, Intelligence, Cyber, Enablers) is ASD's transformation programme, announced March 2022: roughly $9.9 billion over a decade, aimed at "}, {"slug": "aukus-intelligence-sharing", "title": "AUKUS Intelligence Sharing", "type": "Entity", "tags": ["alliance", "jurisdiction", "collection"], "summary": "AUKUS is not only a submarine and advanced-capabilities pact — for the intelligence community it is a classification, workforce and counter-espionage shock. Its two pillars create "}, {"slug": "availability-heuristic", "title": "Availability Heuristic", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Judging the probability or frequency of an event by how easily instances come to mind. Vivid, recent, or dramatic events are recalled readily and are therefore over-weighted relati"}, {"slug": "base-rate-neglect", "title": "Base-Rate Neglect", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Ignoring the prior probability of an event in favour of vivid, specific, case-level detail. The analyst reasons about the individual case as if it existed outside any population — "}, {"slug": "belief-perseverance", "title": "Belief Perseverance", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Difficulty abandoning a mindset once formed, even after the evidence that produced it has been discredited. The judgement persists after its foundation is gone — and the analyst ex"}, {"slug": "bottom-line-up-front", "title": "Bottom Line Up Front", "type": "Concept", "tags": ["writing", "dissemination"], "summary": "The BLUF principle — lead any intelligence product with its single most important judgment or implication, before background or detail. This is the structural core of analytic writ"}, {"slug": "carried-forward-assessment", "title": "Carried-Forward Assessment", "type": "Concept", "tags": ["analysis", "bias", "structural"], "summary": "A structural bias. Status Quo Bias is the individual version — a person preferring the existing judgement. Carried-forward assessment is the process version: the standing judgement"}, {"slug": "cognitive-bias", "title": "Cognitive Bias", "type": "Concept", "tags": ["analysis", "frameworks", "bias"], "summary": "A cognitive bias is a systematic — as opposed to random — error in judgement, driven by the mental shortcuts (heuristics) the brain uses to process information efficiently. In inte"}, {"slug": "confirmation-bias", "title": "Confirmation Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "The tendency to search for, interpret, favour, and recall information in ways that confirm one's pre-existing beliefs, while giving disproportionately less weight to disconfirming "}, {"slug": "conformity-bias", "title": "Conformity Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Adopting the position of the surrounding group — or of a senior voice — regardless of one's own analysis. Distinct from Groupthink: groupthink describes a group's shared degradatio"}, {"slug": "electronic-surveillance-law-reform", "title": "Electronic Surveillance Law Reform", "type": "Concept", "tags": ["law", "collection", "jurisdiction"], "summary": "The most important legal renovation on Australia's books — and it has not happened."}, {"slug": "escalation-of-commitment", "title": "Escalation of Commitment", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Persisting with a failing line of reasoning, collection effort or product because of what has already been invested in it — the sunk-cost fallacy applied to analysis. The investmen"}, {"slug": "estimative-language", "title": "Estimative Language", "type": "Concept", "tags": ["dissemination", "writing", "analysis"], "summary": "A standardised vocabulary for expressing likelihood and confidence in analytical products, so judgements are calibrated and consistently understood (Sherman Kent tradition, adapted"}, {"slug": "five-eyes", "title": "Five Eyes", "type": "Entity", "tags": ["collection", "alliance", "jurisdiction"], "summary": "The Five Eyes (FVEY) — Australia, Canada, New Zealand, the UK and the US — is the intelligence-sharing alliance at the heart of Australia's National Intelligence Community. Austral"}, {"slug": "framing-effect", "title": "Framing Effect", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Reaching different conclusions from identical information because of how the options, risks or question were expressed. The framing is usually supplied by someone else — a customer"}, {"slug": "fundamental-attribution-error", "title": "Fundamental Attribution Error", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Explaining other people's behaviour by their character while explaining one's own by circumstance. Applied to adversaries, it converts structural pressure into disposition: an acto"}, {"slug": "groupthink", "title": "Groupthink", "type": "Concept", "tags": ["analysis", "bias"], "summary": "(Janis 1972) A mode of thinking in cohesive groups in which the drive for unanimity overrides a realistic appraisal of alternative courses of action. It is the social analogue of i"}, {"slug": "hindsight-bias", "title": "Hindsight Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "After an outcome is known, the tendency to over-estimate how foreseeable it was beforehand — the \"I knew it all along\" effect, also called creeping determinism. Memory of one's pri"}, {"slug": "inherited-partner-reporting", "title": "Inherited Partner Reporting", "type": "Concept", "tags": ["analysis", "bias", "structural"], "summary": "A structural bias — a property of the arrangement, not of the analyst. Inherited reporting is material that enters the assessment from another service: a liaison feed, a partner di"}, {"slug": "insensitivity-to-sample-size", "title": "Insensitivity to Sample Size", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Drawing strong conclusions from small samples — treating a handful of observations as representative of a population or a pattern. The error is not in using small samples: in intel"}, {"slug": "intelligence-oversight", "title": "Intelligence Oversight", "type": "Concept", "tags": ["oversight", "jurisdiction"], "summary": "How Australia holds its National Intelligence Community accountable. The architecture is widely regarded as a strong model internationally — anchored by the Inspector-General of In"}, {"slug": "intelligence-relationships-contested-region", "title": "Intelligence Relationships in a Contested Region", "type": "Concept", "tags": ["jurisdiction", "alliance", "collection"], "summary": "For Australia, collection and liaison policy are now foreign policy. The National Intelligence Community runs an alliance system built on Five Eyes while managing a web of partners"}, {"slug": "loss-aversion", "title": "Loss Aversion", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Losses loom larger than equivalent gains, skewing risk judgement. From prospect theory: the same outcome is weighed differently depending on whether it is presented as giving somet"}, {"slug": "mirror-imaging", "title": "Mirror Imaging", "type": "Concept", "tags": ["analysis", "bias"], "summary": "(Heuer) Assuming that the other actor shares the analyst's own rationality, values, and constraints — projecting one's own frame of reference onto the subject. A classic source of "}, {"slug": "national-intelligence-community", "title": "National Intelligence Community", "type": "Entity", "tags": ["jurisdiction", "summary", "analysis", "collection"], "summary": "The National Intelligence Community (NIC) is Australia's ten-agency intelligence enterprise — small but well-developed, distinctive for its strong separation of assessment from col"}, {"slug": "overconfidence-bias", "title": "Overconfidence Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "The tendency to systematically over-estimate the accuracy or calibration of one's own judgements and knowledge. It is the gap between how confident an analyst feels and how often t"}, {"slug": "recency-bias", "title": "Recency Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Over-weighting the most recent reporting or events at the expense of the longer record. What arrived this week is treated as the state of the world, and the baseline it should be c"}, {"slug": "representativeness-heuristic", "title": "Representativeness Heuristic", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Judging probability by stereotypical similarity — how closely a case matches the mental image of a category — rather than by base rates or the quality of the evidence. \"This looks "}, {"slug": "selective-perception", "title": "Selective Perception", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Noticing what fits prior expectation and filtering out the rest — the perceptual stage of Confirmation Bias. The disconfirming item is not discounted in analysis; it is never regis"}, {"slug": "single-source-dependency", "title": "Single-Source Dependency", "type": "Concept", "tags": ["analysis", "bias", "structural"], "summary": "A structural bias is a property of the collection posture rather than of the analyst’s head: the assessment can be wrong in a predictable direction even when every person in the ch"}, {"slug": "status-quo-bias", "title": "Status Quo Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "Preferring the existing state and treating change as the option that must justify itself, even when the current position is arbitrary or has never been tested. The default is not n"}, {"slug": "structured-analytic-techniques", "title": "Structured Analytic Techniques", "type": "Concept", "tags": ["analysis", "frameworks"], "summary": "SATs are formal methods for countering cognitive bias and testing hypotheses — the modern complement to (and critique of) older methods like the Admiralty Rating system. Post-9/11 "}, {"slug": "the-intelligence-cycle", "title": "The Intelligence Cycle", "type": "Concept", "tags": ["cycle", "analysis", "collection", "dissemination"], "summary": "The foundational model of the intelligence process: a structured loop for converting raw information into decisions. The classic doctrine formulation is Direction – Collection – Pr"}, {"slug": "thin-analytic-coverage", "title": "Thin Analytic Coverage", "type": "Concept", "tags": ["analysis", "bias", "structural"], "summary": "A structural bias belongs to the posture, not the person. Thin coverage is the plainest case: a question of national significance worked by one analyst, or two, with no second read"}, {"slug": "timor-leste-bugging-affair", "title": "Timor-Leste Bugging Affair", "type": "Case", "tags": ["case", "humint", "jurisdiction", "oversight"], "summary": "ASIS's 2004 operation against Timorese cabinet deliberations during maritime boundary negotiations — and the subsequent prosecutions of whistleblower \"Witness K\" and lawyer Bernard"}, {"slug": "vividness-bias", "title": "Vividness Bias", "type": "Concept", "tags": ["analysis", "bias"], "summary": "(Heuer's \"vividness criterion\"; Nisbett \u0026 Ross 1980) The tendency to over-weight concrete, emotionally striking, or graphic information over abstract but more diagnostic statistica"}, {"slug": "volume-mistaken-for-development", "title": "Volume Mistaken for Development", "type": "Concept", "tags": ["analysis", "bias", "structural"], "summary": "A structural bias, and the one most often mistaken for a finding. Reporting volume is a property of the collection system; activity is a property of the target. When the two are re"}, {"slug": "critical-thinking-workshop-01-train-preacher", "title": "Workshop 01 — the transit clip", "type": "Workshop", "tags": ["workshop", "course", "analysis", "source-evaluation"], "summary": "Format. Facilitated, 60 minutes, one team, discussion throughout. Material. One public six-minute video. Output. One completed worksheet: a 5W+H with every answer marked for how it"}, {"slug": "critical-thinking-workshop-02-iraq-wmd", "title": "Workshop 02 — Iraq's WMD: A Bias Post-Mortem", "type": "Workshop", "tags": ["workshop", "analysis", "bias", "case"], "summary": "Format: facilitated, 60 minutes, one team, discussion and questions throughout. Material: the published findings of the official inquiries into the pre-war Iraq WMD assessments. Ou"}, {"slug": "critical-thinking-workshop-03-bias-atlas", "title": "Workshop 03 — the bias atlas", "type": "Workshop", "tags": ["workshop", "analysis", "bias", "frameworks"], "summary": "Twenty-one biases, one signature each. Learn what a bias looks like in a draft — not what it is called — and a page of prose becomes readable in ten minutes."}]</script>
 <script>
 (function(){
   var box=document.getElementById('wiki-search');
@@ -165,23 +184,24 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 
 <div class="crumb"><a href="index.html">Wiki</a><span class="sep">/</span>Workshops</div>
 <div class="page-head">
-  <div class="head-top"><span class="type-pill">Workshop</span><span class="pill conf conf-high">High confidence</span></div>
+  <div class="head-top"><span class="type-pill">Workshop</span><span class="pill conf conf-high">High confidence</span><span class="pill meta-pill">30 min read</span></div>
   <h1>Workshop 03 — the bias atlas</h1>
+  <p class="dek">Twenty-one biases, one signature each. Learn what a bias looks like in a draft — not what it is called — and a page of prose becomes readable in ten minutes.</p>
   <div class="tags-row"><span class="pill tag">workshop</span><span class="pill tag">analysis</span><span class="pill tag">bias</span><span class="pill tag">frameworks</span></div>
   <div class="stamp">Open Source</div>
 </div>
-<article class="wiki-body"><p><strong>Format.</strong> Facilitated, 90 minutes, one team, discussion and questions throughout.
-<strong>Material.</strong> No case pack this time. The material is a short constructed draft to hunt through, then our own live work.
-<strong>Output.</strong> A <strong>bias-check sheet</strong> for the team: every bias, the signature that catches it, and the countermeasure that makes the catch real.</p>
-<h2>Bottom line up front</h2>
-<p>There are twenty-one named biases in this wiki, and this session walks all of them. But the session is not a vocabulary test, and the point is not that we can name the mechanisms. The point is that each one has a <strong>signature</strong> — something visible in a draft — and a <strong>countermeasure</strong> that costs minutes. Learn the signatures, and a draft becomes readable the way a source becomes readable under <a href="admiralty-rating.html">Admiralty Rating</a>: you stop asking how it feels and start asking what it rests on.</p>
-<p>Two warnings up front, because they are the two ways this material gets misused. <strong>Bias is not dishonesty.</strong> Every official inquiry into the Iraq WMD failure found no deliberate distortion, and the judgement was still wrong; the mechanisms that produced it are the ordinary ones we all run. And <strong>bias is not a synonym for "a view I disagree with".</strong> If everything is bias, nothing is; a checklist that fires on every draft is a checklist nobody runs.</p>
-<h2>Why this session exists</h2>
-<p><a href="critical-thinking-workshop-02-iraq-wmd.html">Workshop 02 — Iraq&#x27;s WMD: A Bias Post-Mortem</a> already works the bias machinery hard — but it does it <em>inside one case</em>, and it names seven biases out of twenty-one. That is the right shape for a case study and the wrong shape for a reference. When you are holding your own draft at 4pm on a Friday, you are not going to re-derive the case; you need the whole atlas in front of you, grouped so you can find the mechanism that is actually operating.</p>
+<nav class="prevnext"><a class="pn pn-prev" href="critical-thinking-workshop-02-iraq-wmd.html"><span class="pn-lbl">&larr; Previous</span><span class="pn-title">Workshop 02 — Iraq&#x27;s WMD: A Bias Post-Mortem</span></a></nav><details class="toc" open><summary>On this page <span class="toc-n">18</span></summary><ol class="toc-list"><li class="lvl2"><a href="#bottom-line-up-front">Bottom line up front</a></li><li class="lvl2"><a href="#why-this-session-exists">Why this session exists</a></li><li class="lvl2"><a href="#how-the-session-runs-90-minutes">How the session runs — 90 minutes</a></li><li class="lvl2"><a href="#part-1-what-bias-is-and-what-it-is-not">Part 1 — what bias is, and what it is not</a></li><li class="lvl2"><a href="#part-2-the-two-families-and-how-to-read-the-atlas">Part 2 — the two families, and how to read the atlas</a></li><li class="lvl2"><a href="#the-atlas">The atlas</a></li><li class="lvl3"><a href="#perception-and-mindset">Perception and mindset</a></li><li class="lvl3"><a href="#evidence-evaluation">Evidence evaluation</a></li><li class="lvl3"><a href="#estimation-and-confidence">Estimation and confidence</a></li><li class="lvl3"><a href="#social-and-group">Social and group</a></li><li class="lvl3"><a href="#decision-and-commitment">Decision and commitment</a></li><li class="lvl3"><a href="#structural-bias-in-the-system">Structural bias — in the system</a></li><li class="lvl2"><a href="#exercise-1-the-hunt-25-minutes">Exercise 1 — the hunt (25 minutes)</a></li><li class="lvl2"><a href="#exercise-2-your-own-draft-10-minutes">Exercise 2 — your own draft (10 minutes)</a></li><li class="lvl2"><a href="#exercise-3-the-signature-card-8-minutes">Exercise 3 — the signature card (8 minutes)</a></li><li class="lvl2"><a href="#watch-for-these-in-your-own-reasoning">Watch for these in your own reasoning</a></li><li class="lvl2"><a href="#questions-to-keep-on-the-table">Questions to keep on the table</a></li><li class="lvl2"><a href="#related">Related</a></li></ol></details>
+<article class="wiki-body"><p><strong>A bias is a mechanism with a signature, not a label for an opinion.</strong> That sentence is the whole session. There are twenty-one named mechanisms below, and for each one there is something you can see in a draft, and a move that closes it in minutes. Learn the signatures and a page of prose becomes readable the way a source becomes readable under <a href="admiralty-rating.html">Admiralty Rating</a>: you stop asking how it feels and start asking what it rests on.</p>
+<h2 id="bottom-line-up-front">Bottom line up front<a class="headerlink" href="#bottom-line-up-front" title="Permanent link">&#128279;</a></h2>
+<p>There are twenty-one named cognitive biases in this wiki, and this session walks all of them — with five structural patterns beside them, which are the rows nobody can fix alone. But the session is not a vocabulary test, and the point is not that we can name the mechanisms. The point is that each one has a <strong>signature</strong> — something visible in a draft — and a <strong>countermeasure</strong> that costs minutes.</p>
+<p>Two warnings up front, because they are the two ways this material gets misused. <strong>Bias is not dishonesty.</strong> Every official inquiry into the Iraq WMD failure found no deliberate distortion, and the judgement was still wrong; the mechanisms that produced it are the ordinary ones we all run.<sup id="fnref:butler"><a class="footnote-ref" href="#fn:butler">2</a></sup> And <strong>bias is not a synonym for "a view I disagree with".</strong> If everything is bias, nothing is; a checklist that fires on every draft is a checklist nobody runs.</p>
+<p><strong>Format.</strong> 90 minutes, facilitated, one team, discussion throughout. <strong>Material.</strong> A short constructed draft to hunt through, then your own live work. <strong>Output.</strong> A signature card you keep, and a bias → technique → artefact map you can hand to a manager.</p>
+<h2 id="why-this-session-exists">Why this session exists<a class="headerlink" href="#why-this-session-exists" title="Permanent link">&#128279;</a></h2>
+<p><a href="critical-thinking-workshop-02-iraq-wmd.html">Workshop 02 — Iraq&#x27;s WMD: A Bias Post-Mortem</a> already works the bias machinery hard — but it does it <em>inside one case</em>, at depth, with the inquiries' own words. That is the right shape for a case study and the wrong shape for a reference. Workshop 02 asks what the mechanisms did to one assessment; it does not give you the whole atlas, and it is not meant to. When you are holding your own draft at 4pm on a Friday, you are not going to re-derive the case; you need every mechanism in front of you, grouped so you can find the one that is actually operating.</p>
 <p>So this session does two things the earlier one does not. It <strong>covers the full taxonomy</strong>, including the biases that never fired in Iraq — the ones nobody in this room has ever seen a case study for. And it separates the <strong>cognitive</strong> biases, which an individual analyst can catch in their own draft, from the <strong>structural</strong> ones, which no amount of personal discipline will fix, because they are properties of the team and the collection posture rather than of the person.</p>
 <p>The reference works in three layers, and the session walks them in order: <strong>what the bias is</strong>, <strong>how it bites an assessment</strong>, and <strong>what it costs you</strong> — the last one being the only layer anyone remembers.</p>
-<h2>How the session runs — 90 minutes</h2>
-<table>
+<h2 id="how-the-session-runs-90-minutes">How the session runs — 90 minutes<a class="headerlink" href="#how-the-session-runs-90-minutes" title="Permanent link">&#128279;</a></h2>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Time</th>
@@ -231,13 +251,13 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 <td>One habit to carry, and the one nobody else can fix for you.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>The working rule, the same as Workshop 02 and worth restating: <strong>we judge reasoning, not people.</strong> Nobody in this room is being diagnosed, and no draft is being put on trial. Bias is the water we swim in, not a character flaw.</p>
-<h2>Part 1 — what bias is, and what it is not</h2>
+<h2 id="part-1-what-bias-is-and-what-it-is-not">Part 1 — what bias is, and what it is not<a class="headerlink" href="#part-1-what-bias-is-and-what-it-is-not" title="Permanent link">&#128279;</a></h2>
 <p>A <strong>cognitive bias</strong> is a <em>systematic</em> — as opposed to random — error in judgement, produced by the mental shortcuts the brain uses to make fast sense of noisy information. Systematic is the operative word: random error averages out across a team and across a week; bias points the same way every time, which is why a single wrong tendency can move an assessment that a hundred extra reports cannot.</p>
 <p>Three things follow, and each one is counter-intuitive enough to be worth saying aloud.</p>
 <ul>
-<li><strong>Bias survives more information.</strong> Additional reporting is filtered through the same mental model that produced the error, so the picture can become <em>more</em> confident as it becomes <em>more</em> selective. This is why the correction for bias is never "collect more" — it is a change of method. Heuer's point, in <a href="cognitive-bias.html">the hub page</a>'s language: the analyst constructs meaning rather than receiving it.</li>
+<li><strong>Bias survives more information.</strong> Additional reporting is filtered through the same mental model that produced the error, so the picture can become <em>more</em> confident as it becomes <em>more</em> selective. This is why the correction for bias is never "collect more" — it is a change of method. Heuer's point, in <a href="cognitive-bias.html">the hub page</a>'s language: the analyst constructs meaning rather than receiving it.<sup id="fnref:heuer"><a class="footnote-ref" href="#fn:heuer">1</a></sup></li>
 <li><strong>Bias is largely invisible in the moment.</strong> Nobody experiences themselves discounting disconfirming reporting. The judgement just feels like the right reading of the file. This is why the countermeasures are <em>structural</em> — written checks, recorded judgements, named roles — rather than resolutions to try harder.</li>
 <li><strong>Bias is not a defect, it is a working function with a cost.</strong> Pattern-matching against experience is what makes an experienced analyst fast and usually right. The same machinery, left unexamined, produces the failures in the atlas. It is the <em>systematic</em> character of the error, not its existence, that we are managing.</li>
 </ul>
@@ -245,7 +265,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 <blockquote>
 <p><strong>A bias is a mechanism with a signature, not a label for an opinion.</strong> Before you call a bias, be able to say <em>what in the draft</em> produced it and <em>what the alternative reading would have been.</em> If you cannot, you have not found a bias; you have found a conclusion you dislike.</p>
 </blockquote>
-<h2>Part 2 — the two families, and how to read the atlas</h2>
+<h2 id="part-2-the-two-families-and-how-to-read-the-atlas">Part 2 — the two families, and how to read the atlas<a class="headerlink" href="#part-2-the-two-families-and-how-to-read-the-atlas" title="Permanent link">&#128279;</a></h2>
 <p>The taxonomy in <a href="cognitive-bias.html">Cognitive Bias</a> has five families, and they are all cognitive — the mechanisms operating inside a head. But the Iraq case teaches a lesson the five-family structure hides, and this session splits the material a second way:</p>
 <ul>
 <li><strong>Cognitive bias — in the analyst.</strong> Confirmation, anchoring, mirror imaging, groupthink. These can be caught by an individual in their own draft, or by a team process applied to it.</li>
@@ -253,10 +273,10 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 </ul>
 <p>The distinction is not academic, and it should change what you do. Naming a cognitive bias in your own draft is a ten-minute job you own. Naming a structural bias in your own draft is the <em>start of a conversation you have with someone else</em> — which is why the atlas rows below carry a family tag, and why the closing exercise asks which rows need somebody else's agreement to implement.</p>
 <p>Read the atlas the way you read a signature list. <strong>What it is</strong> — the mechanism. <strong>How it bites</strong> — the specific damage to an assessment, in our vocabulary. <strong>The example</strong> — the shortest recognisable instance, so you can pattern-match the next one. When it lands in your own work, the similes do you no good; the signatures do.</p>
-<h2>The atlas</h2>
-<p>Twenty-one named biases, in the taxonomy's five families. Read a row as: the mechanism, the damage, the instance.</p>
-<h3>Perception and mindset</h3>
-<table>
+<h2 id="the-atlas">The atlas<a class="headerlink" href="#the-atlas" title="Permanent link">&#128279;</a></h2>
+<p>Twenty-one named cognitive biases, in the taxonomy's five families — and then the five structural patterns, which are a different kind of object and are tabulated separately for that reason. Read a cognitive row as: the mechanism, the damage, the instance. Read a structural row as: the pattern, the damage, the owner.</p>
+<h3 id="perception-and-mindset">Perception and mindset<a class="headerlink" href="#perception-and-mindset" title="Permanent link">&#128279;</a></h3>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Bias</th>
@@ -267,33 +287,33 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 </thead>
 <tbody>
 <tr>
-<td><a href="confirmation-bias.html">Confirmation Bias</a></td>
+<td><a href="confirmation-bias.html" data-tt="confirmation-bias">Confirmation Bias</a></td>
 <td>Seeking, interpreting and recalling information in ways that support an existing view, while discounting what contradicts it.</td>
 <td>A leading hypothesis becomes self-reinforcing — each new item raises confidence without any test against a rival. The product reads as cumulative evidence when it is one idea being repeated.</td>
 <td>Every fresh report is read as consistent with the working hypothesis; the two items that cut against it are dismissed as "noise from a low-grade source".</td>
 </tr>
 <tr>
-<td><a href="belief-perseverance.html">Belief Perseverance</a></td>
+<td><a href="belief-perseverance.html" data-tt="belief-perseverance">Belief Perseverance</a></td>
 <td>Difficulty abandoning a mindset once formed, even after the evidence that formed it is discredited.</td>
 <td>The judgement outlives its own foundation: the source is retracted, the conclusion stays, because it has been absorbed into the picture. Worst at re-issue, where earlier judgements are carried forward without their uncertainties.</td>
 <td>A key finding still standing a year after the sourcing behind it was withdrawn, now apparently supported by everything else in the file.</td>
 </tr>
 <tr>
-<td><a href="mirror-imaging.html">Mirror Imaging</a></td>
+<td><a href="mirror-imaging.html" data-tt="mirror-imaging">Mirror Imaging</a></td>
 <td>Assuming the other actor shares our rationality, values and constraints.</td>
 <td>Intent is assessed from what <em>we</em> would do in their position. Under-estimates doctrinal, cultural and ideological drivers — a classic source of strategic surprise.</td>
 <td>"A state with nothing to hide would prove it, so the concealment must mean concealment <em>of something</em>" — the inference imports our own logic about disclosure.</td>
 </tr>
 <tr>
-<td><a href="selective-perception.html">Selective Perception</a></td>
+<td><a href="selective-perception.html" data-tt="selective-perception">Selective Perception</a></td>
 <td>Noticing what fits prior expectation and never registering the rest. The perceptual stage of confirmation bias.</td>
 <td>Contradicting reporting is present in the file and absent from the product, and nobody decided to exclude it. It operates at collection and triage too: the filter is inherited from the hypothesis rather than stated.</td>
 <td>A monitoring feed whose detection thresholds have been tuned until the alerts match the working hypothesis.</td>
 </tr>
 </tbody>
-</table>
-<h3>Evidence evaluation</h3>
-<table>
+</table></div>
+<h3 id="evidence-evaluation">Evidence evaluation<a class="headerlink" href="#evidence-evaluation" title="Permanent link">&#128279;</a></h3>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Bias</th>
@@ -304,39 +324,39 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 </thead>
 <tbody>
 <tr>
-<td><a href="vividness-bias.html">Vividness Bias</a></td>
+<td><a href="vividness-bias.html" data-tt="vividness-bias">Vividness Bias</a></td>
 <td>Over-weighting concrete, graphic or emotionally striking information against more diagnostic aggregate data.</td>
 <td>The memorable item carries the product — a single dramatic case, a quotable figure, a first-person account. The sober reporting that would survive scrutiny gets less space than the vivid item that will not.</td>
 <td>A vivid single-source claim in the BLUF, with the boring corroborated material in an annex.</td>
 </tr>
 <tr>
-<td><a href="anchoring-bias.html">Anchoring Bias</a></td>
+<td><a href="anchoring-bias.html" data-tt="anchoring-bias">Anchoring Bias</a></td>
 <td>Over-reliance on the first figure or judgement offered, with insufficient adjustment away from it, even when the anchor is arbitrary.</td>
 <td>An early estimate or a source's first claim sets the frame; later reporting is assimilated <em>toward</em> it rather than appraised independently. Compounds with overconfidence — the anchored figure is then held with unwarranted certainty.</td>
 <td>A quantity named in the first report of the quarter still shaping the estimate in the third, with nobody re-deriving it.</td>
 </tr>
 <tr>
-<td><a href="availability-heuristic.html">Availability Heuristic</a></td>
+<td><a href="availability-heuristic.html" data-tt="availability-heuristic">Availability Heuristic</a></td>
 <td>Judging likelihood by how easily instances come to mind rather than by base rates.</td>
 <td>A recent high-profile event inflates the perceived likelihood of that vector, while quiescent but more probable threats are under-weighted.</td>
 <td>The threat picture for the coming quarter shaped by last month's incident, with the quiet categories unexamined.</td>
 </tr>
 <tr>
-<td><a href="representativeness-heuristic.html">Representativeness Heuristic</a></td>
+<td><a href="representativeness-heuristic.html" data-tt="representativeness-heuristic">Representativeness Heuristic</a></td>
 <td>Judging probability by stereotypical similarity — how closely a case matches the mental image of a category.</td>
 <td>Attribution by resemblance: tooling or tradecraft that "matches the profile" is read as confirming an actor, without asking how many others would produce the same signature. Also produces the conjunction problem — detail makes a scenario feel likelier than its own components.</td>
 <td>"This looks like what a state-sponsored intrusion looks like, therefore it is one," with no test of how many other actors would look identical.</td>
 </tr>
 <tr>
-<td><a href="absence-of-evidence-fallacy.html">Absence of Evidence Fallacy</a></td>
+<td><a href="absence-of-evidence-fallacy.html" data-tt="absence-of-evidence-fallacy">Absence of Evidence Fallacy</a></td>
 <td>Treating "we found nothing" as proof that nothing exists.</td>
 <td>A property of the collection, not of the target. The dangerous direction is the one that <em>manufactures</em> confidence: non-cooperation read as concealment, a negative finding made to mean non-existence with no record of the search behind it.</td>
 <td>"There is no evidence of collection against this sector" written as a finding, with nothing said about what was searched.</td>
 </tr>
 </tbody>
-</table>
-<h3>Estimation and confidence</h3>
-<table>
+</table></div>
+<h3 id="estimation-and-confidence">Estimation and confidence<a class="headerlink" href="#estimation-and-confidence" title="Permanent link">&#128279;</a></h3>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Bias</th>
@@ -347,33 +367,33 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 </thead>
 <tbody>
 <tr>
-<td><a href="overconfidence-bias.html">Overconfidence Bias</a></td>
+<td><a href="overconfidence-bias.html" data-tt="overconfidence-bias">Overconfidence Bias</a></td>
 <td>Systematically over-estimating the accuracy of one's own judgements.</td>
 <td>Stated confidence outruns the track record, and absolute language ("will", "clearly") appears where the evidence supports "likely". Invisible without a written, scored record of prior judgements.</td>
 <td>A "high confidence" call delivered verbally, with nothing on file that would ever show whether that analyst's high-confidence judgements are right seven times in ten or four.</td>
 </tr>
 <tr>
-<td><a href="hindsight-bias.html">Hindsight Bias</a></td>
+<td><a href="hindsight-bias.html" data-tt="hindsight-bias">Hindsight Bias</a></td>
 <td>After an outcome is known, over-estimating how foreseeable it was beforehand — "I knew it all along". Memory of one's prior judgements is rewritten to fit the result.</td>
 <td>Post-mortems conclude a failure "should have been seen", which discourages an honest account of what was knowable at the time and destroys the track record calibration depends on.</td>
 <td>A lessons-learned review that produces "we should have connected the dots", where none of the participants wrote a judgement down in advance.</td>
 </tr>
 <tr>
-<td><a href="base-rate-neglect.html">Base-Rate Neglect</a></td>
+<td><a href="base-rate-neglect.html" data-tt="base-rate-neglect">Base-Rate Neglect</a></td>
 <td>Ignoring the prior probability of an event in favour of vivid, case-level detail.</td>
 <td>The denominator is never estimated, so a weak indicator is treated as a strong one. Drives false-positive volume and alert fatigue in detection work.</td>
 <td>An indicator selected for sensitivity, with nobody asking how much benign traffic matches it.</td>
 </tr>
 <tr>
-<td><a href="insensitivity-to-sample-size.html">Insensitivity to Sample Size</a></td>
+<td><a href="insensitivity-to-sample-size.html" data-tt="insensitivity-to-sample-size">Insensitivity to Sample Size</a></td>
 <td>Drawing strong conclusions from small samples. The error is not using them — in intelligence they are often all there is — but failing to lower confidence accordingly.</td>
 <td>Two or three incidents become a "campaign"; one or two intrusions become an actor's "characteristic" tradecraft — and exactly where collection is thinnest, which is where confidence should be lowest.</td>
 <td>"We have seen this TTP twice" generalised into an actor profile, with no <em>n</em> anywhere in the sentence.</td>
 </tr>
 </tbody>
-</table>
-<h3>Social and group</h3>
-<table>
+</table></div>
+<h3 id="social-and-group">Social and group<a class="headerlink" href="#social-and-group" title="Permanent link">&#128279;</a></h3>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Bias</th>
@@ -384,33 +404,33 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 </thead>
 <tbody>
 <tr>
-<td><a href="groupthink.html">Groupthink</a></td>
-<td>(Janis 1972) A cohesive group's drive for unanimity overriding a realistic appraisal of alternatives.</td>
+<td><a href="groupthink.html" data-tt="groupthink">Groupthink</a></td>
+<td>(Janis 1972)<sup id="fnref:janis"><a class="footnote-ref" href="#fn:janis">3</a></sup> A cohesive group's drive for unanimity overriding a realistic appraisal of alternatives.</td>
 <td>Convergence without genuine challenge; dissent self-censored or pressured away, and silence read as agreement. The group confirms a shared view instead of testing it.</td>
 <td>A team that has carried the same picture for two years and can no longer name the item that, if withdrawn, would change it.</td>
 </tr>
 <tr>
-<td><a href="conformity-bias.html">Conformity Bias</a></td>
+<td><a href="conformity-bias.html" data-tt="conformity-bias">Conformity Bias</a></td>
 <td>Adopting the group's or a senior voice's position regardless of one's own analysis. Individual-level, and distinct from groupthink.</td>
 <td>Invisible in the product, because the suppressed reasoning is never written down. Masks itself as deference to authority — which is legitimate almost everywhere else in the organisation, and therefore hard to challenge here.</td>
 <td>An analyst who holds a different reading, hears the room, adjusts, and produces no record that the doubt ever existed.</td>
 </tr>
 <tr>
-<td><a href="fundamental-attribution-error.html">Fundamental Attribution Error</a></td>
+<td><a href="fundamental-attribution-error.html" data-tt="fundamental-attribution-error">Fundamental Attribution Error</a></td>
 <td>Explaining others' behaviour by their character while explaining our own by circumstance.</td>
 <td>Converts structural pressure into disposition — the actor behaves aggressively because they <em>are</em> aggressive. Hardens assessments into moral characterisations, which are stable, unfalsifiable and useless as indicators.</td>
 <td>"Aggressive and opportunistic by nature" as an outlook judgement, with nothing collected on the pressures the actor is actually under.</td>
 </tr>
 <tr>
-<td><a href="loss-aversion.html">Loss Aversion</a></td>
+<td><a href="loss-aversion.html" data-tt="loss-aversion">Loss Aversion</a></td>
 <td>Losses loom larger than equivalent gains, skewing risk judgement.</td>
 <td>Risk judgements turn asymmetric: understating a threat is a career event and overstating it rarely is, so assessments drift upwards under scrutiny. The same asymmetry shapes disclosure decisions.</td>
 <td>Every ambiguous item read the alarming way, justified by "the consequences of missing this are unacceptable".</td>
 </tr>
 </tbody>
-</table>
-<h3>Decision and commitment</h3>
-<table>
+</table></div>
+<h3 id="decision-and-commitment">Decision and commitment<a class="headerlink" href="#decision-and-commitment" title="Permanent link">&#128279;</a></h3>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Bias</th>
@@ -421,35 +441,80 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 </thead>
 <tbody>
 <tr>
-<td><a href="escalation-of-commitment.html">Escalation of Commitment</a></td>
+<td><a href="escalation-of-commitment.html" data-tt="escalation-of-commitment">Escalation of Commitment</a></td>
 <td>Persisting with a failing line, product or collection programme because of what has already been invested in it — the sunk-cost fallacy applied to analysis.</td>
 <td>A programme continues for its cost rather than its yield; an analytic line is defended past the evidence because abandoning it would mean conceding the earlier judgement was wrong.</td>
 <td>A detection capability that stopped producing eighteen months ago, retained because of what building it cost.</td>
 </tr>
 <tr>
-<td><a href="framing-effect.html">Framing Effect</a></td>
+<td><a href="framing-effect.html" data-tt="framing-effect">Framing Effect</a></td>
 <td>Reaching different conclusions from identical information because of how the question or options were expressed.</td>
 <td>The customer's framing is the strongest signal in the tasking and the part least likely to be questioned — which is how a product can be accurate and still wrong. Gain and loss framings of the same risk produce different recommendations.</td>
 <td>A tasking that asks "how serious is this threat?", answered precisely as asked, when "is there evidence of harm?" would have produced a different assessment from the same file.</td>
 </tr>
 <tr>
-<td><a href="status-quo-bias.html">Status Quo Bias</a></td>
+<td><a href="status-quo-bias.html" data-tt="status-quo-bias">Status Quo Bias</a></td>
 <td>Preferring the existing state, and making change justify itself. The default is not a decision that was never taken — it is a decision taken without argument.</td>
 <td>Standing judgements escape scrutiny precisely because no change is being claimed, but "no change" is itself a judgement and needs the same evidence as any other. An assessment never revisited is indistinguishable from one re-confirmed.</td>
 <td>"Our assessment is unchanged" for the seventh cycle, with no date on when the evidence behind it was last re-tested.</td>
 </tr>
 <tr>
-<td><a href="recency-bias.html">Recency Bias</a></td>
+<td><a href="recency-bias.html" data-tt="recency-bias">Recency Bias</a></td>
 <td>Over-weighting the most recent reporting at the expense of the longer record.</td>
 <td>The product becomes a summary of the last seven days rather than an assessment of the subject; trends are claimed from two adjacent points with the longer series unexamined. In daily-cycle work it produces oscillation without new information.</td>
 <td>Reporting volume rising for six weeks, read as escalation, when the rise is a collection decision rather than a change on the ground.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Two notes on the atlas before we use it.</p>
-<p><strong>Which rows need somebody else's agreement.</strong> Most of the cognitive rows are yours to catch in a draft — confirmation, vividness, anchoring, overconfidence, absence of evidence. Three rows are not: <a href="groupthink.html">Groupthink</a> and <a href="conformity-bias.html">Conformity Bias</a> are the behaviour of a group, and <em>every</em> row under decision and commitment is a property of how the team and the collection posture are managed. If your check sheet only contains rows you can run alone, it will pass drafts that are systematically wrong.</p>
-<p><strong>Which rows are one mechanism wearing two names.</strong> <a href="availability-heuristic.html">Availability Heuristic</a> and <a href="recency-bias.html">Recency Bias</a>; <a href="representativeness-heuristic.html">Representativeness Heuristic</a> and <a href="base-rate-neglect.html">Base-Rate Neglect</a>; <a href="overconfidence-bias.html">Overconfidence Bias</a> and <a href="insensitivity-to-sample-size.html">Insensitivity to Sample Size</a>. Do not collect the whole set in a single draft — pick the mechanism that is actually operating and say what produced it. A hunt that finds ten biases has usually found one bias and nine labels.</p>
-<h2>Exercise 1 — the hunt (25 minutes)</h2>
+<p><strong>Which rows need somebody else's agreement.</strong> Most of the cognitive rows are yours to catch in a draft — confirmation, vividness, anchoring, overconfidence, absence of evidence. Four are not: <a href="groupthink.html" data-tt="groupthink">Groupthink</a> and <a href="conformity-bias.html" data-tt="conformity-bias">Conformity Bias</a> are the behaviour of a group, and <a href="loss-aversion.html" data-tt="loss-aversion">Loss Aversion</a> and <a href="escalation-of-commitment.html" data-tt="escalation-of-commitment">Escalation of Commitment</a> are written into how the organisation and the programme are managed. The five structural rows that follow are not yours at all. If your check sheet only contains rows you can run alone, it will pass drafts that are systematically wrong.</p>
+<p><strong>Which rows are one mechanism wearing two names.</strong> <a href="availability-heuristic.html" data-tt="availability-heuristic">Availability Heuristic</a> and <a href="recency-bias.html" data-tt="recency-bias">Recency Bias</a>; <a href="representativeness-heuristic.html" data-tt="representativeness-heuristic">Representativeness Heuristic</a> and <a href="base-rate-neglect.html" data-tt="base-rate-neglect">Base-Rate Neglect</a>; <a href="overconfidence-bias.html" data-tt="overconfidence-bias">Overconfidence Bias</a> and <a href="insensitivity-to-sample-size.html" data-tt="insensitivity-to-sample-size">Insensitivity to Sample Size</a>. Do not collect the whole set in a single draft — pick the mechanism that is actually operating and say what produced it. A hunt that finds ten biases has usually found one bias and nine labels.</p>
+<h3 id="structural-bias-in-the-system">Structural bias — in the system<a class="headerlink" href="#structural-bias-in-the-system" title="Permanent link">&#128279;</a></h3>
+<p>Five patterns, and not one of them is a defect in anybody's reasoning. They are properties of the posture: who collected it, how many people read it, what the partner actually sent, whether anyone scheduled a re-test, and whether volume was ever separated from activity. The signature is visible in the product exactly as a cognitive one is. The fix never is — it belongs to a person with authority over the team or the collection, which is why the last column is a role and not a sentence.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>What it is</th>
+<th>How it bites an assessment</th>
+<th>Who owns the fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="single-source-dependency.html" data-tt="single-source-dependency">Single-Source Dependency</a></td>
+<td>The key judgement rests on one report, through a chain the analyst cannot inspect to the end.</td>
+<td>The vividness and detail of the single report substitute for corroboration, and the product never says what would happen to the judgement if that source were wrong.</td>
+<td>Collection manager</td>
+</tr>
+<tr>
+<td><a href="inherited-partner-reporting.html" data-tt="inherited-partner-reporting">Inherited Partner Reporting</a></td>
+<td>Material from another service, arriving without the grading and handling caveats that sit behind it.</td>
+<td>The partner's confidence language is re-published as fact; the caveats are lost at the boundary; the customer cannot see that two links in the chain are outside our control.</td>
+<td>Liaison owner</td>
+</tr>
+<tr>
+<td><a href="thin-analytic-coverage.html" data-tt="thin-analytic-coverage">Thin Analytic Coverage</a></td>
+<td>One analyst, or two, on a question of national significance, with no independent second reading.</td>
+<td>Every cognitive bias on this page depends on a second reader to catch it. Where coverage is thin, none of them are catchable, and the gap is invisible in the product.</td>
+<td>Team lead</td>
+</tr>
+<tr>
+<td><a href="carried-forward-assessment.html" data-tt="carried-forward-assessment">Carried-Forward Assessment</a></td>
+<td>A standing judgement that survives because nothing in the cycle requires it to be tested.</td>
+<td>"No change" travels forward without a decision, so the judgement can outlive the evidence that produced it — and nobody can name the date it was last tested.</td>
+<td>Product owner</td>
+</tr>
+<tr>
+<td><a href="volume-mistaken-for-development.html" data-tt="volume-mistaken-for-development">Volume Mistaken for Development</a></td>
+<td>Reporting volume, which is a property of the collection system, read as activity on the ground.</td>
+<td>A new feed or a re-tasked sensor looks like escalation; the trend is a statement about us, published as a statement about them.</td>
+<td>Collection manager</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two of these overlap deliberately with cognitive rows, and the atlas notes above say which. <a href="carried-forward-assessment.html" data-tt="carried-forward-assessment">Carried-Forward Assessment</a> is the process version of <a href="status-quo-bias.html" data-tt="status-quo-bias">Status Quo Bias</a>; <a href="volume-mistaken-for-development.html" data-tt="volume-mistaken-for-development">Volume Mistaken for Development</a> is the posture version of <a href="recency-bias.html" data-tt="recency-bias">Recency Bias</a>. Naming the right one matters, because they need different people in the room.</p>
+<h2 id="exercise-1-the-hunt-25-minutes">Exercise 1 — the hunt (25 minutes)<a class="headerlink" href="#exercise-1-the-hunt-25-minutes" title="Permanent link">&#128279;</a></h2>
 <p>Work in pairs. Take the draft below and, for each numbered judgement, name the bias operating and <strong>say what in the text produced it</strong>. The second half is the part that counts: a bias with no signature is a bias you have not found.</p>
 <p>One test to apply throughout, because the atlas rows sit close together: ask <strong>what the adjacent bias would have looked like instead.</strong> If you cannot say what would distinguish representativeness from confirmation in this text, you have matched a word rather than read a mechanism.</p>
 <p><strong>The draft.</strong> Constructed for this exercise. It is not a real assessment, it is not about any real actor, and every judgement in it is invented. It is also deliberately overloaded — a real draft of this length would carry two or three of these, not nineteen. The compression is the point: you are learning the signatures, not auditing a plausible product.</p>
@@ -470,14 +535,15 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 </blockquote>
 <p><strong>Your task, before opening the reveal:</strong></p>
 <ol>
-<li>For each of the five key judgements and the three other marked passages, name the bias and the phrase in the text that produces it.</li>
+<li>For <strong>every numbered judgement</strong>, plus the tasking, the basis, the outlook and the handling paragraph, name the bias and the phrase in the text that produces it. Expect eighteen to twenty rows.</li>
 <li>Name the judgement that would collapse the BLUF if it were withdrawn.</li>
-<li>Name the biases in this draft that <strong>no individual analyst can fix alone.</strong></li>
+<li>Name the biases in this draft that <strong>no individual analyst can fix alone</strong> — including any that are properties of the collection rather than of the writing.</li>
 </ol>
+<p>The reveal is split into five blocks, in the order you would work them. Open each one only when both of you have committed an answer.</p>
 <details>
-<summary>Reveal — the mapping, with the adjacent bias it is easily confused with</summary>
+<summary>Reveal 1 of 5 — the frame the customer set</summary>
 <p><strong>This mapping is a reading of a constructed draft, written for training. It is not a finding about any real assessment.</strong></p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>What the draft says</th>
@@ -488,111 +554,159 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 <tbody>
 <tr>
 <td><em>Tasking:</em> "How serious is the threat…?"</td>
-<td><a href="framing-effect.html">Framing Effect</a></td>
+<td><a href="framing-effect.html" data-tt="framing-effect">Framing Effect</a></td>
 <td>The question is framed as a severity judgement, so the file is read for severity. Framed as "is there evidence of harm?", the same material could produce a notably lower assessment. The tell is that the framing is the customer's, and nobody rewrote it.</td>
 </tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Reveal 2 of 5 — the BLUF and the five key judgements</summary>
+<p>Eight rows in ten sentences, which is why this block is the one to argue about in pairs.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>What the draft says</th>
+<th>The bias</th>
+<th>Why that one, and not the one next to it</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>"a sustained <strong>campaign</strong>" in the BLUF</td>
-<td><a href="insensitivity-to-sample-size.html">Insensitivity to Sample Size</a></td>
+<td><a href="insensitivity-to-sample-size.html" data-tt="insensitivity-to-sample-size">Insensitivity to Sample Size</a></td>
 <td>Two observations are described as a campaign. Not base-rate neglect — the error here is the <em>n</em>, not a missing denominator. The honest sentence names the count: "activity observed on two occasions".</td>
 </tr>
 <tr>
 <td>"<strong>high confidence</strong>" throughout</td>
-<td><a href="overconfidence-bias.html">Overconfidence Bias</a></td>
+<td><a href="overconfidence-bias.html" data-tt="overconfidence-bias">Overconfidence Bias</a></td>
 <td>Confidence language is asserted and never earned. It is not vividness — nothing is vivid about the phrase; the failure is calibration. The tell is that nothing in the draft could ever show whether this analyst's high-confidence calls are right most of the time.</td>
 </tr>
 <tr>
 <td><strong>KJ1</strong> — "tooling and targeting closely match Vantage's established profile"</td>
-<td><a href="representativeness-heuristic.html">Representativeness Heuristic</a></td>
+<td><a href="representativeness-heuristic.html" data-tt="representativeness-heuristic">Representativeness Heuristic</a></td>
 <td>Attribution by resemblance. Distinguish it from confirmation: confirmation would be <em>discounting a rival</em>; this is <em>never forming one</em>. The test the draft fails is "how many other actors would look exactly like this?"</td>
 </tr>
 <tr>
 <td><strong>KJ1</strong>, and the absence of any rival</td>
-<td><a href="confirmation-bias.html">Confirmation Bias</a></td>
+<td><a href="confirmation-bias.html" data-tt="confirmation-bias">Confirmation Bias</a></td>
 <td>No competing hypothesis appears anywhere in the draft, so nothing could ever be tested against the leading one. The tell is the structure rather than the sentence: a single hypothesis and an accumulating pile of support.</td>
 </tr>
 <tr>
 <td><strong>KJ2</strong> — "observed this signature twice… characteristic tradecraft"</td>
-<td><a href="insensitivity-to-sample-size.html">Insensitivity to Sample Size</a></td>
+<td><a href="insensitivity-to-sample-size.html" data-tt="insensitivity-to-sample-size">Insensitivity to Sample Size</a></td>
 <td>The same mechanism as the campaign line, applied to a TTP. One or two intrusions become a profile. Not representativeness: nobody is matching a stereotype here; the count is simply too small to carry the word "characteristic".</td>
 </tr>
 <tr>
 <td><strong>KJ3</strong> — "no evidence of collection against water, which indicates it has not yet moved"</td>
-<td><a href="absence-of-evidence-fallacy.html">Absence of Evidence Fallacy</a></td>
+<td><a href="absence-of-evidence-fallacy.html" data-tt="absence-of-evidence-fallacy">Absence of Evidence Fallacy</a></td>
 <td>A negative finding about <em>someone else's collection</em> is written as a positive finding about the target. Not confirmation bias on its own — the mechanism is the specific inversion of absent evidence into evidence of absence. The fix is a sentence about what was searched.</td>
 </tr>
 <tr>
 <td><strong>KJ4</strong> — "volume has risen every week since August, and the campaign will clearly escalate"</td>
-<td><a href="recency-bias.html">Recency Bias</a></td>
+<td><a href="recency-bias.html" data-tt="recency-bias">Recency Bias</a></td>
 <td>The recent period supplies the trend and the longer record is not consulted. The volume rise may be a collection decision rather than anything on the ground.</td>
 </tr>
 <tr>
 <td><strong>KJ4</strong>, "will clearly escalate"</td>
-<td><a href="overconfidence-bias.html">Overconfidence Bias</a> (again), with <a href="base-rate-neglect.html">Base-Rate Neglect</a></td>
+<td><a href="overconfidence-bias.html" data-tt="overconfidence-bias">Overconfidence Bias</a> (again), with <a href="base-rate-neglect.html" data-tt="base-rate-neglect">Base-Rate Neglect</a></td>
 <td>"Will clearly" is a certainty word standing where the evidence supports "likely" — and no prior for how often such activity escalates was ever stated. Two mechanisms, one sentence; say which one you are calling.</td>
 </tr>
 <tr>
 <td><strong>KJ5</strong> — "unchanged from the previous six products"</td>
-<td><a href="status-quo-bias.html">Status Quo Bias</a>, then <a href="belief-perseverance.html">Belief Perseverance</a></td>
-<td>The default is carried forward and treated as requiring no evidence. Where a judgement has survived six products, the harder question is whether it would survive the withdrawal of the sources that first produced it — that is belief perseverance, and it is why Workshop 02's "layering effect" belongs here.</td>
+<td><a href="status-quo-bias.html" data-tt="status-quo-bias">Status Quo Bias</a>, then <a href="belief-perseverance.html" data-tt="belief-perseverance">Belief Perseverance</a></td>
+<td>The default is carried forward and treated as requiring no evidence. Where a judgement has survived six products, the harder question is whether it would survive the withdrawal of the sources that first produced it — that is belief perseverance, and it is why Workshop 02's "layering effect" belongs here, and the Senate committee named it as a failure of analytic tradecraft rather than of collection.<sup id="fnref:ssci"><a class="footnote-ref" href="#fn:ssci">4</a></sup></td>
 </tr>
 <tr>
 <td><strong>KJ5</strong> again, read as a programme</td>
-<td><a href="escalation-of-commitment.html">Escalation of Commitment</a></td>
+<td><a href="escalation-of-commitment.html" data-tt="escalation-of-commitment">Escalation of Commitment</a></td>
 <td>Six products behind the line is an investment, and abandoning it now would concede the earlier ones were wrong. Note it is the same sentence as the row above and a different mechanism — which is exactly why the exercise asks for the phrase that produces the bias.</td>
 </tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Reveal 3 of 5 — the basis, where the shape of the collection shows</summary>
+<p>This is the block that produces the free finding: the structural row that carries the whole product.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>What the draft says</th>
+<th>The bias</th>
+<th>Why that one, and not the one next to it</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td><em>Basis:</em> "rests on reporting from a partner service, which does not permit direct access… one report carries judgement 1"</td>
-<td><strong>Structural single-source dependency</strong>, with <a href="vividness-bias.html">Vividness Bias</a></td>
+<td><strong>Structural single-source dependency</strong>, with <a href="vividness-bias.html" data-tt="vividness-bias">Vividness Bias</a></td>
 <td>Not a cognitive bias at all: it is a property of the collection. A single, detailed, vivid report behind the key judgement, with no direct access at either end of the chain. Butler's point from Workshop 02 applies — one source is not automatically weak, but <em>a claim about an actor's identity resting on one indirect report</em> is a different object.</td>
 </tr>
 <tr>
 <td><em>Basis:</em> "public reporting on the group's most recent victim, a regional hospital, corroborates the picture"</td>
-<td><a href="vividness-bias.html">Vividness Bias</a>, with <a href="availability-heuristic.html">Availability Heuristic</a></td>
+<td><a href="vividness-bias.html" data-tt="vividness-bias">Vividness Bias</a>, with <a href="availability-heuristic.html" data-tt="availability-heuristic">Availability Heuristic</a></td>
 <td>The dramatic case feels like corroboration and is not: a victim report cannot corroborate an <em>attribution</em> by tooling. Vividness explains why it was counted; availability explains why it came to mind.</td>
 </tr>
 <tr>
 <td><em>Basis:</em> "where reporting is ambiguous we have taken the more alarming reading, since a missed warning is the more serious error"</td>
-<td><a href="loss-aversion.html">Loss Aversion</a></td>
+<td><a href="loss-aversion.html" data-tt="loss-aversion">Loss Aversion</a></td>
 <td>Stated outright as a policy, which is what makes this row so useful: the asymmetry of institutional risk has been written into the method. The mirror of it is that an unnecessary warning is treated as costing nothing.</td>
 </tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Reveal 4 of 5 — the outlook and the handling</summary>
+<p>Five rows across two paragraphs, including the two that are properties of the team rather than the sentence.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>What the draft says</th>
+<th>The bias</th>
+<th>Why that one, and not the one next to it</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td><em>Outlook:</em> "we have consistently assessed that the group will prioritise energy over water"</td>
-<td><a href="anchoring-bias.html">Anchoring Bias</a></td>
+<td><a href="anchoring-bias.html" data-tt="anchoring-bias">Anchoring Bias</a></td>
 <td>The original call is the anchor, and every later product has adjusted around it rather than re-derived it.</td>
 </tr>
 <tr>
 <td><em>Outlook:</em> "its restraint toward water is difficult to reconcile with the behaviour we would expect from an actor seeking maximum effect"</td>
-<td><a href="mirror-imaging.html">Mirror Imaging</a></td>
+<td><a href="mirror-imaging.html" data-tt="mirror-imaging">Mirror Imaging</a></td>
 <td>The standard of rationality applied is ours. This is the sentence to sit with: the assumption that a rational actor maximises effect, unexamined, is doing the work of an entire collection plan.</td>
 </tr>
 <tr>
 <td><em>Outlook:</em> "aggressive and opportunistic by nature"</td>
-<td><a href="fundamental-attribution-error.html">Fundamental Attribution Error</a></td>
+<td><a href="fundamental-attribution-error.html" data-tt="fundamental-attribution-error">Fundamental Attribution Error</a></td>
 <td>Conduct becomes character. Distinguish from mirror imaging: mirror imaging attributes <em>our</em> reasoning to them, this attributes <em>no reasoning</em> to them at all. The tell is that the words are unfalsifiable — no collection could prove a nature.</td>
 </tr>
 <tr>
 <td><em>Handling:</em> "a colleague questioned the attribution… did not change the assessment and has not been recorded"</td>
-<td><a href="conformity-bias.html">Conformity Bias</a></td>
+<td><a href="conformity-bias.html" data-tt="conformity-bias">Conformity Bias</a></td>
 <td>Dissent that existed and was not carried. The mechanism is invisible in the product precisely because it was never written down — which is the argument for recording independent judgements <em>before</em> the discussion.</td>
 </tr>
 <tr>
 <td><em>Handling:</em> the same sentence, read at team level</td>
-<td><a href="groupthink.html">Groupthink</a></td>
+<td><a href="groupthink.html" data-tt="groupthink">Groupthink</a></td>
 <td>The team's shared picture absorbed the query without engaging it. Distinguish from conformity: conformity is the individual suppressing a doubt they can see; groupthink is the group's process making that suppression cost-free and invisible.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
+</details>
+<details>
+<summary>Reveal 5 of 5 — the two the draft cannot show, and the answers to Q2 and Q3</summary>
 <p><strong>The two the draft cannot show, and why that matters.</strong></p>
 <ul>
-<li><a href="selective-perception.html">Selective Perception</a> is the mechanism you cannot diagnose from a single draft. Its signature is an <em>absence</em> — the disconfirming report that was never registered and so never appears in the text to be found. You catch it by looking at the file the draft came from and asking what should have been there.</li>
-<li><a href="hindsight-bias.html">Hindsight Bias</a> cannot appear in a draft written before the outcome. It is the bias you will meet in the <em>post-mortem</em>, when this draft's wrong call becomes "obvious in hindsight" and nobody can remember how uncertain it felt. Workshop 02's closing warning is the same one.</li>
+<li><a href="selective-perception.html" data-tt="selective-perception">Selective Perception</a> is the mechanism you cannot diagnose from a single draft. Its signature is an <em>absence</em> — the disconfirming report that was never registered and so never appears in the text to be found. You catch it by looking at the file the draft came from and asking what should have been there.</li>
+<li><a href="hindsight-bias.html" data-tt="hindsight-bias">Hindsight Bias</a> cannot appear in a draft written before the outcome. It is the bias you will meet in the <em>post-mortem</em>, when this draft's wrong call becomes "obvious in hindsight" and nobody can remember how uncertain it felt. Workshop 02's closing warning is the same one.</li>
 </ul>
 <p><strong>Q2 — the judgement the BLUF rests on.</strong> Judgement 1. If the attribution to Vantage is withdrawn, the BLUF's "state-linked group… intends to preposition access" loses its identity and its intent. And judgement 1 rests on one indirect report, from a service that will not permit direct access. That is the free finding in this exercise: <strong>not that the attribution is wrong, but that a single-source dependency is carrying the whole product and nothing in the draft says so.</strong></p>
-<p><strong>Q3 — the biases no individual can fix alone.</strong> <a href="groupthink.html">Groupthink</a>, <a href="conformity-bias.html">Conformity Bias</a>, and every row under decision and commitment. Also the structural row: a single-analyst, single-source posture is a resourcing decision, not a discipline problem. Everything else in the table is available to you in your own draft, in ten minutes, which is the reason the check sheet in Exercise 3 is built the way it is.</p>
+<p><strong>Q3 — the biases no individual can fix alone.</strong> <a href="groupthink.html" data-tt="groupthink">Groupthink</a> and <a href="conformity-bias.html" data-tt="conformity-bias">Conformity Bias</a>, because both are properties of how the team argues; <a href="loss-aversion.html" data-tt="loss-aversion">Loss Aversion</a> and <a href="escalation-of-commitment.html" data-tt="escalation-of-commitment">Escalation of Commitment</a>, because both are written into how the organisation and the programme are managed; and every structural row — the single-source dependency, the inherited partner reporting, the thin coverage. Everything else in the card is available to you in your own draft, in ten minutes: <a href="framing-effect.html" data-tt="framing-effect">Framing Effect</a> is a tasking you can rewrite, <a href="status-quo-bias.html" data-tt="status-quo-bias">Status Quo Bias</a> is a date you can add, <a href="recency-bias.html" data-tt="recency-bias">Recency Bias</a> is a baseline you can print. That split is why the card in Exercise 3 has two blocks.</p>
 </details>
 <p><strong>What good looks like:</strong> at least one row where a pair disagrees about the mechanism and can argue both sides from the text; the single-source dependency named <em>before</em> the reveal; and nobody claiming all nineteen.</p>
-<h2>Exercise 2 — your own draft (10 minutes)</h2>
+<h2 id="exercise-2-your-own-draft-10-minutes">Exercise 2 — your own draft (10 minutes)<a class="headerlink" href="#exercise-2-your-own-draft-10-minutes" title="Permanent link">&#128279;</a></h2>
 <p>Bring something you have actually written: the last product, a draft in progress, or the assessment you are least comfortable with. Work alone, in writing, and do not edit anything yet.</p>
 <p>Four steps, in order.</p>
 <ol>
@@ -606,13 +720,13 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 <summary>Reveal — what this pass usually turns up, and the four symptoms to expect</summary>
 <p><strong>What this pass tends to turn up, roughly in this order:</strong></p>
 <ul>
-<li><strong>An unstated confidence term.</strong> The judgement is expressed in absolute language and nobody can say what it would take to move it. This is the single most common finding, and it is <a href="overconfidence-bias.html">Overconfidence Bias</a> presenting in a form the writer does not recognise as bias at all — it feels like brevity.</li>
+<li><strong>An unstated confidence term.</strong> The judgement is expressed in absolute language and nobody can say what it would take to move it. This is the single most common finding, and it is <a href="overconfidence-bias.html" data-tt="overconfidence-bias">Overconfidence Bias</a> presenting in a form the writer does not recognise as bias at all — it feels like brevity.</li>
 <li><strong>A single item carrying the BLUF.</strong> A figure, a quote, a case, a first-person account. The writer almost always knows it is the vivid item and has never asked whether it is the <em>reliable</em> one.</li>
 <li><strong>An unanswered "no evidence of".</strong> The negative finding with no collection record behind it, appearing in a product whose author would never accept that standard from a source.</li>
 <li><strong>"No change" with no date.</strong> The standing assessment carried forward, and neither the writer nor the customer able to say when the evidence behind it was last tested.</li>
 </ul>
 <p><strong>The four symptoms the room should expect, and what each one means:</strong></p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Symptom</th>
@@ -630,19 +744,19 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 </tr>
 <tr>
 <td>"There is no bias in this draft."</td>
-<td>Possible, and rare. Look for the <em>absence</em> instead: <a href="selective-perception.html">Selective Perception</a> has no sentence to point at.</td>
+<td>Possible, and rare. Look for the <em>absence</em> instead: <a href="selective-perception.html" data-tt="selective-perception">Selective Perception</a> has no sentence to point at.</td>
 </tr>
 <tr>
 <td>"The bias is in the tasking, not in my work."</td>
-<td>Likely true, and worth saying — <a href="framing-effect.html">Framing Effect</a> enters from outside. It does not, however, excuse it: restating the tasking is the analyst's job and it costs one line.</td>
+<td>Likely true, and worth saying — <a href="framing-effect.html" data-tt="framing-effect">Framing Effect</a> enters from outside. It does not, however, excuse it: restating the tasking is the analyst's job and it costs one line.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>What good looks like:</strong> a written step 3 that names <strong>one</strong> mechanism and quotes the phrase that produced it; a step 4 sentence that somebody else could act on; and a confidence term in step 1 that was not in the draft as written.</p>
 </details>
-<h2>Exercise 3 — the signature card (8 minutes)</h2>
+<h2 id="exercise-3-the-signature-card-8-minutes">Exercise 3 — the signature card (8 minutes)<a class="headerlink" href="#exercise-3-the-signature-card-8-minutes" title="Permanent link">&#128279;</a></h2>
 <p>The deliverable. Build a card you will keep, with one row per bias you can actually catch, in this shape:</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Bias</th>
@@ -657,12 +771,14 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Two rules. The <strong>signature must be quotable</strong> — a phrase, a structure, or an absence you would recognise in a draft, not a definition. And the <strong>fix must be a single move</strong> — a line you add, a term you re-earn, a name you write down. Anything that reads "be more sceptical" is not a fix and comes off the card.</p>
 <p>Write yours before opening the model. Take the version you will actually use, and cut any row that does not fit your products.</p>
 <details>
 <summary>Reveal — the model signature card</summary>
-<table>
+<p>Generated from the bias pages themselves, so each signature is written once and cannot drift from the page it belongs to. The two blocks are the split that matters: the first is yours to close before issue; the second is yours to raise, because the fix belongs to somebody with authority over the team or the collection.</p>
+<p><strong>Yours to fix in the draft</strong> — 17 rows you can close in ten minutes, alone, before issue.</p>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Bias</th>
@@ -672,124 +788,213 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 </thead>
 <tbody>
 <tr>
-<td><a href="confirmation-bias.html">Confirmation Bias</a></td>
-<td>A hypothesis and a pile of support, with no rival hypothesis anywhere on the page</td>
-<td>Write the strongest competing hypothesis beside the leading one, and mark which evidence discriminates</td>
+<td><a href="absence-of-evidence-fallacy.html" data-tt="absence-of-evidence-fallacy">Absence of Evidence Fallacy</a></td>
+<td>"No evidence of", "we have not seen", "there is no indication".</td>
+<td>Pair every negative finding with the collection behind it.</td>
 </tr>
 <tr>
-<td><a href="belief-perseverance.html">Belief Perseverance</a></td>
-<td>A judgement carried into a re-issue without its original uncertainty</td>
-<td>Restate the uncertainty at re-issue, not just at first assessment</td>
+<td><a href="anchoring-bias.html" data-tt="anchoring-bias">Anchoring Bias</a></td>
+<td>A number or a phrase that first appeared in an earlier product, unchanged.</td>
+<td>Re-derive the figure before reusing it, or say that you have not.</td>
 </tr>
 <tr>
-<td><a href="mirror-imaging.html">Mirror Imaging</a></td>
-<td>"They would not do X because it makes no sense"</td>
-<td>One line naming what the actor would have to believe for the behaviour to make sense <em>to them</em></td>
+<td><a href="availability-heuristic.html" data-tt="availability-heuristic">Availability Heuristic</a></td>
+<td>The most recent incident shaping a forward-looking judgement.</td>
+<td>Add the historical baseline next to the recent case.</td>
 </tr>
 <tr>
-<td><a href="selective-perception.html">Selective Perception</a></td>
-<td>Nothing — an absence. The item you cannot find because it was never registered</td>
-<td>Read the file, not the draft, and name one item that argues against the judgement</td>
+<td><a href="base-rate-neglect.html" data-tt="base-rate-neglect">Base-Rate Neglect</a></td>
+<td>An indicator, alert or typology with no benign explanation rate.</td>
+<td>State the benign rate alongside the malicious one, even approximately.</td>
 </tr>
 <tr>
-<td><a href="vividness-bias.html">Vividness Bias</a></td>
-<td>A single striking item — a figure, an image, a quote — near the top</td>
-<td>State the source's status against that item, in the product</td>
+<td><a href="belief-perseverance.html" data-tt="belief-perseverance">Belief Perseverance</a></td>
+<td>A judgement carried into a re-issue without its original uncertainty.</td>
+<td>Restate the uncertainty at re-issue, not just at first assessment.</td>
 </tr>
 <tr>
-<td><a href="anchoring-bias.html">Anchoring Bias</a></td>
-<td>A number or a phrase that first appeared in an earlier product, unchanged</td>
-<td>Re-derive the figure before reusing it, or say that you have not</td>
+<td><a href="confirmation-bias.html" data-tt="confirmation-bias">Confirmation Bias</a></td>
+<td>A hypothesis and a pile of support, with no rival hypothesis anywhere on the page.</td>
+<td>Write the strongest competing hypothesis beside the leading one, and mark which evidence discriminates.</td>
 </tr>
 <tr>
-<td><a href="availability-heuristic.html">Availability Heuristic</a></td>
-<td>The most recent incident shaping a forward-looking judgement</td>
-<td>Add the historical baseline next to the recent case</td>
+<td><a href="framing-effect.html" data-tt="framing-effect">Framing Effect</a></td>
+<td>The tasking's own words, unexamined, at the top of your draft.</td>
+<td>Rewrite the tasking in your own words, and say what the other framing would have produced.</td>
 </tr>
 <tr>
-<td><a href="representativeness-heuristic.html">Representativeness Heuristic</a></td>
-<td>"Matches the profile", "consistent with the established pattern"</td>
-<td>Ask how many other actors would look identical, and name the evidence that would separate them</td>
+<td><a href="fundamental-attribution-error.html" data-tt="fundamental-attribution-error">Fundamental Attribution Error</a></td>
+<td>"Aggressive", "opportunistic", "deceptive by nature".</td>
+<td>State the situational driver that would produce the same behaviour.</td>
 </tr>
 <tr>
-<td><a href="absence-of-evidence-fallacy.html">Absence of Evidence Fallacy</a></td>
-<td>"No evidence of", "we have not seen", "there is no indication"</td>
-<td>Pair every negative finding with the collection behind it</td>
+<td><a href="hindsight-bias.html" data-tt="hindsight-bias">Hindsight Bias</a></td>
+<td>A post-mortem conclusion that the outcome was foreseeable.</td>
+<td>Check it against the judgement that was actually written at the time.</td>
 </tr>
 <tr>
-<td><a href="overconfidence-bias.html">Overconfidence Bias</a></td>
-<td>"Will", "clearly", "obviously", "always", or an unqualified number</td>
-<td>Re-earn or strike each absolute on the final read</td>
+<td><a href="insensitivity-to-sample-size.html" data-tt="insensitivity-to-sample-size">Insensitivity to Sample Size</a></td>
+<td>"Campaign", "pattern", "characteristic" with no count in the sentence.</td>
+<td>Put the count (n) in the sentence and let the reader see it.</td>
 </tr>
 <tr>
-<td><a href="hindsight-bias.html">Hindsight Bias</a></td>
-<td>A post-mortem conclusion that the outcome was foreseeable</td>
-<td>Check it against the judgement that was actually written at the time</td>
+<td><a href="mirror-imaging.html" data-tt="mirror-imaging">Mirror Imaging</a></td>
+<td>"They would not do X because it makes no sense."</td>
+<td>One line naming what the actor would have to believe for the behaviour to make sense to them.</td>
 </tr>
 <tr>
-<td><a href="base-rate-neglect.html">Base-Rate Neglect</a></td>
-<td>An indicator, alert or typology with no benign explanation rate</td>
-<td>State the benign rate alongside the malicious one, even approximately</td>
+<td><a href="overconfidence-bias.html" data-tt="overconfidence-bias">Overconfidence Bias</a></td>
+<td>"Will", "clearly", "obviously", "always", or an unqualified number.</td>
+<td>Re-earn or strike each absolute on the final read.</td>
 </tr>
 <tr>
-<td><a href="insensitivity-to-sample-size.html">Insensitivity to Sample Size</a></td>
-<td>"Campaign", "pattern", "characteristic" with no count in the sentence</td>
-<td>Put the <em>n</em> in the sentence and let the reader see it</td>
+<td><a href="recency-bias.html" data-tt="recency-bias">Recency Bias</a></td>
+<td>A trend drawn from the current period alone.</td>
+<td>Show the current period against the prior baseline.</td>
 </tr>
 <tr>
-<td><a href="groupthink.html">Groupthink</a></td>
-<td>A judgement nobody has argued against, in a team that agrees</td>
-<td>Independent judgements in writing, then reconcile; name a challenger</td>
+<td><a href="representativeness-heuristic.html" data-tt="representativeness-heuristic">Representativeness Heuristic</a></td>
+<td>"Matches the profile", "consistent with the established pattern".</td>
+<td>Ask how many other actors would look identical, and name the evidence that would separate them.</td>
 </tr>
 <tr>
-<td><a href="conformity-bias.html">Conformity Bias</a></td>
-<td>A review comment that changed nothing and was not recorded</td>
-<td>Record the reasoning before the discussion, and record the query after it</td>
+<td><a href="selective-perception.html" data-tt="selective-perception">Selective Perception</a></td>
+<td>Nothing — an absence. The item you cannot find because it was never registered.</td>
+<td>Read the file, not the draft, and name one item that argues against the judgement.</td>
 </tr>
 <tr>
-<td><a href="fundamental-attribution-error.html">Fundamental Attribution Error</a></td>
-<td>"Aggressive", "opportunistic", "deceptive by nature"</td>
-<td>State the situational driver that would produce the same behaviour</td>
+<td><a href="status-quo-bias.html" data-tt="status-quo-bias">Status Quo Bias</a></td>
+<td>"Unchanged", "no change to the previous assessment".</td>
+<td>Date the review and say when the evidence was last tested.</td>
 </tr>
 <tr>
-<td><a href="loss-aversion.html">Loss Aversion</a></td>
-<td>"The consequences of missing this are unacceptable"</td>
-<td>State what it costs to be wrong in each direction</td>
+<td><a href="vividness-bias.html" data-tt="vividness-bias">Vividness Bias</a></td>
+<td>A single striking item — a figure, an image, a quote — near the top.</td>
+<td>State the source's status against that item, in the product.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Yours to raise with whoever owns the team or the collection</strong> — 9 rows no amount of personal discipline will close. The signature is still yours to spot; the fix is somebody else's to make.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Bias</th>
+<th>The signature</th>
+<th>What to raise, and with whom</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="carried-forward-assessment.html" data-tt="carried-forward-assessment">Carried-Forward Assessment</a></td>
+<td>"No change" accepted by the process, with no scheduled review and nobody able to say who last tested the evidence.</td>
+<td>Put the review on a calendar with a named owner, and print the date the evidence was last tested.</td>
 </tr>
 <tr>
-<td><a href="escalation-of-commitment.html">Escalation of Commitment</a></td>
-<td>A line or a capability defended by its history rather than its yield</td>
+<td><a href="conformity-bias.html" data-tt="conformity-bias">Conformity Bias</a></td>
+<td>A review comment that changed nothing and was not recorded.</td>
+<td>Record the reasoning before the discussion, and record the query after it.</td>
+</tr>
+<tr>
+<td><a href="escalation-of-commitment.html" data-tt="escalation-of-commitment">Escalation of Commitment</a></td>
+<td>A line or a capability defended by its history rather than its yield.</td>
 <td>Ask: if it did not exist today, would we build it?</td>
 </tr>
 <tr>
-<td><a href="framing-effect.html">Framing Effect</a></td>
-<td>The tasking's own words, unexamined, at the top of your draft</td>
-<td>Rewrite the tasking in your own words, and say what the other framing would have produced</td>
+<td><a href="groupthink.html" data-tt="groupthink">Groupthink</a></td>
+<td>A judgement nobody has argued against, in a team that agrees.</td>
+<td>Independent judgements in writing, then reconcile; name a challenger.</td>
 </tr>
 <tr>
-<td><a href="status-quo-bias.html">Status Quo Bias</a></td>
-<td>"Unchanged", "no change to the previous assessment"</td>
-<td>Date the review and say when the evidence was last tested</td>
+<td><a href="inherited-partner-reporting.html" data-tt="inherited-partner-reporting">Inherited Partner Reporting</a></td>
+<td>Reporting you did not collect, cannot re-derive, and have never seen the handling caveats behind.</td>
+<td>State the partner's caveats in your own product in your own words — or state that you do not have them.</td>
 </tr>
 <tr>
-<td><a href="recency-bias.html">Recency Bias</a></td>
-<td>A trend drawn from the current period alone</td>
-<td>Show the current period against the prior baseline</td>
+<td><a href="loss-aversion.html" data-tt="loss-aversion">Loss Aversion</a></td>
+<td>"The consequences of missing this are unacceptable."</td>
+<td>State what it costs to be wrong in each direction.</td>
+</tr>
+<tr>
+<td><a href="single-source-dependency.html" data-tt="single-source-dependency">Single-Source Dependency</a></td>
+<td>The key judgement rests on one report, one chain, and a source you cannot see to the end.</td>
+<td>Name the dependency in the product, and say what the judgement would look like if that source were wrong.</td>
+</tr>
+<tr>
+<td><a href="thin-analytic-coverage.html" data-tt="thin-analytic-coverage">Thin Analytic Coverage</a></td>
+<td>One name on a national question, and no second reading of the same file.</td>
+<td>Say in the product how many analysts the judgement rests on, and what a second reader would have been asked to check.</td>
+</tr>
+<tr>
+<td><a href="volume-mistaken-for-development.html" data-tt="volume-mistaken-for-development">Volume Mistaken for Development</a></td>
+<td>The reporting curve is rising and the product reads it as the activity curve.</td>
+<td>Separate the reporting curve from the activity curve, and say which one the trend rests on.</td>
 </tr>
 </tbody>
-</table>
-<p><strong>How to use the card, and how not to.</strong> It is a <strong>reading aid, not a checklist to tick.</strong> Run it in one pass against a draft, in the final ten minutes before issue; a card you work through row by row, looking for something to write in every row, will produce exactly the over-calling the session opened by warning against. Expect to find <strong>one or two</strong> live entries in a normal draft. The rows that are structural — groupthink, conformity, and the decision-and-commitment block — are not fixes you make in a draft; they are conditions you raise with whoever owns the team and the collection.</p>
+</table></div>
+<p><strong>How to use the card, and how not to.</strong> It is a <strong>reading aid, not a checklist to tick.</strong> Run it in one pass against a draft, in the final ten minutes before issue; a card you work through row by row, looking for something to write in every row, will produce exactly the over-calling the session opened by warning against. Expect to find <strong>one or two</strong> live entries in a normal draft. Nothing in the second block is a fix you make in a draft — those are conditions you raise with whoever owns the team and the collection.</p>
 </details>
-<p><strong>What good looks like:</strong> twenty rows or fewer, every signature quotable, every fix a single move, and at least one row that would require somebody else's agreement to act on.</p>
-<h2>Watch for these in your own reasoning</h2>
+<details>
+<summary>Reveal — the map: bias → technique → artefact</summary>
+<p>The card tells you what to look for. The map tells you what to <em>run</em>, and what it leaves behind. Every row of the card is backed by one of the <a href="structured-analytic-techniques.html">Structured Analytic Techniques</a>, and each technique that is actually run produces an artefact — something a reviewer, an auditor or a customer can inspect years later.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>The biases it counters</th>
+<th>The artefact it leaves behind</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Devil's advocacy and red-teaming</strong></td>
+<td><a href="conformity-bias.html" data-tt="conformity-bias">Conformity Bias</a>, <a href="escalation-of-commitment.html" data-tt="escalation-of-commitment">Escalation of Commitment</a>, <a href="framing-effect.html" data-tt="framing-effect">Framing Effect</a>, <a href="groupthink.html" data-tt="groupthink">Groupthink</a>, <a href="loss-aversion.html" data-tt="loss-aversion">Loss Aversion</a>, <a href="thin-analytic-coverage.html" data-tt="thin-analytic-coverage">Thin Analytic Coverage</a></td>
+<td>A coverage line naming who reviewed the judgement, and against what; Cost-of-error statement in both directions; Independent judgements in writing, plus a named challenger; Tasking restated, with what the other framing would have produced; The build-it-today test, on the record; Written dissent register attached to the product</td>
+</tr>
+<tr>
+<td><strong>Key Assumptions Check</strong></td>
+<td><a href="anchoring-bias.html" data-tt="anchoring-bias">Anchoring Bias</a>, <a href="carried-forward-assessment.html" data-tt="carried-forward-assessment">Carried-Forward Assessment</a>, <a href="fundamental-attribution-error.html" data-tt="fundamental-attribution-error">Fundamental Attribution Error</a>, <a href="mirror-imaging.html" data-tt="mirror-imaging">Mirror Imaging</a>, <a href="status-quo-bias.html" data-tt="status-quo-bias">Status Quo Bias</a></td>
+<td>A dated re-test line under every standing judgement; Dated review line: when the evidence was last tested; Situational-driver paragraph beside the conduct; Statement of the actor's premise, written from their position; The figure re-derived, with the source it now rests on</td>
+</tr>
+<tr>
+<td><strong>Analysis of Competing Hypotheses</strong></td>
+<td><a href="belief-perseverance.html" data-tt="belief-perseverance">Belief Perseverance</a>, <a href="confirmation-bias.html" data-tt="confirmation-bias">Confirmation Bias</a>, <a href="representativeness-heuristic.html" data-tt="representativeness-heuristic">Representativeness Heuristic</a>, <a href="selective-perception.html" data-tt="selective-perception">Selective Perception</a></td>
+<td>ACH matrix with the discriminating evidence marked; Evidence file annotated against every hypothesis on the page; List of other actors that would leave the same signature; Re-issued judgement carrying its original confidence term</td>
+</tr>
+<tr>
+<td><strong>Baseline comparison</strong></td>
+<td><a href="availability-heuristic.html" data-tt="availability-heuristic">Availability Heuristic</a>, <a href="base-rate-neglect.html" data-tt="base-rate-neglect">Base-Rate Neglect</a>, <a href="recency-bias.html" data-tt="recency-bias">Recency Bias</a>, <a href="volume-mistaken-for-development.html" data-tt="volume-mistaken-for-development">Volume Mistaken for Development</a></td>
+<td>Baseline series printed beside the recent case; Benign rate stated alongside the malicious one; Current period against the prior baseline; Two labelled series — reporting volume, and activity on the ground</td>
+</tr>
+<tr>
+<td><strong>Confidence ledger</strong></td>
+<td><a href="hindsight-bias.html" data-tt="hindsight-bias">Hindsight Bias</a>, <a href="insensitivity-to-sample-size.html" data-tt="insensitivity-to-sample-size">Insensitivity to Sample Size</a>, <a href="overconfidence-bias.html" data-tt="overconfidence-bias">Overconfidence Bias</a></td>
+<td>Scored record of prior judgements and how they resolved; The judgement as written at the time, quoted in the post-mortem; n stated in the judgement, with confidence set to match</td>
+</tr>
+<tr>
+<td><strong>Source grading</strong></td>
+<td><a href="inherited-partner-reporting.html" data-tt="inherited-partner-reporting">Inherited Partner Reporting</a>, <a href="single-source-dependency.html" data-tt="single-source-dependency">Single-Source Dependency</a>, <a href="vividness-bias.html" data-tt="vividness-bias">Vividness Bias</a></td>
+<td>A provenance line naming the originating service and its stated caveats; A source-dependency line under the key judgement; Source status printed against the vivid claim</td>
+</tr>
+<tr>
+<td><strong>Collection-gap review</strong></td>
+<td><a href="absence-of-evidence-fallacy.html" data-tt="absence-of-evidence-fallacy">Absence of Evidence Fallacy</a></td>
+<td>Search record appended to every negative finding</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Why the artefact matters more than the technique.</strong> A technique you ran and cannot show is indistinguishable, from the outside, from a technique you did not run. The ACH matrix, the assumptions log, the confidence ledger and the dated review line are the difference between an analysis that was checked and an analysis that says it was. This is also the map to take to a manager: each row names a capability, and the ones with empty artefacts are the ones the team does not actually have.</p>
+<p><strong>The two structural artefacts are the exceptions.</strong> A collection record and a coverage line cannot be produced by an analyst working alone — they need the collection manager and the team lead respectively. Treat a blank in those columns as a question for somebody else, which is exactly what the second block of the card says.</p>
+</details>
+<p><strong>What good looks like:</strong> every signature quotable, every fix a single move, and at least one row in the second block that you have actually raised with its owner — not noted, raised.</p>
+<h2 id="watch-for-these-in-your-own-reasoning">Watch for these in your own reasoning<a class="headerlink" href="#watch-for-these-in-your-own-reasoning" title="Permanent link">&#128279;</a></h2>
 <ul>
 <li><strong>Calling bias where there is only disagreement.</strong> The named-mechanism test — quote the phrase that produced it — is what separates the two. A bias you cannot point at is a label.</li>
 <li><strong>Collecting the whole atlas in one draft.</strong> Twenty-one biases have overlapping signatures, and the adjacent pairs mostly cannot both be operating on the same sentence. Name the one that is.</li>
-<li><strong>Treating this as a knowledge test.</strong> Naming <a href="anchoring-bias.html">Anchoring Bias</a> correctly has never changed an assessment. Adding one line about the baseline has.</li>
+<li><strong>Treating this as a knowledge test.</strong> Naming <a href="anchoring-bias.html" data-tt="anchoring-bias">Anchoring Bias</a> correctly has never changed an assessment. Adding one line about the baseline has.</li>
 <li><strong>Fixing the cognitive rows and ignoring the structural ones.</strong> The rows no individual can catch alone are the ones that carried the Iraq judgements and they will carry yours. They need a decision by somebody with authority, which means they need to be said out loud to that person.</li>
-<li><strong>Learning the atlas from the post-mortem.</strong> <a href="hindsight-bias.html">Hindsight Bias</a> will supply you with a satisfying explanation of every failure you review, and it will be wrong at the margins every time. The only honest test of your judgement is the one you wrote down in advance.</li>
+<li><strong>Learning the atlas from the post-mortem.</strong> <a href="hindsight-bias.html" data-tt="hindsight-bias">Hindsight Bias</a> will supply you with a satisfying explanation of every failure you review, and it will be wrong at the margins every time. The only honest test of your judgement is the one you wrote down in advance.</li>
 </ul>
-<h2>Questions to keep on the table</h2>
+<h2 id="questions-to-keep-on-the-table">Questions to keep on the table<a class="headerlink" href="#questions-to-keep-on-the-table" title="Permanent link">&#128279;</a></h2>
 <ul>
 <li>What is the one mechanism operating in your current draft — and what phrase in the text produced it?</li>
 <li>Which single item would collapse your key judgement if it were withdrawn, and does the customer know it is there?</li>
@@ -798,17 +1003,80 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 <li>Which bias have you named in someone else's work this month but never found in your own?</li>
 <li>What would you have to see for today's assessment to be wrong — and is anybody collecting it?</li>
 </ul>
-<h2>Related</h2>
+<h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&#128279;</a></h2>
 <ul>
 <li><a href="critical-thinking-workshop-02-iraq-wmd.html">Workshop 02 — Iraq&#x27;s WMD: A Bias Post-Mortem</a> — the same mechanisms worked inside a single case, with the inquiries' own words</li>
 <li><a href="critical-thinking-workshop-01-train-preacher.html">Workshop 01 — the transit clip</a> — the source-level habit the bias work depends on: what is observed, what is reported, what is inferred</li>
 <li><a href="cognitive-bias.html">Cognitive Bias</a> — the taxonomy hub; the five families, with a page for every bias on the card</li>
 <li><a href="structured-analytic-techniques.html">Structured Analytic Techniques</a> — ACH, the Key Assumptions Check, devil's advocacy and red-teaming: the techniques behind every row of Exercise 3</li>
-<li><a href="estimative-language.html">Estimative Language</a> — the calibrated confidence terms that make <a href="overconfidence-bias.html">Overconfidence Bias</a> visible in a draft</li>
+<li><a href="estimative-language.html">Estimative Language</a> — the calibrated confidence terms that make <a href="overconfidence-bias.html" data-tt="overconfidence-bias">Overconfidence Bias</a> visible in a draft</li>
 <li><a href="admiralty-rating.html">Admiralty Rating</a> — source grading, the fix for the vivid item and the single-source dependency</li>
 <li><a href="the-intelligence-cycle.html">The Intelligence Cycle</a> — where framing arrives, and where review is meant to happen</li>
-</ul></article>
+</ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:heuer">
+<p>David T. Heuer, <em>Psychology of Intelligence Analysis</em> (Center for the Study of Intelligence, 1999). <a href="https://cia.gov/resources/csi/static/Pyschology-of-Intelligence-Analysis.pdf">cia.gov PDF</a>&#160;<a class="footnote-backref" href="#fnref:heuer" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:butler">
+<p>Lord Butler of Brockwell, <em>Review of Intelligence on Weapons of Mass Destruction</em> (HC 898, 2004): no evidence of deliberate distortion, and a judgement nonetheless wrong. <a href="https://warwick.ac.uk/fac/soc/pais/people/kettell/cloud/butler_report.pdf">Report</a>&#160;<a class="footnote-backref" href="#fnref:butler" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:janis">
+<p>Irving L. Janis, <em>Victims of Groupthink</em> (Houghton Mifflin, 1972) — the case studies behind the unanimity mechanism. <a href="https://archive.org/details/victimsofgroupthinkirvingl.janis">archive.org</a>&#160;<a class="footnote-backref" href="#fnref:janis" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:ssci">
+<p>US Senate Select Committee on Intelligence, <em>Report on the U.S. Intelligence Community's Prewar Intelligence Assessments on Iraq</em> (2004), the "layering" of assessments. <a href="https://www.govinfo.gov/content/pkg/CRPT-108srpt301/html/CRPT-108srpt301.htm">govinfo.gov</a>&#160;<a class="footnote-backref" href="#fnref:ssci" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></article>
+<nav class="prevnext"><a class="pn pn-prev" href="critical-thinking-workshop-02-iraq-wmd.html"><span class="pn-lbl">&larr; Previous</span><span class="pn-title">Workshop 02 — Iraq&#x27;s WMD: A Bias Post-Mortem</span></a></nav>
 <a class="nav-back" href="index.html">&larr; Back to Wiki index</a>
+<script type="application/json" id="tt-data">{"absence-of-evidence-fallacy": {"t": "Absence of Evidence Fallacy", "d": "Treating the absence of evidence as evidence of absence — reading \"we found nothing\" as proof that nothing exists. In intelligence the error runs in both directions, and the second direction is the more dangerous: failur", "s": "\"No evidence of\", \"we have not seen\", \"there is no indication\".", "m": "Pair every negative finding with the collection behind it.", "o": ""}, "anchoring-bias": {"t": "Anchoring Bias", "d": "Over-reliance on the first piece of information offered (the anchor) when forming subsequent estimates, with insufficient adjustment away from it — even when the anchor is arbitrary or irrelevant.", "s": "A number or a phrase that first appeared in an earlier product, unchanged.", "m": "Re-derive the figure before reusing it, or say that you have not.", "o": ""}, "availability-heuristic": {"t": "Availability Heuristic", "d": "Judging the probability or frequency of an event by how easily instances come to mind. Vivid, recent, or dramatic events are recalled readily and are therefore over-weighted relative to their true base rate.", "s": "The most recent incident shaping a forward-looking judgement.", "m": "Add the historical baseline next to the recent case.", "o": ""}, "base-rate-neglect": {"t": "Base-Rate Neglect", "d": "Ignoring the prior probability of an event in favour of vivid, specific, case-level detail. The analyst reasons about the individual case as if it existed outside any population — \"this person is behaving suspiciously, t", "s": "An indicator, alert or typology with no benign explanation rate.", "m": "State the benign rate alongside the malicious one, even approximately.", "o": ""}, "belief-perseverance": {"t": "Belief Perseverance", "d": "Difficulty abandoning a mindset once formed, even after the evidence that produced it has been discredited. The judgement persists after its foundation is gone — and the analyst experiences the persistence as expertise r", "s": "A judgement carried into a re-issue without its original uncertainty.", "m": "Restate the uncertainty at re-issue, not just at first assessment.", "o": ""}, "carried-forward-assessment": {"t": "Carried-Forward Assessment", "d": "A structural bias. Status Quo Bias is the individual version — a person preferring the existing judgement. Carried-forward assessment is the process version: the standing judgement survives because nothing in the cycle r", "s": "\"No change\" accepted by the process, with no scheduled review and nobody able to say who last tested the evidence.", "m": "Put the review on a calendar with a named owner, and print the date the evidence was last tested.", "o": "system"}, "confirmation-bias": {"t": "Confirmation Bias", "d": "The tendency to search for, interpret, favour, and recall information in ways that confirm one's pre-existing beliefs, while giving disproportionately less weight to disconfirming evidence.", "s": "A hypothesis and a pile of support, with no rival hypothesis anywhere on the page.", "m": "Write the strongest competing hypothesis beside the leading one, and mark which evidence discriminates.", "o": ""}, "conformity-bias": {"t": "Conformity Bias", "d": "Adopting the position of the surrounding group — or of a senior voice — regardless of one's own analysis. Distinct from Groupthink: groupthink describes a group's shared degradation of rigour; conformity describes the in", "s": "A review comment that changed nothing and was not recorded.", "m": "Record the reasoning before the discussion, and record the query after it.", "o": "system"}, "escalation-of-commitment": {"t": "Escalation of Commitment", "d": "Persisting with a failing line of reasoning, collection effort or product because of what has already been invested in it — the sunk-cost fallacy applied to analysis. The investment may be time, money, an established sou", "s": "A line or a capability defended by its history rather than its yield.", "m": "Ask: if it did not exist today, would we build it?", "o": "system"}, "framing-effect": {"t": "Framing Effect", "d": "Reaching different conclusions from identical information because of how the options, risks or question were expressed. The framing is usually supplied by someone else — a customer, a policy document, a headline, or the ", "s": "The tasking's own words, unexamined, at the top of your draft.", "m": "Rewrite the tasking in your own words, and say what the other framing would have produced.", "o": ""}, "fundamental-attribution-error": {"t": "Fundamental Attribution Error", "d": "Explaining other people's behaviour by their character while explaining one's own by circumstance. Applied to adversaries, it converts structural pressure into disposition: an actor behaves aggressively because they are ", "s": "\"Aggressive\", \"opportunistic\", \"deceptive by nature\".", "m": "State the situational driver that would produce the same behaviour.", "o": ""}, "groupthink": {"t": "Groupthink", "d": "(Janis 1972) A mode of thinking in cohesive groups in which the drive for unanimity overrides a realistic appraisal of alternative courses of action. It is the social analogue of individual bias — consensus pressure degr", "s": "A judgement nobody has argued against, in a team that agrees.", "m": "Independent judgements in writing, then reconcile; name a challenger.", "o": "system"}, "hindsight-bias": {"t": "Hindsight Bias", "d": "After an outcome is known, the tendency to over-estimate how foreseeable it was beforehand — the \"I knew it all along\" effect, also called creeping determinism. Memory of one's prior judgements is rewritten to fit the re", "s": "A post-mortem conclusion that the outcome was foreseeable.", "m": "Check it against the judgement that was actually written at the time.", "o": ""}, "inherited-partner-reporting": {"t": "Inherited Partner Reporting", "d": "A structural bias — a property of the arrangement, not of the analyst. Inherited reporting is material that enters the assessment from another service: a liaison feed, a partner dissemination, a shared collection pool. T", "s": "Reporting you did not collect, cannot re-derive, and have never seen the handling caveats behind.", "m": "State the partner's caveats in your own product in your own words — or state that you do not have them.", "o": "system"}, "insensitivity-to-sample-size": {"t": "Insensitivity to Sample Size", "d": "Drawing strong conclusions from small samples — treating a handful of observations as representative of a population or a pattern. The error is not in using small samples: in intelligence they are often all that exists. ", "s": "\"Campaign\", \"pattern\", \"characteristic\" with no count in the sentence.", "m": "Put the count (n) in the sentence and let the reader see it.", "o": ""}, "loss-aversion": {"t": "Loss Aversion", "d": "Losses loom larger than equivalent gains, skewing risk judgement. From prospect theory: the same outcome is weighed differently depending on whether it is presented as giving something up or as failing to gain it, and th", "s": "\"The consequences of missing this are unacceptable.\"", "m": "State what it costs to be wrong in each direction.", "o": "system"}, "mirror-imaging": {"t": "Mirror Imaging", "d": "(Heuer) Assuming that the other actor shares the analyst's own rationality, values, and constraints — projecting one's own frame of reference onto the subject. A classic source of strategic surprise.", "s": "\"They would not do X because it makes no sense.\"", "m": "One line naming what the actor would have to believe for the behaviour to make sense to them.", "o": ""}, "overconfidence-bias": {"t": "Overconfidence Bias", "d": "The tendency to systematically over-estimate the accuracy or calibration of one's own judgements and knowledge. It is the gap between how confident an analyst feels and how often they are actually right.", "s": "\"Will\", \"clearly\", \"obviously\", \"always\", or an unqualified number.", "m": "Re-earn or strike each absolute on the final read.", "o": ""}, "recency-bias": {"t": "Recency Bias", "d": "Over-weighting the most recent reporting or events at the expense of the longer record. What arrived this week is treated as the state of the world, and the baseline it should be compared against is forgotten.", "s": "A trend drawn from the current period alone.", "m": "Show the current period against the prior baseline.", "o": ""}, "representativeness-heuristic": {"t": "Representativeness Heuristic", "d": "Judging probability by stereotypical similarity — how closely a case matches the mental image of a category — rather than by base rates or the quality of the evidence. \"This looks like what a state-sponsored intrusion lo", "s": "\"Matches the profile\", \"consistent with the established pattern\".", "m": "Ask how many other actors would look identical, and name the evidence that would separate them.", "o": ""}, "selective-perception": {"t": "Selective Perception", "d": "Noticing what fits prior expectation and filtering out the rest — the perceptual stage of Confirmation Bias. The disconfirming item is not discounted in analysis; it is never registered as evidence at all.", "s": "Nothing — an absence. The item you cannot find because it was never registered.", "m": "Read the file, not the draft, and name one item that argues against the judgement.", "o": ""}, "single-source-dependency": {"t": "Single-Source Dependency", "d": "A structural bias is a property of the collection posture rather than of the analyst’s head: the assessment can be wrong in a predictable direction even when every person in the chain reasoned well, because the shape of ", "s": "The key judgement rests on one report, one chain, and a source you cannot see to the end.", "m": "Name the dependency in the product, and say what the judgement would look like if that source were wrong.", "o": "system"}, "status-quo-bias": {"t": "Status Quo Bias", "d": "Preferring the existing state and treating change as the option that must justify itself, even when the current position is arbitrary or has never been tested. The default is not neutral: it is a decision, taken without ", "s": "\"Unchanged\", \"no change to the previous assessment\".", "m": "Date the review and say when the evidence was last tested.", "o": ""}, "thin-analytic-coverage": {"t": "Thin Analytic Coverage", "d": "A structural bias belongs to the posture, not the person. Thin coverage is the plainest case: a question of national significance worked by one analyst, or two, with no second reading, no challenger and nobody whose job ", "s": "One name on a national question, and no second reading of the same file.", "m": "Say in the product how many analysts the judgement rests on, and what a second reader would have been asked to check.", "o": "system"}, "vividness-bias": {"t": "Vividness Bias", "d": "(Heuer's \"vividness criterion\"; Nisbett & Ross 1980) The tendency to over-weight concrete, emotionally striking, or graphic information over abstract but more diagnostic statistical (base-rate) information.", "s": "A single striking item — a figure, an image, a quote — near the top.", "m": "State the source's status against that item, in the product.", "o": ""}, "volume-mistaken-for-development": {"t": "Volume Mistaken for Development", "d": "A structural bias, and the one most often mistaken for a finding. Reporting volume is a property of the collection system; activity is a property of the target. When the two are read as one line, a quarterly collection d", "s": "The reporting curve is rising and the product reads it as the activity curve.", "m": "Separate the reporting curve from the activity curve, and say which one the trend rests on.", "o": "system"}}</script><script>
+(function(){
+  var raw=document.getElementById('tt-data');
+  if(!raw)return;
+  var data={};try{data=JSON.parse(raw.textContent);}catch(e){return;}
+  var el=document.createElement('div');
+  el.id='tt-card';el.setAttribute('role','tooltip');el.setAttribute('aria-hidden','true');
+  document.body.appendChild(el);
+  var cur=null;
+  function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  /* innerHTML is safe: values come from #tt-data, a build-time JSON blob
+     generated from classification-gated vault pages, and every field passes
+     through esc(); the JSON itself has <,> escaped as \uXXXX. */
+  function fill(d){
+    var h='<div class="tt-k">';
+    h+= (d.o==='system') ? 'Bias &middot; raise, do not fix alone' : 'Bias';
+    h+='</div><h4>'+esc(d.t)+'</h4>';
+    if(d.d)h+='<p>'+esc(d.d)+'</p>';
+    if(d.s)h+='<div class="tt-row"><span>Signature</span><em>'+esc(d.s)+'</em></div>';
+    if(d.m)h+='<div class="tt-row"><span>The one move</span><em>'+esc(d.m)+'</em></div>';
+    h+='<div class="tt-foot">'+esc(d.t)+'.html &rarr;</div>';
+    el.innerHTML=h;
+  }
+  function show(a){
+    var d=data[a.getAttribute('data-tt')];
+    if(!d)return;
+    cur=a;fill(d);
+    el.classList.add('on');el.setAttribute('aria-hidden','false');
+    var r=a.getBoundingClientRect(),w=el.offsetWidth,h=el.offsetHeight;
+    var x=Math.min(Math.max(12,r.left),window.innerWidth-w-12);
+    var y=(r.bottom+10+h<=window.innerHeight-12)?r.bottom+10:Math.max(12,r.top-h-10);
+    el.style.left=x+'px';el.style.top=y+'px';
+  }
+  function hide(){if(!cur)return;cur=null;el.classList.remove('on');el.setAttribute('aria-hidden','true');}
+  var links=document.querySelectorAll('a[data-tt]');
+  Array.prototype.forEach.call(links,function(a){
+    a.addEventListener('mouseenter',function(){show(a);});
+    a.addEventListener('mouseleave',hide);
+    a.addEventListener('focus',function(){show(a);});
+    a.addEventListener('blur',hide);
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')hide();});
+  window.addEventListener('scroll',hide,{passive:true});
+})();
+</script>
 </main>
 <footer class="footer">
   <div class="footer-inner">
