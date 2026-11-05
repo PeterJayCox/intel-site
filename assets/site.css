@@ -1045,5 +1045,6 @@ html[data-theme-mode="light"] .theme-toggle .tt-light { display: inline; }
   details > summary { display: none; }
   .sig-card { border: 1px solid #999; background: #fff; page-break-inside: avoid; }
   .wiki-body .headerlink { display: none; }
+  .video-frame { display: none; }
   @page { margin: 16mm 14mm; }
 }
