@@ -1055,6 +1055,11 @@ html[data-theme-mode="light"] .theme-toggle .tt-light { display: inline; }
   align-items: flex-start;
   gap: 9px;
 }
+.bias-icon.inline {
+  display: inline-block;
+  margin: 0 7px 0 0;
+  vertical-align: -3px;
+}
 .bias-icon {
   display: inline-flex;
   width: 17px;

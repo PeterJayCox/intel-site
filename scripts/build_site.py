@@ -462,14 +462,27 @@ def render_body(p, pages, slug_map, tt_slugs=(), icon_by_slug=None):
     else:
         body_html = md_lib.markdown(md, extensions=["extra"])
     # bias rows carry their glyph in the first cell
-    def _icon_cell(m):
+    # a cell holding exactly one bias link gets a flex wrapper so the glyph
+    # sits beside the first line; a cell with several links gets the glyph
+    # inline, because a flex wrapper would make each link its own flex item
+    def _icon_single(m):
+        slug, attrs, text = m.group(1), m.group(2), m.group(3)
+        key = icon_by_slug.get(slug)
+        if not key:
+            return m.group(0)
+        return (f'<td><span class="bias-cell">{icon_svg(key)}'
+                f'<a href="{slug}.html"{attrs}>{text}</a></span></td>')
+
+    def _icon_multi(m):
         slug = m.group(1)
         key = icon_by_slug.get(slug)
         if not key:
             return m.group(0)
-        return f'<td><span class="bias-cell">{icon_svg(key)}<a href="{slug}.html"'
-    body_html = re.sub(r'<td><a href="([a-z0-9-]+)\.html"', _icon_cell, body_html)
-    body_html = re.sub(r'(<span class="bias-cell">.*?</a>)</td>', r'\1</span></td>', body_html, flags=re.S)
+        return f'<td>{icon_svg(key, "bias-icon inline")}<a href="{slug}.html"'
+
+    body_html = re.sub(
+        r'<td><a href="([a-z0-9-]+)\.html"([^>]*)>([^<]*)</a></td>', _icon_single, body_html)
+    body_html = re.sub(r'<td><a href="([a-z0-9-]+)\.html"', _icon_multi, body_html)
     # wide tables get their own scroll container (see site.css .table-wrap)
     body_html = body_html.replace("<table>", '<div class="table-wrap"><table>')
     body_html = body_html.replace("</table>", "</table></div>")
