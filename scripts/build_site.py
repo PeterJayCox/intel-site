@@ -341,6 +341,7 @@ class Page(object):
         self.artefact = scalar(fm.get("artefact"))
         self.family = scalar(fm.get("family"))
         self.toc = str(scalar(fm.get("toc"))).lower() in {"true", "yes", "1"}
+        self.prevnext = str(scalar(fm.get("prevnext"))).lower() not in {"false", "no", "0"}
         self.mins = reading_minutes(body)
 
 
@@ -500,7 +501,7 @@ def signature_block(p):
 
 def prev_next_html(p, pages):
     """Previous / next within the same page type (workshops, concepts…)."""
-    if p.rtype != "workshop":
+    if p.rtype != "workshop" or not p.prevnext:
         return ""
     sibs = sorted([q for q in pages if q.rtype == p.rtype], key=lambda q: q.slug)
     try:
