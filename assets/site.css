@@ -1048,3 +1048,32 @@ html[data-theme-mode="light"] .theme-toggle .tt-light { display: inline; }
   .video-frame { display: none; }
   @page { margin: 16mm 14mm; }
 }
+
+/* ---------- bias glyphs (added 2026-11-06) ---------- */
+.bias-cell {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+.bias-icon {
+  display: inline-flex;
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  color: var(--accent);
+  flex: 0 0 auto;
+}
+.bias-icon svg { width: 100%; height: 100%; }
+.page-icon {
+  display: inline-flex;
+  width: 26px;
+  height: 26px;
+  margin-right: 12px;
+  color: var(--accent);
+  vertical-align: -4px;
+}
+.page-icon svg { width: 100%; height: 100%; }
+.wiki-body td .bias-icon { opacity: 0.9; }
+@media print {
+  .bias-icon, .page-icon { color: #111; }
+}

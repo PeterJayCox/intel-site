@@ -20,6 +20,9 @@ import datetime
 import yaml
 import markdown as md_lib
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from icons import svg as icon_svg, SLUG_ICON  # noqa: E402
+
 # ---------------- paths & constants ----------------
 HOME = os.path.expanduser("~")
 VAULT = os.path.join(HOME, "Library", "Mobile Documents", "iCloud~md~obsidian",
@@ -343,6 +346,7 @@ class Page(object):
         self.toc = str(scalar(fm.get("toc"))).lower() in {"true", "yes", "1"}
         self.prevnext = str(scalar(fm.get("prevnext"))).lower() not in {"false", "no", "0"}
         self.mins = reading_minutes(body)
+        self.icon = scalar(fm.get("icon")) or SLUG_ICON.get(slug, "")
 
 
 def load_pages():
@@ -440,7 +444,7 @@ def bias_map_md(pages):
     return "\n".join(out)
 
 
-def render_body(p, pages, slug_map, tt_slugs=()):
+def render_body(p, pages, slug_map, tt_slugs=(), icon_by_slug=None):
     md = p.body
     # drop the leading H1 (title is rendered in the page header)
     md = re.sub(r"\A\s*#\s+[^\n]*\n?", "", md, count=1)
@@ -457,6 +461,15 @@ def render_body(p, pages, slug_map, tt_slugs=()):
             extension_configs={"toc": {"permalink": "&#128279;", "toc_depth": "2-3"}})
     else:
         body_html = md_lib.markdown(md, extensions=["extra"])
+    # bias rows carry their glyph in the first cell
+    def _icon_cell(m):
+        slug = m.group(1)
+        key = icon_by_slug.get(slug)
+        if not key:
+            return m.group(0)
+        return f'<td><span class="bias-cell">{icon_svg(key)}<a href="{slug}.html"'
+    body_html = re.sub(r'<td><a href="([a-z0-9-]+)\.html"', _icon_cell, body_html)
+    body_html = re.sub(r'(<span class="bias-cell">.*?</a>)</td>', r'\1</span></td>', body_html, flags=re.S)
     # wide tables get their own scroll container (see site.css .table-wrap)
     body_html = body_html.replace("<table>", '<div class="table-wrap"><table>')
     body_html = body_html.replace("</table>", "</table></div>")
@@ -533,12 +546,12 @@ def tt_payload(pages, tt_slugs):
     return json.dumps(out, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e")
 
 
-def build_page(p, pages, slug_map, tt_slugs=()):
+def build_page(p, pages, slug_map, tt_slugs=(), icon_by_slug=None):
     rtype_label = TYPE_LABELS.get(p.rtype, "Concepts")
     badges = [f'<span class="type-pill">{html.escape(rtype_label.rstrip("s"))}</span>',
               confidence_badge(p.fm)]
     chips = tag_chips(p.tags)
-    body = render_body(p, pages, slug_map, tt_slugs)
+    body = render_body(p, pages, slug_map, tt_slugs, icon_by_slug)
     rail = toc_html(body)
     sig = signature_block(p)
     pn = prev_next_html(p, pages)
@@ -552,7 +565,7 @@ def build_page(p, pages, slug_map, tt_slugs=()):
 <div class="crumb"><a href="index.html">Wiki</a><span class="sep">/</span>{html.escape(rtype_label)}</div>
 <div class="page-head">
   <div class="head-top">{''.join(badges)}<span class="pill meta-pill">{p.mins} min read</span></div>
-  <h1>{html.escape(p.title)}</h1>
+  <h1>{icon_svg(p.icon, "page-icon") if p.icon else ""}{html.escape(p.title)}</h1>
   {f'<p class="dek">{html.escape(p.dek)}</p>' if p.dek_explicit else ''}
   <div class="tags-row">{chips}</div>
   <div class="stamp">Open Source</div>
@@ -862,12 +875,13 @@ def main():
     slug_map = build_slug_map(pages)
     # pages that get a hover card wherever they are wikilinked
     tt_slugs = {p.slug for p in bias_pages(pages)}
+    icon_by_slug = {p.slug: p.icon for p in pages if p.icon}
 
     copy_assets()
     copy_cname()
     build_index(pages, skipped)
     for p in pages:
-        build_page(p, pages, slug_map, tt_slugs)
+        build_page(p, pages, slug_map, tt_slugs, icon_by_slug)
     build_robots()
     build_sitemap(pages)
 
