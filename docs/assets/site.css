@@ -1082,3 +1082,23 @@ html[data-theme-mode="light"] .theme-toggle .tt-light { display: inline; }
 @media print {
   .bias-icon, .page-icon { color: #111; }
 }
+
+/* ---------- figures (added 2026-11-06) ---------- */
+.bias-figure {
+  margin: 26px 0 30px;
+  padding: 18px 18px 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.bias-figure svg { color: var(--text); }
+.bias-figure figcaption {
+  margin-top: 10px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  max-width: 62ch;
+}
+@media print {
+  .bias-figure { break-inside: avoid; background: none; }
+}
