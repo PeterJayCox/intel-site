@@ -461,6 +461,15 @@ def render_body(p, pages, slug_map, tt_slugs=(), icon_by_slug=None):
             extension_configs={"toc": {"permalink": "&#128279;", "toc_depth": "2-3"}})
     else:
         body_html = md_lib.markdown(md, extensions=["extra"])
+    # long-form HTML snippets kept out of the vault note (see snippets/)
+    if "<!-- bias-in-motion -->" in body_html:
+        snip = os.path.join(ROOT, "snippets", "bias-in-motion.html")
+        try:
+            with open(snip, encoding="utf-8") as fh:
+                body_html = body_html.replace("<!-- bias-in-motion -->", fh.read())
+        except OSError as exc:
+            print(f"  ! snippet bias-in-motion missing: {exc}")
+
     # bias rows carry their glyph in the first cell
     # a cell holding exactly one bias link gets a flex wrapper so the glyph
     # sits beside the first line; a cell with several links gets the glyph
