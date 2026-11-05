@@ -1,0 +1,365 @@
+{
+ "title": "The bias atlas",
+ "deck": "Intel · Bias Atlas",
+ "cards": [
+  {
+   "slug": "absence-of-evidence-fallacy",
+   "title": "Absence of Evidence Fallacy",
+   "front": "Absence of Evidence Fallacy — what is the tell, and what is the one move?",
+   "signature": "\"No evidence of\", \"we have not seen\", \"there is no indication\".",
+   "move": "Pair every negative finding with the collection behind it.",
+   "family": "evidence",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "evidence",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "anchoring-bias",
+   "title": "Anchoring Bias",
+   "front": "Anchoring Bias — what is the tell, and what is the one move?",
+   "signature": "A number or a phrase that first appeared in an earlier product, unchanged.",
+   "move": "Re-derive the figure before reusing it, or say that you have not.",
+   "family": "evidence",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "evidence",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "availability-heuristic",
+   "title": "Availability Heuristic",
+   "front": "Availability Heuristic — what is the tell, and what is the one move?",
+   "signature": "The most recent incident shaping a forward-looking judgement.",
+   "move": "Add the historical baseline next to the recent case.",
+   "family": "evidence",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "evidence",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "base-rate-neglect",
+   "title": "Base-Rate Neglect",
+   "front": "Base-Rate Neglect — what is the tell, and what is the one move?",
+   "signature": "An indicator, alert or typology with no benign explanation rate.",
+   "move": "State the benign rate alongside the malicious one, even approximately.",
+   "family": "estimation",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "estimation",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "belief-perseverance",
+   "title": "Belief Perseverance",
+   "front": "Belief Perseverance — what is the tell, and what is the one move?",
+   "signature": "A judgement carried into a re-issue without its original uncertainty.",
+   "move": "Restate the uncertainty at re-issue, not just at first assessment.",
+   "family": "perception",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "perception",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "confirmation-bias",
+   "title": "Confirmation Bias",
+   "front": "Confirmation Bias — what is the tell, and what is the one move?",
+   "signature": "A hypothesis and a pile of support, with no rival hypothesis anywhere on the page.",
+   "move": "Write the strongest competing hypothesis beside the leading one, and mark which evidence discriminates.",
+   "family": "perception",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "perception",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "conformity-bias",
+   "title": "Conformity Bias",
+   "front": "Conformity Bias — what is the tell, and what is the one move?",
+   "signature": "A review comment that changed nothing and was not recorded.",
+   "move": "Record the reasoning before the discussion, and record the query after it.",
+   "family": "social",
+   "owner": "system",
+   "tags": [
+    "cognitive",
+    "social",
+    "system"
+   ]
+  },
+  {
+   "slug": "escalation-of-commitment",
+   "title": "Escalation of Commitment",
+   "front": "Escalation of Commitment — what is the tell, and what is the one move?",
+   "signature": "A line or a capability defended by its history rather than its yield.",
+   "move": "Ask: if it did not exist today, would we build it?",
+   "family": "decision",
+   "owner": "system",
+   "tags": [
+    "cognitive",
+    "decision",
+    "system"
+   ]
+  },
+  {
+   "slug": "framing-effect",
+   "title": "Framing Effect",
+   "front": "Framing Effect — what is the tell, and what is the one move?",
+   "signature": "The tasking's own words, unexamined, at the top of your draft.",
+   "move": "Rewrite the tasking in your own words, and say what the other framing would have produced.",
+   "family": "decision",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "decision",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "fundamental-attribution-error",
+   "title": "Fundamental Attribution Error",
+   "front": "Fundamental Attribution Error — what is the tell, and what is the one move?",
+   "signature": "\"Aggressive\", \"opportunistic\", \"deceptive by nature\".",
+   "move": "State the situational driver that would produce the same behaviour.",
+   "family": "social",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "social",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "groupthink",
+   "title": "Groupthink",
+   "front": "Groupthink — what is the tell, and what is the one move?",
+   "signature": "A judgement nobody has argued against, in a team that agrees.",
+   "move": "Independent judgements in writing, then reconcile; name a challenger.",
+   "family": "social",
+   "owner": "system",
+   "tags": [
+    "cognitive",
+    "social",
+    "system"
+   ]
+  },
+  {
+   "slug": "hindsight-bias",
+   "title": "Hindsight Bias",
+   "front": "Hindsight Bias — what is the tell, and what is the one move?",
+   "signature": "A post-mortem conclusion that the outcome was foreseeable.",
+   "move": "Check it against the judgement that was actually written at the time.",
+   "family": "estimation",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "estimation",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "insensitivity-to-sample-size",
+   "title": "Insensitivity to Sample Size",
+   "front": "Insensitivity to Sample Size — what is the tell, and what is the one move?",
+   "signature": "\"Campaign\", \"pattern\", \"characteristic\" with no count in the sentence.",
+   "move": "Put the count (n) in the sentence and let the reader see it.",
+   "family": "estimation",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "estimation",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "loss-aversion",
+   "title": "Loss Aversion",
+   "front": "Loss Aversion — what is the tell, and what is the one move?",
+   "signature": "\"The consequences of missing this are unacceptable.\"",
+   "move": "State what it costs to be wrong in each direction.",
+   "family": "social",
+   "owner": "system",
+   "tags": [
+    "cognitive",
+    "social",
+    "system"
+   ]
+  },
+  {
+   "slug": "mirror-imaging",
+   "title": "Mirror Imaging",
+   "front": "Mirror Imaging — what is the tell, and what is the one move?",
+   "signature": "\"They would not do X because it makes no sense.\"",
+   "move": "One line naming what the actor would have to believe for the behaviour to make sense to them.",
+   "family": "perception",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "perception",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "overconfidence-bias",
+   "title": "Overconfidence Bias",
+   "front": "Overconfidence Bias — what is the tell, and what is the one move?",
+   "signature": "\"Will\", \"clearly\", \"obviously\", \"always\", or an unqualified number.",
+   "move": "Re-earn or strike each absolute on the final read.",
+   "family": "estimation",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "estimation",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "recency-bias",
+   "title": "Recency Bias",
+   "front": "Recency Bias — what is the tell, and what is the one move?",
+   "signature": "A trend drawn from the current period alone.",
+   "move": "Show the current period against the prior baseline.",
+   "family": "decision",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "decision",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "representativeness-heuristic",
+   "title": "Representativeness Heuristic",
+   "front": "Representativeness Heuristic — what is the tell, and what is the one move?",
+   "signature": "\"Matches the profile\", \"consistent with the established pattern\".",
+   "move": "Ask how many other actors would look identical, and name the evidence that would separate them.",
+   "family": "evidence",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "evidence",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "selective-perception",
+   "title": "Selective Perception",
+   "front": "Selective Perception — what is the tell, and what is the one move?",
+   "signature": "Nothing — an absence. The item you cannot find because it was never registered.",
+   "move": "Read the file, not the draft, and name one item that argues against the judgement.",
+   "family": "perception",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "perception",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "status-quo-bias",
+   "title": "Status Quo Bias",
+   "front": "Status Quo Bias — what is the tell, and what is the one move?",
+   "signature": "\"Unchanged\", \"no change to the previous assessment\".",
+   "move": "Date the review and say when the evidence was last tested.",
+   "family": "decision",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "decision",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "vividness-bias",
+   "title": "Vividness Bias",
+   "front": "Vividness Bias — what is the tell, and what is the one move?",
+   "signature": "A single striking item — a figure, an image, a quote — near the top.",
+   "move": "State the source's status against that item, in the product.",
+   "family": "evidence",
+   "owner": "analyst",
+   "tags": [
+    "cognitive",
+    "evidence",
+    "analyst"
+   ]
+  },
+  {
+   "slug": "carried-forward-assessment",
+   "title": "Carried-Forward Assessment",
+   "front": "Carried-Forward Assessment — what is the tell, and what is the one move?",
+   "signature": "\"No change\" accepted by the process, with no scheduled review and nobody able to say who last tested the evidence.",
+   "move": "Put the review on a calendar with a named owner, and print the date the evidence was last tested.",
+   "family": "structural",
+   "owner": "system",
+   "tags": [
+    "structural",
+    "system"
+   ]
+  },
+  {
+   "slug": "inherited-partner-reporting",
+   "title": "Inherited Partner Reporting",
+   "front": "Inherited Partner Reporting — what is the tell, and what is the one move?",
+   "signature": "Reporting you did not collect, cannot re-derive, and have never seen the handling caveats behind.",
+   "move": "State the partner's caveats in your own product in your own words — or state that you do not have them.",
+   "family": "structural",
+   "owner": "system",
+   "tags": [
+    "structural",
+    "system"
+   ]
+  },
+  {
+   "slug": "single-source-dependency",
+   "title": "Single-Source Dependency",
+   "front": "Single-Source Dependency — what is the tell, and what is the one move?",
+   "signature": "The key judgement rests on one report, one chain, and a source you cannot see to the end.",
+   "move": "Name the dependency in the product, and say what the judgement would look like if that source were wrong.",
+   "family": "structural",
+   "owner": "system",
+   "tags": [
+    "structural",
+    "system"
+   ]
+  },
+  {
+   "slug": "thin-analytic-coverage",
+   "title": "Thin Analytic Coverage",
+   "front": "Thin Analytic Coverage — what is the tell, and what is the one move?",
+   "signature": "One name on a national question, and no second reading of the same file.",
+   "move": "Say in the product how many analysts the judgement rests on, and what a second reader would have been asked to check.",
+   "family": "structural",
+   "owner": "system",
+   "tags": [
+    "structural",
+    "system"
+   ]
+  },
+  {
+   "slug": "volume-mistaken-for-development",
+   "title": "Volume Mistaken for Development",
+   "front": "Volume Mistaken for Development — what is the tell, and what is the one move?",
+   "signature": "The reporting curve is rising and the product reads it as the activity curve.",
+   "move": "Separate the reporting curve from the activity curve, and say which one the trend rests on.",
+   "family": "structural",
+   "owner": "system",
+   "tags": [
+    "structural",
+    "system"
+   ]
+  }
+ ]
+}

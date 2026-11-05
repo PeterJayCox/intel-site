@@ -559,6 +559,52 @@ def tt_payload(pages, tt_slugs):
     return json.dumps(out, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e")
 
 
+BIAS_DECK = os.path.join(os.path.dirname(os.path.abspath(__file__)), "bias-cards.json")
+
+
+def flashcards_block():
+    """The atlas deck, rendered from the same JSON Flashforge seeds from."""
+    try:
+        with open(BIAS_DECK, encoding="utf-8") as fh:
+            data = json.load(fh)
+    except (OSError, ValueError) as exc:
+        print(f"  ! flashcards: deck unreadable ({exc})")
+        return ""
+    n = len(data.get("cards", []))
+    if not n:
+        return ""
+    payload = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+    return f"""
+<section class="fc-block" id="flashcards">
+  <h2>Flashcards — the atlas, one card at a time</h2>
+  <p class="fc-intro">{n} cards, the same rows as the atlas above: the tell for each mechanism, and the
+  one move that answers it. Click a card to turn it over, or shuffle and test yourself in a random order.</p>
+  <div class="fc-deck" data-fc-deck>
+    <div class="fc-meta"><span data-fc-count>1 / {n}</span><span data-fc-fam>&mdash;</span></div>
+    <div class="fc-card" data-fc-card role="button" tabindex="0" aria-pressed="false"
+         aria-label="Flashcard. Activate to reveal the answer.">
+      <div class="fc-face fc-front" data-fc-front></div>
+      <div class="fc-face fc-back">
+        <div class="fc-back-title" data-fc-backtitle></div>
+        <p><span class="fc-label">The tell</span><span data-fc-tell></span></p>
+        <p><span class="fc-label">The one move</span><span data-fc-move></span></p>
+      </div>
+    </div>
+    <div class="fc-controls">
+      <button type="button" data-fc-prev>&larr; Prev</button>
+      <button type="button" data-fc-flip>Flip</button>
+      <button type="button" data-fc-next>Next &rarr;</button>
+      <button type="button" data-fc-shuffle>Shuffle</button>
+    </div>
+    <p class="fc-hint">Space or Enter flips. Arrow keys step. Nothing is recorded.</p>
+  </div>
+  <noscript><p class="fc-intro">The deck needs JavaScript. The same rows are in the atlas above.</p></noscript>
+</section>
+<script type="application/json" id="fc-data">{payload}</script>
+<script src="assets/flashcards.js" defer></script>
+"""
+
+
 def build_page(p, pages, slug_map, tt_slugs=(), icon_by_slug=None):
     rtype_label = TYPE_LABELS.get(p.rtype, "Concepts")
     badges = [f'<span class="type-pill">{html.escape(rtype_label.rstrip("s"))}</span>',
@@ -567,6 +613,7 @@ def build_page(p, pages, slug_map, tt_slugs=(), icon_by_slug=None):
     body = render_body(p, pages, slug_map, tt_slugs, icon_by_slug)
     rail = toc_html(body)
     sig = signature_block(p)
+    fc = flashcards_block() if p.fm.get("flashcards") else ""
     pn = prev_next_html(p, pages)
     has_tt = "data-tt=" in body
     tt_block = ""
@@ -585,6 +632,7 @@ def build_page(p, pages, slug_map, tt_slugs=(), icon_by_slug=None):
 </div>
 {pn}{sig}{rail}
 <article class="wiki-body">{body}</article>
+{fc}
 {pn}
 <a class="nav-back" href="index.html">&larr; Back to Wiki index</a>
 {tt_block}

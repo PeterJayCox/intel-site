@@ -1102,3 +1102,122 @@ html[data-theme-mode="light"] .theme-toggle .tt-light { display: inline; }
 @media print {
   .bias-figure { break-inside: avoid; background: none; }
 }
+
+/* ---------- in-page flashcard deck (added 2026-11-06) ---------- */
+.fc-block {
+  margin: 46px 0 10px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border);
+}
+.fc-block h2 {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  margin: 0 0 6px;
+}
+.fc-intro {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  margin: 0 0 20px;
+  max-width: 62ch;
+}
+.fc-deck { max-width: 660px; }
+.fc-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.fc-card {
+  position: relative;
+  min-height: 210px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 26px 26px 24px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.fc-card:hover { border-color: var(--accent); }
+.fc-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.fc-face { width: 100%; }
+.fc-front {
+  font-family: var(--serif);
+  font-size: 1.18rem;
+  line-height: 1.42;
+  color: var(--text);
+}
+.fc-back { display: none; }
+.fc-card.is-flipped .fc-front { display: none; }
+.fc-card.is-flipped .fc-back { display: block; }
+.fc-back-title {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.fc-back p {
+  margin: 0 0 12px;
+  font-size: 0.96rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+.fc-back p:last-child { margin-bottom: 0; }
+.fc-back .fc-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+.fc-controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.fc-controls button {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+.fc-controls button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+.fc-hint {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  margin-top: 12px;
+}
+@media print {
+  .fc-controls, .fc-hint { display: none; }
+  .fc-card { min-height: 0; page-break-inside: avoid; }
+  .fc-front { display: none; }
+  .fc-back { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fc-card, .fc-controls button { transition: none; }
+}
