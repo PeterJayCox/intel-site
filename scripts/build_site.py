@@ -347,6 +347,7 @@ class Page(object):
         self.prevnext = str(scalar(fm.get("prevnext"))).lower() not in {"false", "no", "0"}
         self.mins = reading_minutes(body)
         self.icon = scalar(fm.get("icon")) or SLUG_ICON.get(slug, "")
+        self.card_block = scalar(fm.get("card_block"))
 
 
 def load_pages():
@@ -407,8 +408,11 @@ def bias_pages(pages):
 def bias_card_md(pages):
     """The signature card, generated from the bias pages' front matter."""
     bp = bias_pages(pages)
-    mine = sorted([p for p in bp if p.owner != "system"], key=lambda p: p.title.lower())
-    theirs = sorted([p for p in bp if p.owner == "system"], key=lambda p: p.title.lower())
+    later = sorted([p for p in bp if p.card_block == "post-mortem"], key=lambda p: p.title.lower())
+    mine = sorted([p for p in bp if p.owner != "system" and p.card_block != "post-mortem"],
+                  key=lambda p: p.title.lower())
+    theirs = sorted([p for p in bp if p.owner == "system" and p.card_block != "post-mortem"],
+                    key=lambda p: p.title.lower())
     out = []
     out.append(f"**Yours to fix in the draft** — {len(mine)} rows you can close in ten "
                "minutes, alone, before issue.\n")
@@ -424,6 +428,15 @@ def bias_card_md(pages):
     out.append("|---|---|---|")
     for p in theirs:
         out.append(f"| [[{p.title}]] | {_md_cell(p.signature)} | {_md_cell(p.one_move)} |")
+    if later:
+        out.append("")
+        out.append(f"**Not visible in a draft** — {len(later)} rows that a pre-issue read cannot "
+                   "catch, because the evidence they need does not exist yet or never sat in "
+                   "the text.\n")
+        out.append("| Bias | Why it cannot appear in your draft | Where you catch it |")
+        out.append("|---|---|---|")
+        for p in later:
+            out.append(f"| [[{p.title}]] | {_md_cell(p.signature)} | {_md_cell(p.one_move)} |")
     return "\n".join(out)
 
 
