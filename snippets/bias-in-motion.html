@@ -87,6 +87,8 @@
 .bim .dot.on{ opacity: 1; }
 .bim .dl{ position: absolute; top: 24px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-family: var(--font-mono); font-size: 12px; color: var(--ink); }
 .bim .tick{ position: absolute; top: 86px; transform: translateX(-50%); font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+.bim .band{ position: absolute; top: 22px; height: 60px; background: var(--data-soft); border-radius: 4px; }
+.bim .dot{ z-index: 1; }
 .bim .compare{ background: var(--accent-soft); border-color: var(--accent); }
 .bim .compare p{ font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; }
 .bim svg.plane{ width: 100%; max-width: 460px; height: auto; display: block; margin: 0 auto; }
@@ -154,17 +156,18 @@
   <section class="scene" aria-labelledby="h-anch">
     <div>
       <h3 id="h-anch">Anchoring</h3>
-      <p class="def">A number we have just seen pulls our estimate toward it, even when we know the number is meaningless.</p>
+      <p class="def">The first number put on the table pulls the final outcome toward it, even when both sides know roughly what the market pays.</p>
     </div>
-    <div class="panel question"><span class="label">Question put to both groups</span><p>What percentage of African countries are members of the United Nations?</p></div>
+    <div class="panel question"><span class="label">The setup</span><p>Same job, same candidate, same budget. Two pay negotiations differ in one way: the opening number.</p></div>
     <div class="panel" id="rows" style="gap:22px"></div>
+    <div class="legend"><span><i style="background:var(--data-soft);border:1px solid var(--data)"></i>Shaded band: fair market range, $75,000 to $90,000</span></div>
     <div class="panel compare" id="compare" hidden>
-      <p>Same question, different starting number. Typical answers were 25% after the low anchor and 45% after the high one.</p>
+      <p>Same job, same candidate, same fair range. Pay settled at $76,000 after the low opening number and $88,000 after the high one.</p>
     </div>
-    <p class="cap" id="s2cap" role="status">Before answering, each group watches a wheel stop on a number. Run one group at a time, or both.</p>
+    <p class="cap" id="s2cap" role="status">Two negotiations are about to start. Run one at a time, or both. The salary figures are made up for teaching.</p>
     <div class="controls">
-      <button class="primary" id="runA" type="button">Run Group A</button>
-      <button class="primary" id="runB" type="button">Run Group B</button>
+      <button class="primary" id="runA" type="button">Run negotiation A</button>
+      <button class="primary" id="runB" type="button">Run negotiation B</button>
       <button id="runBoth" type="button">Run both</button>
       <button id="s2reset" type="button">Reset</button>
     </div>
@@ -243,12 +246,12 @@
     <h3 id="h-talk">Talk it through</h3>
     <ul>
       <li>Which of the excuses in the plant scene sounded most reasonable? When did you last use one yourself?</li>
-      <li>The wheel was plainly random. Why did the number still change people's answers?</li>
+      <li>Whoever speaks first sets the anchor. How could you respond when the other side opens with an extreme number?</li>
       <li>What habit or process would make you look for disconfirming evidence, or form your own estimate before seeing someone else's number?</li>
       <li>Where might you be looking only at the planes that came home, such as successful companies, famous artists or people who answer surveys?</li>
       <li>Think of a recent choice that was described to you as a gain or a loss. How would you have decided if the wording were flipped?</li>
     </ul>
-    <p class="source">Anchoring figures come from Tversky and Kahneman (1974), "Judgment under Uncertainty: Heuristics and Biases", Science 185. Their wheel was rigged to stop at 10 or 65, and the median answers were 25 and 45. The framing scene follows Tversky and Kahneman (1981), "The Framing of Decisions and the Psychology of Choice", Science 211, where about 72% chose the sure option when it was worded as lives saved and about 22% when it was worded as lives lost. The survivorship scene is based on Abraham Wald's analysis of returning bombers for the US military in World War II; the hole pattern drawn here is illustrative. The plant scene is an invented example made for teaching.</p>
+    <p class="source">Anchoring was first described by Tversky and Kahneman (1974), "Judgment under Uncertainty: Heuristics and Biases", Science 185. The negotiation scene draws on research showing that first offers anchor outcomes, such as Galinsky and Mussweiler (2001), "First Offers as Anchors", Journal of Personality and Social Psychology 81. Its salary figures are made up for teaching. The framing scene follows Tversky and Kahneman (1981), "The Framing of Decisions and the Psychology of Choice", Science 211, where about 72% chose the sure option when it was worded as lives saved and about 22% when it was worded as lives lost. The survivorship scene is based on Abraham Wald's analysis of returning bombers for the US military in World War II; the hole pattern drawn here is illustrative. The plant scene is an invented example made for teaching.</p>
   </section>
 </div>
 </div>
@@ -354,51 +357,48 @@
   bReset.addEventListener('click', reset1);
   reset1();
 
-  /* ---------- Scene 2: anchoring ---------- */
-  var GROUPS = [
-    { id: 'a', name: 'Group A', anchor: 10, median: 25 },
-    { id: 'b', name: 'Group B', anchor: 65, median: 45 }
+  /* ---------- Scene 2: anchoring in a pay negotiation ---------- */
+  var NEGS = [
+    { id: 'a', name: 'Negotiation A', steps: [70, 85, 72, 80, 76] },
+    { id: 'b', name: 'Negotiation B', steps: [95, 80, 92, 85, 88] }
   ];
   var s2 = { token: 0 };
   var rowsEl = $('rows'), cap2 = $('s2cap'), compare = $('compare');
-  var ticks = [0, 25, 50, 75, 100];
+  var LO = 60, HI = 110, FAIR_LO = 75, FAIR_HI = 90;
+  var ticks = [60, 70, 80, 90, 100, 110];
+  function pos(v) { return (v - LO) / (HI - LO) * 100; }
+  function money(v) { return '$' + v + ',000'; }
+  function kk(v) { return '$' + v + 'k'; }
 
-  GROUPS.forEach(function (g) {
+  NEGS.forEach(function (g) {
+    g.open = g.steps[0];
+    g.final = g.steps[g.steps.length - 1];
     var d = document.createElement('div');
     d.className = 'arow';
     d.innerHTML =
-      '<div class="arow-head"><h3>' + g.name + ' watches the wheel stop on</h3><div class="reel" id="reel-' + g.id + '">-</div></div>' +
-      '<p class="q" id="q-' + g.id + '">Is it higher or lower than ' + g.anchor + '%? And what is your best estimate?</p>' +
+      '<div class="arow-head"><h3>' + g.name + ' opens at</h3><div class="reel" id="reel-' + g.id + '">-</div></div>' +
+      '<p class="q" id="q-' + g.id + '">Each side now makes offers and counteroffers around that number.</p>' +
       '<div class="plot">' +
+        '<div class="band" style="left:' + pos(FAIR_LO) + '%;width:' + (pos(FAIR_HI) - pos(FAIR_LO)) + '%"></div>' +
         '<div class="track-line"></div>' +
-        '<div class="flag" id="flag-' + g.id + '" style="left:' + g.anchor + '%"><span>Anchor ' + g.anchor + '</span></div>' +
+        '<div class="flag" id="flag-' + g.id + '" style="left:' + pos(g.open) + '%"><span>Opening ' + kk(g.open) + '</span></div>' +
         '<div class="dot" id="dot-' + g.id + '"><span class="dl" id="dl-' + g.id + '"></span></div>' +
-        ticks.map(function (t) { return '<span class="tick" style="left:' + t + '%">' + t + '%</span>'; }).join('') +
+        ticks.map(function (t) { return '<span class="tick" style="left:' + pos(t) + '%">' + kk(t) + '</span>'; }).join('') +
       '</div>' +
-      '<p class="res" id="res-' + g.id + '">Typical answer: ' + g.median + '%</p>';
+      '<p class="res" id="res-' + g.id + '">Settled at ' + money(g.final) + '</p>';
     rowsEl.appendChild(d);
     g.reel = $('reel-' + g.id); g.q = $('q-' + g.id); g.flag = $('flag-' + g.id);
     g.dot = $('dot-' + g.id); g.dl = $('dl-' + g.id); g.res = $('res-' + g.id);
     g.done = false;
   });
 
+  function setDot(g, v) { g.dot.style.left = pos(v) + '%'; g.dl.textContent = kk(Math.round(v)); }
   function resetRow(g) {
     g.done = false;
     g.reel.textContent = '-'; g.reel.classList.remove('lock');
     g.q.classList.remove('on'); g.flag.classList.remove('on'); g.dot.classList.remove('on'); g.res.classList.remove('on');
-    g.dot.style.left = g.anchor + '%'; g.dl.textContent = '';
+    setDot(g, g.open); g.dl.textContent = '';
     compare.hidden = true;
-  }
-  function setDot(g, v) { g.dot.style.left = v + '%'; g.dl.textContent = Math.round(v) + '%'; }
-  function spinReel(g, tok, done) {
-    var delays = [50, 50, 60, 70, 85, 100, 120, 150, 185, 230];
-    if (RM) { g.reel.textContent = g.anchor; g.reel.classList.add('lock'); done(); return; }
-    (function tick(k) {
-      if (tok !== s2.token) return;
-      if (k >= delays.length) { g.reel.textContent = g.anchor; g.reel.classList.add('lock'); done(); return; }
-      g.reel.textContent = Math.floor(Math.random() * 100);
-      setTimeout(function () { tick(k + 1); }, delays[k]);
-    })(0);
   }
   function glide(g, from, to, dur, tok, done) {
     if (dur <= 0) { setDot(g, to); done(); return; }
@@ -412,31 +412,37 @@
     }
     requestAnimationFrame(f);
   }
+  var STEP_CAPS = ['', 'The other side counters.', 'The first side replies.', 'Another counter.', 'They shake hands.'];
   function checkBoth() {
-    if (GROUPS.every(function (g) { return g.done; })) {
+    if (NEGS.every(function (g) { return g.done; })) {
       compare.hidden = false;
-      cap2.textContent = 'Both groups adjusted away from their anchor, and both stopped early.';
+      cap2.textContent = 'Both deals landed inside the fair range, but each sits closer to whichever number came first.';
     }
   }
   function runRow(g, tok, cb) {
     resetRow(g);
-    cap2.textContent = g.name + ' watches a wheel and it stops on a number.';
-    spinReel(g, tok, function () {
+    cap2.textContent = g.name + ': the first number on the table is ' + money(g.open) + '.';
+    g.reel.textContent = money(g.open); g.reel.classList.add('lock');
+    g.flag.classList.add('on'); g.q.classList.add('on');
+    setTimeout(function () {
       if (tok !== s2.token) return;
-      g.flag.classList.add('on'); g.q.classList.add('on');
-      cap2.textContent = 'The wheel is obviously random, yet ' + g.name + ' now has ' + g.anchor + ' in mind.';
-      setTimeout(function () {
+      g.dot.classList.add('on'); setDot(g, g.open);
+      cap2.textContent = 'They trade offers. Compare where it ends up with the shaded fair range.';
+      (function go(i) {
         if (tok !== s2.token) return;
-        g.dot.classList.add('on'); setDot(g, g.anchor);
-        cap2.textContent = g.name + ' starts at ' + g.anchor + '% and adjusts, but stops short.';
-        glide(g, g.anchor, g.median, T(1900), tok, function () {
+        if (i >= g.steps.length) {
           g.res.classList.add('on'); g.done = true;
-          cap2.textContent = g.name + ' settles on about ' + g.median + '%.';
+          cap2.textContent = g.name + ' settles at ' + money(g.final) + '.';
           checkBoth();
           if (cb) cb();
+          return;
+        }
+        cap2.textContent = STEP_CAPS[i];
+        glide(g, g.steps[i - 1], g.steps[i], T(1000), tok, function () {
+          setTimeout(function () { go(i + 1); }, T(350));
         });
-      }, T(900));
-    });
+      })(1);
+    }, T(1100));
   }
   var runButtons = [$('runA'), $('runB'), $('runBoth')];
   function setBusy(b) { runButtons.forEach(function (x) { x.disabled = b; }); }
@@ -449,16 +455,16 @@
       runRow(list[k], tok, function () { next(k + 1); });
     })(0);
   }
-  $('runA').addEventListener('click', function () { runSeq([GROUPS[0]]); });
-  $('runB').addEventListener('click', function () { runSeq([GROUPS[1]]); });
-  $('runBoth').addEventListener('click', function () { runSeq(GROUPS); });
+  $('runA').addEventListener('click', function () { runSeq([NEGS[0]]); });
+  $('runB').addEventListener('click', function () { runSeq([NEGS[1]]); });
+  $('runBoth').addEventListener('click', function () { runSeq(NEGS); });
   $('s2reset').addEventListener('click', function () {
     s2.token++;
-    GROUPS.forEach(resetRow);
+    NEGS.forEach(resetRow);
     setBusy(false);
-    cap2.textContent = 'Before answering, each group watches a wheel stop on a number. Run one group at a time, or both.';
+    cap2.textContent = 'Two negotiations are about to start. Run one at a time, or both. The salary figures are made up for teaching.';
   });
-  GROUPS.forEach(resetRow);
+  NEGS.forEach(resetRow);
 
   /* ---------- Shared stepper for the beat-based scenes ---------- */
   function makeStepper(cfg) {

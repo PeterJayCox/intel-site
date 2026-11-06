@@ -614,6 +614,37 @@ def flashcards_block():
 """
 
 
+VIDEO_BLOCK = """
+<section class="attachment-block" id="attachment">
+  <h2>Attachment — how bias turns data into false confidence</h2>
+  <p class="att-intro">A short walk-through of the same mechanism, in one sitting. One minute twenty-seven, portrait.</p>
+  <figure class="att-video">
+    <video controls preload="metadata" playsinline poster="assets/media/{poster}">
+      <source src="assets/media/{src}" type="video/mp4">
+      <p>This browser cannot play the file. <a href="assets/media/{src}">Download the video</a> instead ({mb} MB).</p>
+    </video>
+    <figcaption>An explainer in the same territory as this page: bias as systematic error, confirmation bias, and a
+    judgement that never gets checked against ground truth. Built with NotebookLM, so the narration is generated.</figcaption>
+  </figure>
+</section>
+"""
+
+ATTACHMENTS = {
+    "bias-confidence": dict(src="bias-confidence.mp4",
+                            poster="bias-confidence-poster.jpg",
+                            mb=10),
+}
+
+
+def attachment_block(key):
+    """A media attachment at the foot of the page, named by front matter."""
+    spec = ATTACHMENTS.get(key)
+    if not spec:
+        print(f"  ! attachment '{key}' is not defined in ATTACHMENTS")
+        return ""
+    return VIDEO_BLOCK.format(**spec)
+
+
 def build_page(p, pages, slug_map, tt_slugs=(), icon_by_slug=None):
     rtype_label = TYPE_LABELS.get(p.rtype, "Concepts")
     badges = [f'<span class="type-pill">{html.escape(rtype_label.rstrip("s"))}</span>',
@@ -623,6 +654,7 @@ def build_page(p, pages, slug_map, tt_slugs=(), icon_by_slug=None):
     rail = toc_html(body)
     sig = signature_block(p)
     fc = flashcards_block() if p.fm.get("flashcards") else ""
+    att = attachment_block(p.fm.get("video")) if p.fm.get("video") else ""
     pn = prev_next_html(p, pages)
     has_tt = "data-tt=" in body
     tt_block = ""
@@ -642,6 +674,7 @@ def build_page(p, pages, slug_map, tt_slugs=(), icon_by_slug=None):
 {pn}{sig}{rail}
 <article class="wiki-body">{body}</article>
 {fc}
+{att}
 {pn}
 <a class="nav-back" href="index.html">&larr; Back to Wiki index</a>
 {tt_block}
